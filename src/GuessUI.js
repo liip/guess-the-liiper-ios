@@ -43,16 +43,13 @@ var Grid = React.createClass({
   },
 
   render: function() {
-    var rows = this.group(this.props.children, this.props.amountInRow)
-      .map((row) =>
+    return (
+      <View style={styles.grid}>
+        {this.group(this.props.children, this.props.amountInRow).map((row) =>
           <View style={styles.row}>
             {row}
           </View>
-      );
-
-    return (
-      <View style={styles.grid}>
-        {rows}
+        )}
       </View>
     );
   },
@@ -81,10 +78,13 @@ var ProgressBar = React.createClass({
   },
 
   render: function() {
-    var width = {width: this.props.complete};
     return (
       <View style={styles.progressBar}>
-        <View style={[styles.progressBar, styles.progressBarCompleted, width]} />
+        <View style={[
+          styles.progressBar,
+          styles.progressBarCompleted,
+          {width: this.props.complete}
+        ]} />
       </View>
     );
   },
@@ -150,17 +150,46 @@ var ProgressBarAnimation = React.createClass({
   },
 });
 
+var ScrollView = React.createClass({
+  render: function() {
+    return (
+      <React.ScrollView style={styles.container}>
+        {this.props.children}
+      </React.ScrollView>
+    );
+  },
+});
+
+
+// Colors
+var GREEN0 = '#d0dd2c';
+var GREEN90 = '#bacf34';
+var GREEN180 = '#a4c339';
+var GREEN270 = '#8bb43f';
+var GREEN360 = '#6ea644';
+var ORANGE0 = '#fdb913';
+var ORANGE180 = '#f68b28';
+var ORANGE360 = '#f26531';
+var GREY0 = '#dcdcdc';
+var GREY180 = '#8c8c8c';
+var GREY360 = '#414141';
+var RED = '#d54361';
+
 // Styles
 var styles = StyleSheet.create({
+  container: {
+    paddingTop: 60,
+    flex: 1,
+  },
   button: {
     alignItems: 'center',
-    backgroundColor: 'silver',
-    borderColor: 'rgba(150,150,150,0.8)',
+    backgroundColor: GREEN180,
+    //borderColor: 'rgba(150,150,150,0.8)',
     borderRadius: 8,
-    borderWidth: 1,
+    borderWidth: 0,
     flex: 1,
     margin: 5,
-    padding: 10,
+    padding: 15,
   },
   grid: {
   },
@@ -186,8 +215,10 @@ var styles = StyleSheet.create({
   }
 });
 
+
 module.exports = {
   Button: Button,
   Grid: Grid,
   ProgressBarAnimation: ProgressBarAnimation,
+  ScrollView: ScrollView,
 };

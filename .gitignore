@@ -1,2 +1,5 @@
 .idea
 node_modules/
+
+# Xcode user data stuff
+guess_the_liiper.xcodeproj/xcuserdata/

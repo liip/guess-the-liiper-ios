@@ -10,6 +10,7 @@ node_modules/
 *.mode2v3
 *.perspectivev3
 *.xcuserstate
+*.xccheckout
 project.xcworkspace/
 xcuserdata/
 

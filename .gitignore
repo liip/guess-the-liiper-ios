@@ -1,6 +1,16 @@
 .idea
 node_modules/
 
-# Xcode user data stuff
-guess_the_liiper.xcodeproj/project.xcworkspace/xcshareddata/*
-guess_the_liiper.xcodeproj/project.xcworkspace/xcuserdata/*
+# Mac OS X
+*.DS_Store
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+

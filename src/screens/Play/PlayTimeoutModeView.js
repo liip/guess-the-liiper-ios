@@ -114,11 +114,11 @@ var styles = StyleSheet.create({
   },
   picture: {
     width: 200,
-      height: 200,
-      borderRadius: 100,
-      margin: 10,
-      paddingTop: 50,
-      alignSelf: 'center',
+    height: 200,
+    borderRadius: 100,
+    margin: 10,
+    paddingTop: 50,
+    alignSelf: 'center',
   },
   buttonDefault: {
     backgroundColor: 'rgba(200,200,200,0.8)}',
@@ -128,7 +128,7 @@ var styles = StyleSheet.create({
   },
   buttonWrong: {
     color: 'white',
-      backgroundColor: 'rgba(255,0,0,0.8)',
+    backgroundColor: 'rgba(255,0,0,0.8)',
   },
 });
 

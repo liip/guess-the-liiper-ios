@@ -2,5 +2,5 @@
 node_modules/
 
 # Xcode user data stuff
-guess_the_liiper.xcodeproj/xcshareddata/*
-guess_the_liiper.xcodeproj/xcuserdata/*
+guess_the_liiper.xcodeproj/project.xcworkspace/xcshareddata/*
+guess_the_liiper.xcodeproj/project.xcworkspace/xcuserdata/*

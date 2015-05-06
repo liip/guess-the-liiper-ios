@@ -121,7 +121,7 @@ var styles = StyleSheet.create({
       alignSelf: 'center',
   },
   buttonDefault: {
-    backgroundColor: 'rgba(255,255,255,0.8)}',
+    backgroundColor: 'rgba(200,200,200,0.8)}',
   },
   buttonCorrect: {
     backgroundColor: 'rgba(0,255,0,0.8)',

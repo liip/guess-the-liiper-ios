@@ -15,14 +15,6 @@ var {
 var LoginScreen = require('./src/screens/Login/LoginScreen');
 var PlayScreen = require('./src/screens/Play/PlayScreen');
 
-var Test = React.createClass({
-  render: function() {
-    return (
-      <Text>bla</Text>
-    );
-  },
-});
-
 var App = React.createClass({
   render: function() {
     return (

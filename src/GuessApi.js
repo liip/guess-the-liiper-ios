@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var API_URL = 'http://guess.liip.ch';
+var API_URL: string = 'http://guess.liip.ch';
 
 type Person = {
   name: string;
@@ -33,28 +33,28 @@ class GuessApi {
   /**
    * Returns true when logged in.
    */
-  testAuth() {
+  testAuth(): Promise {
     return this.authUrl().then((authUrl) => {
       // If an auth url wasn't found, we are logged in.
       return !authUrl.length;
     });
   }
 
-  authUrl() {
+  authUrl(): Promise {
     return fetch(API_URL + '/', {credentials: true})
       .then(this.parseAuthUrlFromPage);
   }
 
-  logout() {
+  logout(): Promise {
     return fetch(API_URL + '/logout', {credentials: true});
   }
 
-  isStartPage(url) {
+  isStartPage(url: string) :boolean {
     return url == API_URL + '/';
   }
 
-  parseAuthUrlFromPage(response) {
-    var parseLink = /a href="(\/auth\/google\S+)"/m;
+  parseAuthUrlFromPage(response: Object) :string {
+    var parseLink: RegExp = /a href="(\/auth\/google\S+)"/m;
     return response.text().then((body) => {
       var matches = parseLink.exec(body);
       if (matches && matches[1]) {
@@ -66,20 +66,16 @@ class GuessApi {
   }
 
   /**
-   *
    * @param level
    */
-  create(level: string): ?Game {
+  create(level: string): Promise {
     return this.request('/' + this.getLevelOrDefault(level) + '/create');
   }
 
   /**
-   *
-   * @param {Game} game
-   * @param {string} resultid
    */
-  check(game: Game, resultid: string, time: number): ?GameResult {
-    var params = '?gameid=' + game.gameid
+  check(game: Game, resultid: string, time: number): Promise {
+    var params: string = '?gameid=' + game.gameid
                + '&resultid=' + resultid
                + '&time=' + time / 1000;
     return this.request('/' + this.getLevelOrDefault('') + '/check' + params)
@@ -89,11 +85,11 @@ class GuessApi {
           });
   }
 
-  play(level) {
+  play(level: string): Promise {
     return fetch(API_URL + '/' + this.getLevelOrDefault(level) + '/play');
   }
 
-  request(path, body) {
+  request(path: string): Promise {
     return fetch(API_URL + path, {credentials: true})
       .then((response) => {
         if (response.status > 200) {
@@ -105,7 +101,7 @@ class GuessApi {
       });
   }
 
-  getLevelOrDefault(level) {
+  getLevelOrDefault(level: string): string {
     return level || 'level1';
   }
 }

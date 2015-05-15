@@ -1,7 +1,7 @@
 /**
  * @flow
  */
-'use strict';
+var fetch = require('fetch');
 
 var API_URL: string = 'http://guess.liip.ch';
 

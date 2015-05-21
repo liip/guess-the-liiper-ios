@@ -28,8 +28,8 @@ var PlayTimeoutModeView = React.createClass({
   },
 
   componentDidMount: function() {
-    Animation.startAnimation(this.refs['this'], 300, 0, 'easeInOutQuad', {scaleXY: [1, 1]});
-    Animation.startAnimation(this.refs['this'], 100, 0, 'easeInOutQuad', {opacity: 1});
+    // Animation.startAnimation(this.refs['this'], 300, 0, 'easeInOutQuad', {scaleXY: [1, 1]});
+    // Animation.startAnimation(this.refs['this'], 100, 0, 'easeInOutQuad', {opacity: 1});
   },
 
   render: function() {

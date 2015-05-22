@@ -19,6 +19,8 @@ npm start
 open guess_the_liiper.xcodeproj
 ```
 
+Press `%` + `D` in the simulator for debugging options.
+
 ## Screens
 
  * Login

@@ -9,12 +9,27 @@ var {
   AppRegistry,
   NavigatorIOS,
   StyleSheet,
-  Text,
 } = React;
 
 var LoginScreen = require('./src/screens/Login/LoginScreen');
-var PlayScreen = require('./src/screens/Play/PlayScreen');
 
+/**
+ * Example views used for development.
+ *
+ * Change the StartComponent to show different states of the app.
+ * Useful when styling with live reload.
+ */
+var {LoggedIn, LoggedOut} = require('./src/screens/Login/LoginScreenExamples');
+
+/**
+ * @type {ReactElement} Component to display when the app starts.
+ */
+var StartComponent = LoggedOut;
+
+/**
+ * Main application container defining
+ * navigation and routing.
+ */
 var App = React.createClass({
   render: function() {
     return (
@@ -22,7 +37,7 @@ var App = React.createClass({
         style={styles.container}
         initialRoute={{
           title: 'Guess the Liiper',
-          component: LoginScreen,
+          component: StartComponent,
         }}
         itemWrapperStyle={styles.itemWrapper}
       />
@@ -33,7 +48,7 @@ var App = React.createClass({
 // Styles
 var styles = StyleSheet.create({
   itemWrapper: {
-    paddingTop: 64,
+    paddingTop: 0
   },
   container: {
     flex: 1,

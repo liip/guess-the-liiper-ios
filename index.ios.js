@@ -20,9 +20,10 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
  * Useful when styling with live reload.
  */
 var {LoggedIn, LoggedOut} = require('./src/screens/Login/LoginScreenExamples');
+var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 
 /**
- * @type {ReactElement} Component to display when the app starts.
+ * @type {ReactElement} Component to display when the app starts, default: LoginScreen.
  */
 var StartComponent = LoginScreen;
 

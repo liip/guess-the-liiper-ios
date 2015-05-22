@@ -24,7 +24,7 @@ var {LoggedIn, LoggedOut} = require('./src/screens/Login/LoginScreenExamples');
 /**
  * @type {ReactElement} Component to display when the app starts.
  */
-var StartComponent = LoggedOut;
+var StartComponent = LoginScreen;
 
 /**
  * Main application container defining
@@ -47,11 +47,13 @@ var App = React.createClass({
 
 // Styles
 var styles = StyleSheet.create({
-  itemWrapper: {
-    paddingTop: 0
-  },
+  // Style the main app component.
   container: {
     flex: 1,
+  },
+
+  // Style the whole content below the title bar.
+  itemWrapper: {
   },
 });
 

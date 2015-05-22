@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-var { StyleSheet } = React;
+var { StyleSheet, View } = React;
 var { ScrollView, Button } = require('../../GuessUI');
 
 var LoginView = React.createClass({
@@ -16,26 +16,45 @@ var LoginView = React.createClass({
   render: function () {
     if (this.props.loggedIn) {
       return (
-        <ScrollView>
-          <Button onPress={this.props.onLogoutPressed}>
-            Logout
-          </Button>
+        <View style={styles.container}>
+          <View style={styles.containerButtons}>
+            <Button style={styles.buttonLogout} onPress={this.props.onLogoutPressed}>
+              Logout
+            </Button>
 
-          <Button onPress={this.props.onPlayPressed}>
-            Play
-          </Button>
-        </ScrollView>
+            <Button style={styles.buttonPlay} onPress={this.props.onPlayPressed}>
+              Play and rule
+            </Button>
+          </View>
+        </View>
       );
     }
     return (
-      <ScrollView>
-        <Button onPress={this.props.onLoginPressed}>
+      <View style={styles.container}>
+        <Button style={styles.buttonLogin} onPress={this.props.onLoginPressed}>
           Login with Google
         </Button>
-      </ScrollView>
+      </View>
     );
   },
+});
 
+// Styles
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+  },
+  containerButtons: {
+    flex: 1
+  },
+  buttonLogin: {
+  },
+  buttonLogout: {
+  },
+  buttonPlay: {
+  },
 });
 
 module.exports = LoginView;

@@ -177,14 +177,9 @@ var RED = '#d54361';
 
 // Styles
 var styles = StyleSheet.create({
-  container: {
-    paddingTop: 60,
-    flex: 1,
-  },
   button: {
     alignItems: 'center',
     backgroundColor: GREEN180,
-    //borderColor: 'rgba(150,150,150,0.8)',
     borderRadius: 8,
     borderWidth: 0,
     flex: 1,

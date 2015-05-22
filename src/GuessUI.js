@@ -88,7 +88,65 @@ var ProgressBar = React.createClass({
       </View>
     );
   },
+});
 
+
+var CIRCLE_PATH = "m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z";
+var ReactART = require('ReactNativeART');
+var {
+   Surface,
+   Path,
+   Group,
+   // Transform,
+   Shape,
+} = ReactART;
+
+
+var ProgressCircle = React.createClass({
+  propTypes: {
+    /**
+     * Completion in percent from 0-100.
+     */
+    complete: React.PropTypes.number.isRequired,
+    /**
+     * Diamater (= width and height) of the circle.
+     */
+    diameter: React.PropTypes.number.isRequired,
+    /**
+     * Width of the progress stroke.
+     */
+    strokeWidth: React.PropTypes.number.isRequired,
+  },
+
+  getDefaultProps() {
+    return {
+      diameter: 100,
+      strokeWidth: 8,
+    };
+  },
+
+  render() {
+    var baseWidth = 72;
+    var strokeLength = 102 + (this.props.complete / 100  * 100);
+    var scale = this.props.diameter / baseWidth;
+
+    return (
+      <Surface
+        style={styles.circleProgress}
+        width={this.props.diameter}
+        height={this.props.diameter}>
+          <Shape
+            strokeWidth={this.props.strokeWidth / scale}
+            stroke={GREEN180}
+            strokeDash={[strokeLength]}
+            scale={scale}
+            d={CIRCLE_PATH} />
+      </Surface>
+    );
+
+    // Make stroke ends square instead of round.
+    //strokeCap="square"
+  },
 });
 
 var ProgressBarAnimation = React.createClass({
@@ -103,11 +161,17 @@ var ProgressBarAnimation = React.createClass({
      * Callback to call when finished.
      */
     onFinish: React.PropTypes.func.isRequired,
+    /**
+     *
+     */
+    decreasing: React.PropTypes.bool,
+
+    width: React.PropTypes.number,
   },
 
   getInitialState: function() {
     return {
-      complete: 100
+      complete: this.props.bool ? 100 : 0
     }
   },
 
@@ -132,7 +196,12 @@ var ProgressBarAnimation = React.createClass({
   },
 
   calculateComplete: function(duration) {
-    var complete = 100 - Math.ceil((duration / this.props.duration) * 100);
+    var complete = (duration / this.props.duration) * 100;
+
+    if (this.props.decreasing) {
+      complete = 100 - complete;
+    }
+
     if (complete !== this.state.complete) {
       this.setState({complete: complete});
     }
@@ -143,6 +212,12 @@ var ProgressBarAnimation = React.createClass({
   },
 
   render: function() {
+    if (this.props.type === 'circle') {
+      return <ProgressCircle
+                diameter={this.props.width}
+                complete={this.state.complete} />
+    }
+
     return (
       // Todo: Move ProgressBar one layer up so this class is reusable.
       <ProgressBar complete={this.state.complete} />
@@ -153,7 +228,7 @@ var ProgressBarAnimation = React.createClass({
 var ScrollView = React.createClass({
   render: function() {
     return (
-      <React.ScrollView style={styles.container}>
+      <React.ScrollView contentContainerStyle={this.props.style}>
         {this.props.children}
       </React.ScrollView>
     );
@@ -186,6 +261,9 @@ var styles = StyleSheet.create({
     margin: 5,
     padding: 15,
   },
+  circleProgress: {
+    marginTop: 64,
+  },
   grid: {
   },
   row: {
@@ -215,5 +293,6 @@ module.exports = {
   Button: Button,
   Grid: Grid,
   ProgressBarAnimation: ProgressBarAnimation,
+  ProgressCircle: ProgressCircle,
   ScrollView: ScrollView,
 };

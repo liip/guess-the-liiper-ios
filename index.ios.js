@@ -19,7 +19,17 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
  * Change the StartComponent to show different states of the app.
  * Useful when styling with live reload.
  */
-var {LoggedIn, LoggedOut} = require('./src/screens/Login/LoginScreenExamples');
+var {
+  LoggedIn,
+  LoggedOut
+} = require('./src/screens/Login/LoginScreenExamples');
+
+var {
+  PlayingNoAnswer,
+  PlayingWrongAnswer,
+  PlayingRightAnswer,
+} = require('./src/screens/Play/PlayScreenExamples');
+
 var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 
 /**

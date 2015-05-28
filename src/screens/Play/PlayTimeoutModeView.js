@@ -36,8 +36,8 @@ var PlayTimeoutModeView = React.createClass({
     var game = this.props.game;
 
     return (
-      <View>
-        <View ref="this" style={styles.container}>
+      <View style={styles.container}>
+        <View ref="this" style={styles.content}>
           <Image style={styles.picture} source={{uri: game.picture }} />
 
           {!this.props.showResult &&
@@ -50,13 +50,15 @@ var PlayTimeoutModeView = React.createClass({
             {this.renderButtons(game.persons)}
           </Grid>
         </View>
-        {this.props.showResult &&
-          <Button
-            style={styles.buttonContinue}
-            onPress={this.props.onNext}>
-            Continue
-          </Button>
-        }
+        <View style={styles.footer}>
+          {this.props.showResult &&
+            <Button
+              style={styles.buttonContinue}
+              onPress={this.props.onNext}>
+              Continue
+            </Button>
+          }
+        </View>
       </View>
     );
   },
@@ -108,6 +110,14 @@ var PlayTimeoutModeView = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
+    paddingTop: 68,
+  },
+  content: {
+    flex: 10
+  },
+  footer: {
+    flex: 1
   },
   picture: {
     width: 200,

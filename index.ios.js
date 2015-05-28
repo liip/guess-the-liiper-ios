@@ -35,7 +35,7 @@ var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 /**
  * @type {ReactElement} Component to display when the app starts, default: LoginScreen.
  */
-var StartComponent = LoginScreen;
+var StartComponent = PlayingRightAnswer;
 
 /**
  * Main application container defining
@@ -65,6 +65,7 @@ var styles = StyleSheet.create({
 
   // Style the whole content below the title bar.
   itemWrapper: {
+    backgroundColor: '#a4c339'
   },
 });
 

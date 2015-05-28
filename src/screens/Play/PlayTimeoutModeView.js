@@ -49,6 +49,7 @@ var PlayTimeoutModeView = React.createClass({
           <Grid amountInRow={2}>
             {this.renderButtons(game.persons)}
           </Grid>
+
         </View>
         <View style={styles.footer}>
           {this.props.showResult &&
@@ -111,7 +112,10 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    paddingTop: 68,
+    padding: 10,
+    margin: 10,
+    marginTop: 74,
+    backgroundColor: '#fff'
   },
   content: {
     flex: 10

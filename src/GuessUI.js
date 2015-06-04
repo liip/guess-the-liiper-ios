@@ -3,12 +3,17 @@
 var React = require('react-native');
 var {
   Animation,
+  Image,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
 } = React;
 var TimerMixin = require('react-timer-mixin');
+var Wedge = require('./UI/Wedge');
+var ReactART = require('ReactNativeART');
+var { Surface } = ReactART;
+
 
 var Button = React.createClass({
   render: function() {
@@ -91,17 +96,6 @@ var ProgressBar = React.createClass({
 });
 
 
-var CIRCLE_PATH = "m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z";
-var ReactART = require('ReactNativeART');
-var {
-   Surface,
-   Path,
-   Group,
-   // Transform,
-   Shape,
-} = ReactART;
-
-
 var ProgressCircle = React.createClass({
   propTypes: {
     /**
@@ -116,38 +110,48 @@ var ProgressCircle = React.createClass({
      * Width of the progress stroke.
      */
     strokeWidth: React.PropTypes.number.isRequired,
+    /**
+     * Fill color string to use for the stroke.
+     */
+    fill: React.PropTypes.string.isRequired,
   },
 
   getDefaultProps() {
     return {
       diameter: 100,
+      fill: GREEN180,
       strokeWidth: 8,
     };
   },
 
   render() {
-    var baseWidth = 72;
-    var strokeLength = 102 + (this.props.complete / 100  * 100);
-    var scale = this.props.diameter / baseWidth;
+    var angle = (360 / 100) * this.props.complete;
+
+    console.log(this.props.children);
+    if (angle === 0) {
+      return null;
+    }
 
     return (
       <Surface
-        style={styles.circleProgress}
+        style={this.props.style}
         width={this.props.diameter}
         height={this.props.diameter}>
-          <Shape
-            strokeWidth={this.props.strokeWidth / scale}
-            stroke={GREEN180}
-            strokeDash={[strokeLength]}
-            scale={scale}
-            d={CIRCLE_PATH} />
+        <Wedge
+           outerRadius={this.props.diameter / 2}
+           innerRadius={(this.props.diameter / 2) - this.props.strokeWidth}
+           startAngle={0}
+           endAngle={angle}
+           fill={this.props.fill}
+        >
+          {this.props.children}
+        </Wedge>
       </Surface>
     );
-
-    // Make stroke ends square instead of round.
-    //strokeCap="square"
   },
 });
+
+
 
 var ProgressBarAnimation = React.createClass({
   mixins: [TimerMixin],
@@ -176,6 +180,10 @@ var ProgressBarAnimation = React.createClass({
   },
 
   runAnimation: function() {
+    if (this.state.paused) {
+      return;
+    }
+
     this.timer = () => this.requestAnimationFrame(this.runAnimation);
 
     if (!this.startTime) {
@@ -207,22 +215,40 @@ var ProgressBarAnimation = React.createClass({
     }
   },
 
+  restart: function() {
+    this.startTime = null;
+    this.timer = null;
+    this.setState({paused: false}, this.runAnimation);
+  },
+
+  pause: function() {
+    this.setState({paused: true});
+  },
+
   componentDidMount: function() {
     this.runAnimation();
   },
 
   render: function() {
     if (this.props.type === 'circle') {
-      return <ProgressCircle
-                diameter={this.props.width}
-                complete={this.state.complete} />
+      return (
+        <ProgressCircle
+          fill={GREEN180}
+          style={this.props.style}
+          diameter={this.props.width}
+          complete={this.state.complete}>
+          {this.props.children}
+        </ProgressCircle>
+      )
     }
 
     return (
-      // Todo: Move ProgressBar one layer up so this class is reusable.
-      <ProgressBar complete={this.state.complete} />
+      <ProgressBar complete={this.state.complete}>
+        {this.props.children}
+      </ProgressBar>
     );
   },
+
 });
 
 var ScrollView = React.createClass({
@@ -235,6 +261,17 @@ var ScrollView = React.createClass({
   },
 });
 
+var FaceGridBackground =  React.createClass({
+  render() {
+    return (
+      <Image
+        style={styles.faceGridBackground}
+        source={{ uri: 'bg', isStatic: true }}>
+        {this.props.children}
+      </Image>
+    );
+  }
+});
 
 // Colors
 var GREEN0 = '#d0dd2c';
@@ -261,10 +298,11 @@ var styles = StyleSheet.create({
     margin: 5,
     padding: 15,
   },
-  circleProgress: {
-    marginTop: 64,
-  },
   grid: {
+  },
+  faceGridBackground: {
+    flex: 1,
+    resizeMode: Image.resizeMode.cover,
   },
   row: {
     alignItems: 'stretch',
@@ -292,6 +330,7 @@ var styles = StyleSheet.create({
 module.exports = {
   Button: Button,
   Grid: Grid,
+  FaceGridBackground: FaceGridBackground,
   ProgressBarAnimation: ProgressBarAnimation,
   ProgressCircle: ProgressCircle,
   ScrollView: ScrollView,

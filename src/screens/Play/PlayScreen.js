@@ -1,9 +1,9 @@
 'use strict';
 
 var React = require('react-native');
-var { StyleSheet, Text } = React;
 var GuessApi = require('../../GuessApi');
 var PlayTimeoutModeView = require('./PlayTimeoutModeView');
+var PlayBackground = require('./PlayBackground');
 
 var PlayScreen = React.createClass({
 
@@ -37,7 +37,7 @@ var PlayScreen = React.createClass({
 
   renderLoading: function() {
     return (
-      <Text>Loading...</Text>
+      <PlayBackground />
     );
   },
 
@@ -67,6 +67,5 @@ var PlayScreen = React.createClass({
   },
 
 });
-
 
 module.exports = PlayScreen;

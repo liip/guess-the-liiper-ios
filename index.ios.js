@@ -26,11 +26,11 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
   //LoggedOut
 //} = require('./src/screens/Login/LoginScreenExamples');
 
-//var {
-  //PlayingNoAnswer,
-//  PlayingWrongAnswer,
-//  PlayingRightAnswer,
-//} = require('./src/screens/Play/PlayScreenExamples');
+var {
+  PlayingNoAnswer,
+  PlayingWrongAnswer,
+  PlayingRightAnswer,
+} = require('./src/screens/Play/PlayScreenExamples');
 
 var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 

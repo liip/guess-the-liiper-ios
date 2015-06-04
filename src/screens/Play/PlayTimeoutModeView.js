@@ -13,7 +13,10 @@ var {
   Grid,
   ProgressBarAnimation,
   ProgressCircle,
+  FaceGridBackground
 } = require('../../GuessUI');
+
+var PlayBackground = require('./PlayBackground');
 
 // Timeout in ms.
 var PLAYER_TIMEOUT = 10000;
@@ -38,23 +41,24 @@ var PlayTimeoutModeView = React.createClass({
     var game = this.props.game;
 
     return (
-      <View style={styles.container}>
+      <PlayBackground>
         <View ref="this" style={styles.content}>
+          <View style={styles.imageContainer}>
+            <Image style={styles.picture} source={{uri: game.picture }} />
 
-          <ProgressCircle
-            style={styles.circleProgress}
-            fill="#e3e3e3"
-            complete={100}
-            diameter="218" />
-          <ProgressBarAnimation
-            ref="progress-bar"
-            style={styles.circleProgress}
-            type="circle"
-            width="218"
-            duration={PLAYER_TIMEOUT}
-            onFinish={this.onTimeUp} />
-
-          <Image style={styles.picture} source={{uri: game.picture }} />
+            <ProgressCircle
+              style={styles.circleProgress}
+              fill="#e3e3e3"
+              complete={100}
+              diameter="212" />
+            <ProgressBarAnimation
+              ref="progress-bar"
+              style={styles.circleProgress}
+              type="circle"
+              width="212"
+              duration={PLAYER_TIMEOUT}
+              onFinish={this.onTimeUp} />
+          </View>
 
           <Grid amountInRow={2}>
             {this.renderButtons(game.persons)}
@@ -71,7 +75,7 @@ var PlayTimeoutModeView = React.createClass({
             </Button>
           }
         </View>
-      </View>
+      </PlayBackground>
     );
   },
 
@@ -133,20 +137,14 @@ var PlayTimeoutModeView = React.createClass({
 
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    padding: 10,
-    margin: 10,
-    marginTop: 74,
-    backgroundColor: 'rgba(255,255,255,0.9)',
-    borderRadius: 5,
-  },
   circleProgress: {
     backgroundColor: 'rgba(0,0,0,0)',
     position: 'absolute',
-    top: 1,
+    top: 3,
     left: 58,
+  },
+  imageContainer: {
+    height: 220
   },
   content: {
     flex: 10
@@ -155,12 +153,13 @@ var styles = StyleSheet.create({
     flex: 1
   },
   picture: {
+    position: 'absolute',
     width: 200,
     height: 200,
-    borderRadius: 100,
     margin: 10,
     paddingTop: 50,
     alignSelf: 'center',
+    left: 55,
   },
   buttonDefault: {
     backgroundColor: 'rgba(200,200,200,0.8)}',

@@ -41,7 +41,6 @@ var PlayTimeoutModeView = React.createClass({
       <View style={styles.container}>
         <View ref="this" style={styles.content}>
 
-          <!-- Todo: component Progress Circle -->
           <ProgressCircle
             style={styles.circleProgress}
             fill="#e3e3e3"
@@ -55,10 +54,8 @@ var PlayTimeoutModeView = React.createClass({
             duration={PLAYER_TIMEOUT}
             onFinish={this.onTimeUp} />
 
-          <!-- Todo: component Avatar  -->
           <Image style={styles.picture} source={{uri: game.picture }} />
 
-          <!-- Todo: comonent PersonsGrid -->
           <Grid amountInRow={2}>
             {this.renderButtons(game.persons)}
           </Grid>

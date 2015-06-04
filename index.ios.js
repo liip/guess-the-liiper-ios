@@ -10,7 +10,9 @@ var {
   NavigatorIOS,
   StyleSheet,
 } = React;
-
+var {
+  FaceGridBackground
+} = require('./src/GuessUI');
 var LoginScreen = require('./src/screens/Login/LoginScreen');
 
 /**
@@ -19,16 +21,16 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
  * Change the StartComponent to show different states of the app.
  * Useful when styling with live reload.
  */
-var {
-  LoggedIn,
-  LoggedOut
-} = require('./src/screens/Login/LoginScreenExamples');
+//var {
+  //LoggedIn,
+  //LoggedOut
+//} = require('./src/screens/Login/LoginScreenExamples');
 
-var {
-  PlayingNoAnswer,
-  PlayingWrongAnswer,
-  PlayingRightAnswer,
-} = require('./src/screens/Play/PlayScreenExamples');
+//var {
+  //PlayingNoAnswer,
+//  PlayingWrongAnswer,
+//  PlayingRightAnswer,
+//} = require('./src/screens/Play/PlayScreenExamples');
 
 var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 
@@ -44,14 +46,16 @@ var StartComponent = LoginScreen;
 var App = React.createClass({
   render: function() {
     return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          title: 'Guess the Liiper',
-          component: StartComponent,
-        }}
-        itemWrapperStyle={styles.itemWrapper}
-      />
+      <FaceGridBackground>
+        <NavigatorIOS
+          style={styles.container}
+          initialRoute={{
+            title: 'Guess the Liiper',
+            component: StartComponent,
+          }}
+          itemWrapperStyle={styles.itemWrapper}
+        />
+      </FaceGridBackground>
     );
   }
 });
@@ -65,7 +69,7 @@ var styles = StyleSheet.create({
 
   // Style the whole content below the title bar.
   itemWrapper: {
-    backgroundColor: '#a4c339'
+    backgroundColor: 'transparent',
   },
 });
 

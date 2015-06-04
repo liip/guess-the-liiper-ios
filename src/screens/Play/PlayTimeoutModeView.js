@@ -12,6 +12,7 @@ var {
   Button,
   Grid,
   ProgressBarAnimation,
+  ProgressCircle,
 } = require('../../GuessUI');
 
 // Timeout in ms.
@@ -28,6 +29,7 @@ var PlayTimeoutModeView = React.createClass({
   },
 
   componentDidMount: function() {
+    this.refs['progress-bar'].restart();
     // Animation.startAnimation(this.refs['this'], 300, 0, 'easeInOutQuad', {scaleXY: [1, 1]});
     // Animation.startAnimation(this.refs['this'], 100, 0, 'easeInOutQuad', {opacity: 1});
   },
@@ -38,19 +40,31 @@ var PlayTimeoutModeView = React.createClass({
     return (
       <View style={styles.container}>
         <View ref="this" style={styles.content}>
+
+          <!-- Todo: component Progress Circle -->
+          <ProgressCircle
+            style={styles.circleProgress}
+            fill="#e3e3e3"
+            complete={100}
+            diameter="218" />
+          <ProgressBarAnimation
+            ref="progress-bar"
+            style={styles.circleProgress}
+            type="circle"
+            width="218"
+            duration={PLAYER_TIMEOUT}
+            onFinish={this.onTimeUp} />
+
+          <!-- Todo: component Avatar  -->
           <Image style={styles.picture} source={{uri: game.picture }} />
 
-          {!this.props.showResult &&
-            <ProgressBarAnimation
-              duration={PLAYER_TIMEOUT}
-              onFinish={this.onTimeUp} />
-          }
-
+          <!-- Todo: comonent PersonsGrid -->
           <Grid amountInRow={2}>
             {this.renderButtons(game.persons)}
           </Grid>
 
         </View>
+
         <View style={styles.footer}>
           {this.props.showResult &&
             <Button
@@ -105,6 +119,19 @@ var PlayTimeoutModeView = React.createClass({
 
     this.props.onGuess(null, PLAYER_TIMEOUT);
   },
+
+  pauseOrRestartProgressBar: function(showResult) {
+    if (showResult) {
+      this.refs['progress-bar'].pause();
+    } else {
+      this.refs['progress-bar'].restart();
+    }
+  },
+
+  componentWillReceiveProps: function(newProps) {
+    this.pauseOrRestartProgressBar(newProps.showResult);
+  }
+
 });
 
 
@@ -115,7 +142,14 @@ var styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     marginTop: 74,
-    backgroundColor: '#fff'
+    backgroundColor: 'rgba(255,255,255,0.9)',
+    borderRadius: 5,
+  },
+  circleProgress: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    position: 'absolute',
+    top: 1,
+    left: 58,
   },
   content: {
     flex: 10

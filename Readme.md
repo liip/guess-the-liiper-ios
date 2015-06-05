@@ -2,7 +2,7 @@
 
 This is a test project to explore React Native.
 
-![guess](https://cloud.githubusercontent.com/assets/133832/6886598/8ad94f7a-d642-11e4-8663-a1b124cb5b92.gif)
+![guess](https://cloud.githubusercontent.com/assets/133832/8000133/fb6074be-0b56-11e5-994d-60a61ce2147f.gif)
 
 ## Requirements
 

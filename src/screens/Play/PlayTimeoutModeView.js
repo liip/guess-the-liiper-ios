@@ -63,17 +63,18 @@ var PlayTimeoutModeView = React.createClass({
           <Grid amountInRow={2}>
             {this.renderButtons(game.persons)}
           </Grid>
-
         </View>
 
         <View style={styles.footer}>
-          {this.props.showResult &&
-            <Button
-              style={styles.buttonContinue}
-              onPress={this.props.onNext}>
-              Continue
-            </Button>
-          }
+          <View style={styles.footerButtonContainer}>
+            {this.props.showResult &&
+              <Button
+                style={styles.buttonContinue}
+                onPress={this.props.onNext}>
+                Continue
+              </Button>
+            }
+          </View>
         </View>
       </PlayBackground>
     );
@@ -147,9 +148,14 @@ var styles = StyleSheet.create({
     height: 220
   },
   content: {
-    flex: 10
+    flex: 2
   },
   footer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  footerButtonContainer: {
     flex: 1
   },
   picture: {
@@ -170,7 +176,7 @@ var styles = StyleSheet.create({
   buttonWrong: {
     color: 'white',
     backgroundColor: 'rgba(255,0,0,0.8)',
-  },
+  }
 });
 
 module.exports = PlayTimeoutModeView;

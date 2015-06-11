@@ -22,7 +22,7 @@ var Button = React.createClass({
         onPress={this.props.onPress}
         style={[styles.button, this.props.style]}
         underlayColor="#eeeeee">
-        <Text>
+        <Text style={[styles.buttonText, this.props.textStyle]}>
           {this.props.children}
         </Text>
       </TouchableHighlight>
@@ -291,12 +291,17 @@ var RED = '#d54361';
 var styles = StyleSheet.create({
   button: {
     alignItems: 'center',
+    color: '#ffffff',
     backgroundColor: GREEN180,
     borderRadius: 8,
     borderWidth: 0,
     flex: 1,
     margin: 5,
     padding: 15,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16
   },
   grid: {
   },

@@ -300,6 +300,8 @@ var styles = StyleSheet.create({
     padding: 15,
   },
   buttonText: {
+    fontFamily: 'Liip Etica',
+    fontWeight: '500',
     color: 'white',
     fontSize: 16
   },

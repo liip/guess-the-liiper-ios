@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Variables = require('./Variables');
 var {
   Animation,
   Image,
@@ -119,7 +120,7 @@ var ProgressCircle = React.createClass({
   getDefaultProps() {
     return {
       diameter: 100,
-      fill: GREEN180,
+      fill: Variables.GREEN180,
       strokeWidth: 8,
     };
   },
@@ -233,7 +234,7 @@ var ProgressBarAnimation = React.createClass({
     if (this.props.type === 'circle') {
       return (
         <ProgressCircle
-          fill={GREEN180}
+          fill={Variables.GREEN180}
           style={this.props.style}
           diameter={this.props.width}
           complete={this.state.complete}>
@@ -273,26 +274,12 @@ var FaceGridBackground =  React.createClass({
   }
 });
 
-// Colors
-var GREEN0 = '#d0dd2c';
-var GREEN90 = '#bacf34';
-var GREEN180 = '#a4c339';
-var GREEN270 = '#8bb43f';
-var GREEN360 = '#6ea644';
-var ORANGE0 = '#fdb913';
-var ORANGE180 = '#f68b28';
-var ORANGE360 = '#f26531';
-var GREY0 = '#dcdcdc';
-var GREY180 = '#8c8c8c';
-var GREY360 = '#414141';
-var RED = '#d54361';
-
 // Styles
 var styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     color: '#ffffff',
-    backgroundColor: GREEN180,
+    backgroundColor: Variables.GREEN180,
     borderRadius: 8,
     borderWidth: 0,
     flex: 1,

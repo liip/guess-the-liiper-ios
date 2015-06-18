@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var Variables = require('../../Variables');
 var {
   Animation,
   Image,
@@ -168,14 +169,19 @@ var styles = StyleSheet.create({
     left: 55,
   },
   buttonDefault: {
-    backgroundColor: 'rgba(200,200,200,0.8)}',
+    backgroundColor: Variables.GREYRGBA80,
+    borderColor: Variables.GREYRGBA80,
+    borderWidth: 2,
   },
   buttonCorrect: {
-    backgroundColor: 'rgba(0,255,0,0.8)',
+    borderColor: Variables.GREEN360,
+    borderWidth: 2,
   },
   buttonWrong: {
     color: 'white',
-    backgroundColor: 'rgba(255,0,0,0.8)',
+    backgroundColor: Variables.REDRGBA80,
+    borderColor: Variables.REDRGBA80,
+    borderWidth: 2,
   }
 });
 

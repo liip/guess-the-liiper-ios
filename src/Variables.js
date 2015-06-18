@@ -1,5 +1,6 @@
 // Colors
 module.exports = {
+    WHITERGBA80: 'rgba(255,255,255,0.85)',
     GREEN0: '#d0dd2c',
     GREEN90: '#bacf34',
     GREEN180: '#a4c339',

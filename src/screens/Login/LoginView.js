@@ -1,7 +1,8 @@
 'use strict';
 
 var React = require('react-native');
-var { StyleSheet, View } = React;
+var Variables = require('../../Variables');
+var { StyleSheet, View, Text } = React;
 var { ScrollView, Button } = require('../../GuessUI');
 
 var LoginView = React.createClass({
@@ -31,9 +32,16 @@ var LoginView = React.createClass({
     }
     return (
       <View style={styles.container}>
-        <Button style={styles.buttonLogin} onPress={this.props.onLoginPressed}>
-          Login with Google
-        </Button>
+        <View style={styles.loginContainer}>
+          <Text style={styles.loginText}>
+            Improve your knowledge about all Liipers.
+            {'\n'}{'\n'}
+            Get started by logging in with your liip account.
+          </Text>
+          <Button style={styles.buttonLogin} onPress={this.props.onLoginPressed}>
+            Login with Google
+          </Button>
+        </View>
       </View>
     );
   },
@@ -44,7 +52,18 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-end',
+    alignItems: 'center',
+  },
+  loginContainer: {
+    flex: 1,
+    backgroundColor: Variables.WHITERGBA80,
+    margin: 10,
+    padding: 10,
+    borderRadius: 5,
+  },
+  loginText: {
+    fontSize: 14,
+    marginBottom: 10,
   },
   containerButtons: {
     flex: 1

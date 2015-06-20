@@ -29,7 +29,7 @@ var PlayView = React.createClass({
     gameResults: React.PropTypes.array.isRequired,
     onGuess: React.PropTypes.func.isRequired,
     onNext: React.PropTypes.func.isRequired,
-    showResult: React.PropTypes.bool.isRequired,
+    showAnswer: React.PropTypes.bool.isRequired,
   },
 
   componentDidMount: function() {
@@ -68,7 +68,7 @@ var PlayView = React.createClass({
 
         <View style={styles.footer}>
           <View style={styles.footerButtonContainer}>
-            {this.props.showResult &&
+            {this.props.showAnswer &&
               <Button
                 style={styles.buttonContinue}
                 onPress={this.props.onNext}>
@@ -92,7 +92,7 @@ var PlayView = React.createClass({
   },
 
   getButtonStyle: function(person) {
-    if (!this.props.showResult) {
+    if (!this.props.showAnswer) {
       return styles.buttonDefault;
     }
 
@@ -112,19 +112,19 @@ var PlayView = React.createClass({
   },
 
   onButtonPressed: function(resultid) {
-    if (this.props.showResult) { return; }
+    if (this.props.showAnswer) { return; }
 
     this.props.onGuess(resultid, PLAYER_TIMEOUT);
   },
 
   onTimeUp: function() {
-    if (this.props.showResult) { return; }
+    if (this.props.showAnswer) { return; }
 
     this.props.onGuess(null, PLAYER_TIMEOUT);
   },
 
-  pauseOrRestartProgressBar: function(showResult) {
-    if (showResult) {
+  pauseOrRestartProgressBar: function(showAnswer) {
+    if (showAnswer) {
       this.refs['progress-bar'].pause();
     } else {
       this.refs['progress-bar'].restart();
@@ -132,7 +132,7 @@ var PlayView = React.createClass({
   },
 
   componentWillReceiveProps: function(newProps) {
-    this.pauseOrRestartProgressBar(newProps.showResult);
+    this.pauseOrRestartProgressBar(newProps.showAnswer);
   }
 
 });

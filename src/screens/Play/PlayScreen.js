@@ -15,7 +15,7 @@ var PlayScreen = React.createClass({
     return {
       loaded: false,
       gameResults: [],
-      showResult: false
+      showAnswer: false
     }
   },
 
@@ -30,7 +30,7 @@ var PlayScreen = React.createClass({
         gameResults={this.state.gameResults}
         onGuess={this.onGuess}
         onNext={this.onNext}
-        showResult={this.state.showResult}
+        showAnswer={this.state.showAnswer}
       />
     );
   },
@@ -46,22 +46,20 @@ var PlayScreen = React.createClass({
       .then((gameResult) => {
         this.setState({
           gameResults: this.state.gameResults.concat(gameResult),
-          showResult: true
+          showAnswer: true
         })
       })
       .catch(console.error);
   },
 
   onNext: function() {
-    //var lastResult = this.state.gameResults;
-    //if (this.state.gameResults && this.state.gameResults())
     this.createGame();
   },
 
   createGame: function() {
     return GuessApi.create()
       .then((game) => {
-        this.setState({game: game, loaded: true, showResult: false})
+        this.setState({game: game, loaded: true, showAnswer: false})
       })
       .catch(console.error);
   },

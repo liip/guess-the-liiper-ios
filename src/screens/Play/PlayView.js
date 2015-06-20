@@ -22,7 +22,7 @@ var PlayBackground = require('./PlayBackground');
 // Timeout in ms.
 var PLAYER_TIMEOUT = 10000;
 
-var PlayTimeoutModeView = React.createClass({
+var PlayView = React.createClass({
 
   propTypes: {
     game: React.PropTypes.object.isRequired,
@@ -185,4 +185,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = PlayTimeoutModeView;
+module.exports = PlayView;

@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 var GuessApi = require('../../GuessApi');
-var PlayTimeoutModeView = require('./PlayTimeoutModeView');
+var PlayView = require('./PlayView');
 var PlayBackground = require('./PlayBackground');
 
 var PlayScreen = React.createClass({
@@ -25,7 +25,7 @@ var PlayScreen = React.createClass({
     }
 
     return (
-      <PlayTimeoutModeView
+      <PlayView
         game={this.state.game}
         gameResults={this.state.gameResults}
         onGuess={this.onGuess}

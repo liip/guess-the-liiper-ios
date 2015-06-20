@@ -3,7 +3,7 @@
 var React = require('react-native');
 var { StyleSheet, Text } = React;
 var GuessApi = require('../../GuessApi');
-var PlayTimeoutModeView = require('./PlayTimeoutModeView');
+var PlayView = require('./PlayView');
 
 var resultMock = {
   "gameid": "4365c3c9315caed5fe43707e2c6ed35e",
@@ -45,7 +45,7 @@ var defaults = {
 var PlayingNoAnswer = React.createClass({
   render: function () {
     return (
-      <PlayTimeoutModeView {...defaults} />
+      <PlayView {...defaults} />
     );
   },
 });
@@ -57,7 +57,7 @@ var PlayingWrongAnswer = React.createClass({
     gameResult.correct = false;
     console.log(gameResult);
     return (
-      <PlayTimeoutModeView {...defaults} gameResults={[gameResult]} showResult={true} />
+      <PlayView {...defaults} gameResults={[gameResult]} showResult={true} />
     );
   },
 });
@@ -69,7 +69,7 @@ var PlayingRightAnswer = React.createClass({
     gameResult.correct = false;
     gameResult.selectedResultid = "6dc9dc5408d979d5f2d39f10fe4feb80";
     return (
-      <PlayTimeoutModeView {...defaults} gameResults={[gameResult]} showResult={true} />
+      <PlayView {...defaults} gameResults={[gameResult]} showResult={true} />
     );
   },
 });

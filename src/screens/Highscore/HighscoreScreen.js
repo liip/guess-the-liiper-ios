@@ -5,6 +5,10 @@ var {Text} = React;
 var HighscoreView = require('./HighscoreView');
 
 var HighscoreScreen = React.createClass({
+  statics: {
+    title: 'Highscore',
+    description: 'See the best.'
+  },
 
   componentDidMount: function() {
     this.setState({
@@ -29,6 +33,11 @@ var HighscoreScreen = React.createClass({
       <HighscoreView highscores={this.state.highscores} />
     );
   },
+
+  onTabSwitch: function() {
+
+  },
+
 
 });
 

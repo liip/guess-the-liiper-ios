@@ -25,7 +25,7 @@ var ResultScreen = React.createClass({
     }
 
     return (
-      <ResultView
+      <ResultViw
         score={this.state.score}
         onPlayAgain={this.onPlayAgain}
         onHighscore={this.onHighscore}

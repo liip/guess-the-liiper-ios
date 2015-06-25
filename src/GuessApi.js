@@ -101,8 +101,8 @@ class GuessApi {
       "resultsAllover": [
         {
           id: 1,
-          firstName: 'Pascal',
-          lastName: 'lastname',
+          firstName: 'Simon',
+          lastName: 'Erhardt',
           games: 2,
           maxPoints: 300,
           avgPoints: 122
@@ -111,8 +111,8 @@ class GuessApi {
       "resultsYear": [
         {
           id: 1,
-          firstName: 'Pascal',
-          lastName: 'lastname',
+          firstName: 'Simon',
+          lastName: 'Erhardt',
           games: 2,
           maxPoints: 300,
           avgPoints: 122
@@ -121,8 +121,8 @@ class GuessApi {
       "resultsMonth": [
         {
           id: 1,
-          firstName: 'Pascal',
-          lastName: 'Helfenstein',
+          firstName: 'Simon',
+          lastName: 'Erhardt',
           games: 2,
           maxPoints: 300,
           avgPoints: 122

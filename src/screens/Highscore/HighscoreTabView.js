@@ -5,6 +5,10 @@ var {
   Text,
   View,
 } = React;
+var {
+  Icon
+} = require('../../GuessUI');
+
 
 var HighscoreTabView = React.createClass({
 
@@ -22,14 +26,17 @@ var HighscoreTabView = React.createClass({
     const tabs = [
       {
         title: "Last month",
+        icon: 'uni26',
         id: 'resultsMonth'
       },
       {
         title: "Last year",
+        icon: 'uni27',
         id: 'resultsYear'
       },
       {
         title: "All time",
+        icon: 'uni23',
         id: 'resultsAllover'
       }
     ];
@@ -39,16 +46,13 @@ var HighscoreTabView = React.createClass({
         tintColor="black"
         barTintColor="#3abeff">
         {tabs.map((tab) =>
-          <TabBarIOS.Item
+          <Icon.TabBarItem
               title={tab.title}
+              iconName={tab.icon}
               selected={this.state.selectedTab === tab.id}
-              onPress={() => {
-                this.setState({
-                  selectedTab: tab.id,
-                });
-              }}>
+              onPress={() => { this.setState({selectedTab: tab.id }); }}>
             {this.props.children}
-            </TabBarIOS.Item>
+            </Icon.TabBarItem>
         )}
       </TabBarIOS>
     );

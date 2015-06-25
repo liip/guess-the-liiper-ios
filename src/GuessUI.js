@@ -14,6 +14,7 @@ var TimerMixin = require('react-timer-mixin');
 var Wedge = require('./UI/Wedge');
 var ReactART = require('ReactNativeART');
 var { Surface } = ReactART;
+var Icon = require('./UI/LiipIconFont');
 
 
 var Button = React.createClass({
@@ -328,4 +329,5 @@ module.exports = {
   ProgressBarAnimation: ProgressBarAnimation,
   ProgressCircle: ProgressCircle,
   ScrollView: ScrollView,
+  Icon: Icon,
 };

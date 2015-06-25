@@ -96,7 +96,7 @@ class GuessApi {
     return fetch(API_URL + '/' + this.getLevelOrDefault(level) + '/play');
   }
 
-  highscore(): Promise {
+  highscore(): any {
     return {
       "resultsAllover": [
         {
@@ -139,16 +139,16 @@ class GuessApi {
     };
   }
 
-  scrapeHighscore(html) {
-    var $ = cheerio.load(html);
-
-    var highscoreList = artoo.scrape('#monthly .col-md-4', {
-      title: {sel: 'h3'},
-      url: {sel: 'img', attr: 'src'},
-      games: {sel: 'span:nth-of-type(1)'},
-      score: {sel: 'span:nth-of-type(2)'}
-    });
-  }
+  //scrapeHighscore(html) {
+  //  var $ = cheerio.load(html);
+  //
+  //  var highscoreList = artoo.scrape('#monthly .col-md-4', {
+  //    title: {sel: 'h3'},
+  //    url: {sel: 'img', attr: 'src'},
+  //    games: {sel: 'span:nth-of-type(1)'},
+  //    score: {sel: 'span:nth-of-type(2)'}
+  //  });
+  //}
 
   request(path: string): Promise {
     return fetch(API_URL + path, {credentials: true})

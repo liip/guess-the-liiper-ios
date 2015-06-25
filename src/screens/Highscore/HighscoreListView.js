@@ -37,14 +37,16 @@ var HighscoreListView = React.createClass({
     return (
       <View>
         <View style={styles.row}>
+          <Text style={styles.place}>{parseInt(rowID) + 1}</Text>
           <Image style={styles.thumb} source={imgSource} />
-          <Text style={styles.textName}>
-            {rowData.firstName + '  ' + rowData.lastName }
-          </Text>
-          <Text style={styles.textName}>
-            {'Games: ' + rowData.games } {'\n'}
-            {'Max: ' + rowData.maxPoints } {'\n'}
-            {'Ø ' + rowData.avgPoints }
+          <Text style={styles.personName}>
+            {rowData.firstName + '  ' + rowData.lastName + '\n'}
+
+            <Text style={styles.points}>
+              {'Games: ' + rowData.games }
+              {' Max: ' + rowData.maxPoints }
+              {' Ø ' + rowData.avgPoints }
+            </Text>
           </Text>
         </View>
         <View style={styles.separator} />
@@ -56,24 +58,35 @@ var HighscoreListView = React.createClass({
 
 
 var styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    padding: 10,
-    backgroundColor: '#F6F6F6',
-  },
   separator: {
     height: 1,
     backgroundColor: '#CCCCCC',
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    padding: 10,
+    backgroundColor: '#F6F6F6',
+  },
+  place: {
+    color: 'grey',
+    paddingTop: 20,
+    paddingRight: 10,
+    fontSize: 20,
+  },
   thumb: {
     width: 64,
     height: 64,
-    borderRadius: 32
+    borderRadius: 32,
+    marginRight: 10,
   },
-  textName: {
-    flex: 1,
-    marginLeft: 10
+  personName: {
+    paddingTop: 10,
+    fontSize: 16,
+  },
+  points: {
+    fontSize: 13,
+    color: 'grey',
   },
 });
 

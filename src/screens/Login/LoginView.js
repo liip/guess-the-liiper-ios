@@ -2,7 +2,7 @@
 
 var React = require('react-native');
 var Variables = require('../../Variables');
-var { StyleSheet, View, Text } = React;
+var { StyleSheet, View, Text, Image } = React;
 var { ScrollView, Button } = require('../../GuessUI');
 
 var LoginView = React.createClass({
@@ -33,13 +33,15 @@ var LoginView = React.createClass({
     return (
       <View style={styles.container}>
         <View style={styles.loginContainer}>
+          <Image style={styles.logo} source={{ uri: 'GuessLogo', isStatic: true }} />
           <Text style={styles.loginText}>
             Improve your knowledge about all Liipers.
-            {'\n'}{'\n'}
+          </Text>
+          <Text style={styles.loginText}>
             Get started by logging in with your liip account.
           </Text>
           <Button style={styles.buttonLogin} onPress={this.props.onLoginPressed}>
-            Login with Google
+            Sign in with Google
           </Button>
         </View>
       </View>
@@ -54,21 +56,30 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  logo: {
+    width: 250,
+    height: 282,
+    alignSelf: 'center',
+    marginBottom: 50
+  },
   loginContainer: {
     flex: 1,
     backgroundColor: Variables.WHITERGBA80,
     margin: 10,
-    padding: 10,
-    borderRadius: 5,
+    padding: 20,
+    borderRadius: 5
   },
   loginText: {
     fontSize: 14,
-    marginBottom: 10,
+    color: '#777',
+    marginBottom: 5,
+    textAlign: 'center'
   },
   containerButtons: {
     flex: 1
   },
   buttonLogin: {
+    marginTop: 20
   },
   buttonLogout: {
   },

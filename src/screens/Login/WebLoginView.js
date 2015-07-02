@@ -57,7 +57,8 @@ module.exports = React.createClass({
 // Styles
 var styles = StyleSheet.create({
   loadingView: {
-    backgroundColor: 'rgba(255,255,255,0.8)',
+    marginTop: 65,
+    backgroundColor: 'rgba(50,50,50,0.8)',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,14 +1,18 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
 var GuessApi = require('../../GuessApi');
 var PlayView = require('./PlayView');
 var PlayBackground = require('./PlayBackground');
+import type {GameResult} from '../../GuessDomain';
 
 var PlayScreen = React.createClass({
 
   componentDidMount: function() {
-    return GuessApi.play().then(this.createGame);
+    GuessApi
+      .play()
+      .then(this.createGame);
   },
 
   getInitialState: function() {
@@ -41,8 +45,9 @@ var PlayScreen = React.createClass({
     );
   },
 
-  onGuess: function(resultid, time) {
-    return GuessApi.check(this.state.game, resultid, time)
+  onGuess: function(resultid :string, time :number) {
+    return GuessApi
+      .check(this.state.game, resultid, time)
       .then((gameResult) => {
         this.setState({
           gameResults: this.state.gameResults.concat(gameResult),
@@ -57,7 +62,8 @@ var PlayScreen = React.createClass({
   },
 
   createGame: function() {
-    return GuessApi.create()
+    return GuessApi
+      .create()
       .then((game) => {
         this.setState({game: game, loaded: true, showAnswer: false})
       })

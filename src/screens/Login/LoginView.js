@@ -1,5 +1,4 @@
-'use strict';
-
+/* @flow */
 var React = require('react-native');
 var Variables = require('../../Variables');
 var { StyleSheet, View, Text, Image } = React;

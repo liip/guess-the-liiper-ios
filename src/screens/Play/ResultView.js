@@ -1,10 +1,9 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
 var Variables = require('../../Variables');
 var {
-  Animation,
-  Image,
   StyleSheet,
   View,
 } = React;
@@ -19,6 +18,8 @@ var ResultView = React.createClass({
 
   propTypes: {
     score: React.PropTypes.object.isRequired,
+    onPlayAgain: React.PropTypes.fun.isRequired,
+    onHighscore: React.PropTypes.fun.isRequired,
   },
 
   render: function() {

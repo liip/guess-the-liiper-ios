@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -8,8 +9,9 @@ var PlayBackground = require('./PlayBackground');
 var ResultScreen = React.createClass({
 
   componentDidMount: function() {
-    // todo: get game id
-    return GuessApi.lastScoreResult().then((score) => this.setState({score, loaded: true}));
+    GuessApi
+      .lastScoreResult()
+      .then(score => this.setState({loaded: true, score}));
   },
 
   getInitialState: function() {
@@ -25,7 +27,7 @@ var ResultScreen = React.createClass({
     }
 
     return (
-      <ResultViw
+      <ResultView
         score={this.state.score}
         onPlayAgain={this.onPlayAgain}
         onHighscore={this.onHighscore}
@@ -39,7 +41,7 @@ var ResultScreen = React.createClass({
     );
   },
 
-  onPlayAgain: function(resultid, time) {
+  onPlayAgain: function() {
     // todo: redirect
   },
 

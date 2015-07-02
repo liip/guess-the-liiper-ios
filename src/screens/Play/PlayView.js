@@ -1,9 +1,9 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
 var Variables = require('../../Variables');
 var {
-  Animation,
   Image,
   StyleSheet,
   View,
@@ -16,6 +16,9 @@ var {
   ProgressCircle,
   FaceGridBackground
 } = require('../../GuessUI');
+
+import type {Game, Person} from '../../GuessDomain';
+
 
 var PlayBackground = require('./PlayBackground');
 
@@ -34,12 +37,10 @@ var PlayView = React.createClass({
 
   componentDidMount: function() {
     this.refs['progress-bar'].restart();
-    // Animation.startAnimation(this.refs['this'], 300, 0, 'easeInOutQuad', {scaleXY: [1, 1]});
-    // Animation.startAnimation(this.refs['this'], 100, 0, 'easeInOutQuad', {opacity: 1});
   },
 
   render: function() {
-    var game = this.props.game;
+    var game: Game = this.props.game;
 
     return (
       <PlayBackground>
@@ -51,12 +52,12 @@ var PlayView = React.createClass({
               style={styles.circleProgress}
               fill="#e3e3e3"
               complete={100}
-              diameter="212" />
+              diameter={212} />
             <ProgressBarAnimation
               ref="progress-bar"
               style={styles.circleProgress}
               type="circle"
-              width="212"
+              width={212}
               duration={PLAYER_TIMEOUT}
               onFinish={this.onTimeUp} />
           </View>
@@ -81,7 +82,7 @@ var PlayView = React.createClass({
     );
   },
 
-  renderButtons: function(persons) {
+  renderButtons: function(persons :Array<Person>) :Array<ReactElement> {
     return persons.map(person =>
         <Button
           style={this.getButtonStyle(person)}
@@ -91,7 +92,7 @@ var PlayView = React.createClass({
     );
   },
 
-  getButtonStyle: function(person) {
+  getButtonStyle: function(person: Person) {
     if (!this.props.showAnswer) {
       return styles.buttonDefault;
     }
@@ -111,7 +112,7 @@ var PlayView = React.createClass({
     return styles.buttonDefault;
   },
 
-  onButtonPressed: function(resultid) {
+  onButtonPressed: function(resultid :string) {
     if (this.props.showAnswer) { return; }
 
     this.props.onGuess(resultid, PLAYER_TIMEOUT);
@@ -123,7 +124,7 @@ var PlayView = React.createClass({
     this.props.onGuess(null, PLAYER_TIMEOUT);
   },
 
-  pauseOrRestartProgressBar: function(showAnswer) {
+  pauseOrRestartProgressBar: function(showAnswer :bool) {
     if (showAnswer) {
       this.refs['progress-bar'].pause();
     } else {
@@ -131,7 +132,7 @@ var PlayView = React.createClass({
     }
   },
 
-  componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function(newProps :Object) {
     this.pauseOrRestartProgressBar(newProps.showAnswer);
   }
 

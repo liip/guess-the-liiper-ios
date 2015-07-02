@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 var GuessApi = require('../../GuessApi');
 var {Button} = require('../../GuessUI');
 var LoginView = require('./LoginView');
@@ -36,6 +40,11 @@ var LoginScreen = React.createClass({
   },
 
   onLoginPressed: function() {
+    this.props.navigator.replace({
+      title: 'Login',
+      component: LoginScreen,
+    });
+
     return GuessApi.authUrl()
       .then((authUrl) => {
         this.setState({authUrl: authUrl});
@@ -57,7 +66,7 @@ var LoginScreen = React.createClass({
     });
   },
 
-  onWebLoginUrlChange: function(state) {
+  onWebLoginUrlChange: function(state: Object) {
     if (GuessApi.isStartPage(state.url)) {
       this.setState({authUrl: null});
       this.testAuth();

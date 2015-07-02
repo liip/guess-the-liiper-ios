@@ -1,3 +1,4 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
@@ -39,7 +40,8 @@ var defaults = {
   },
   onNext: () => {
   },
-  showResult: false
+  showResult: false,
+  showAnswer: false
 };
 
 var PlayingNoAnswer = React.createClass({

@@ -1,37 +1,9 @@
-/**
- * @flow
- */
+/* @flow */
+
+import type {Game, Person, HighscoreList, Highscore} from './GuessDomain';
 
 var API_URL: string = 'http://guess.liip.ch';
 
-type Person = {
-  name: string;
-  resultId: string;
-}
-
-type Game = {
-  gameid: string;
-  picture: string;
-  persons: Array<Person>;
-}
-
-type GameResult = {
-  gameid: string;
-  resultid: string;
-  selectedResultid: string;
-  correct: boolean;
-  round: number;
-  points: number;
-  finish: boolean;
-}
-
-type Highscore = {
-  name: string;
-  games: number;
-  maxScore: number;
-  averageScore: number;
-  imageUrl: string;
-}
 
 /**
  */
@@ -62,6 +34,7 @@ class GuessApi {
 
   parseAuthUrlFromPage(response: Object) :string {
     var parseLink: RegExp = /a href="(\/auth\/google\S+)"/m;
+
     return response.text().then((body) => {
       var matches = parseLink.exec(body);
       if (matches && matches[1]) {
@@ -75,7 +48,7 @@ class GuessApi {
   /**
    * @param level
    */
-  create(level: string): Promise {
+  create(level: ?string = null): Promise {
     return this.request('/' + this.getLevelOrDefault(level) + '/create');
   }
 
@@ -92,13 +65,13 @@ class GuessApi {
           });
   }
 
-  play(level: string): Promise {
+  play(level: ?string = null): Promise {
     return fetch(API_URL + '/' + this.getLevelOrDefault(level) + '/play');
   }
 
-  highscore(): any {
+  highscore(): HighscoreList {
     return {
-      "resultsAllover": [
+      resultsAllover: [
         {
           id: 1,
           firstName: 'Simon',
@@ -139,6 +112,10 @@ class GuessApi {
     };
   }
 
+  lastScoreResult() :Promise {
+    return this.request('/api/result');
+  }
+
   //scrapeHighscore(html) {
   //  var $ = cheerio.load(html);
   //
@@ -162,10 +139,9 @@ class GuessApi {
       });
   }
 
-  getLevelOrDefault(level: string): string {
+  getLevelOrDefault(level: ?string): string {
     return level || 'level1';
   }
 }
 
 module.exports = new GuessApi();
-

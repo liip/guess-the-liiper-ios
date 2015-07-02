@@ -1,9 +1,9 @@
+/* @flow */
 'use strict';
 
 var React = require('react-native');
 var Variables = require('./Variables');
 var {
-  Animation,
   Image,
   StyleSheet,
   Text,
@@ -61,7 +61,7 @@ var Grid = React.createClass({
     );
   },
 
-  group: function(children, amountInRow) {
+  group: function(children :Array<Object>, amountInRow :number) :Array<Array<Object>> {
     var rows = [];
 
     children.forEach((child, index) => {
@@ -118,7 +118,7 @@ var ProgressCircle = React.createClass({
     fill: React.PropTypes.string.isRequired,
   },
 
-  getDefaultProps() {
+  getDefaultProps() :Object {
     return {
       diameter: 100,
       fill: Variables.GREEN180,
@@ -129,7 +129,6 @@ var ProgressCircle = React.createClass({
   render() {
     var angle = (360 / 100) * this.props.complete;
 
-    console.log(this.props.children);
     if (angle === 0) {
       return null;
     }
@@ -144,8 +143,7 @@ var ProgressCircle = React.createClass({
            innerRadius={(this.props.diameter / 2) - this.props.strokeWidth}
            startAngle={0}
            endAngle={angle}
-           fill={this.props.fill}
-        >
+           fill={this.props.fill}>
           {this.props.children}
         </Wedge>
       </Surface>
@@ -205,7 +203,7 @@ var ProgressBarAnimation = React.createClass({
     this.timer && this.timer();
   },
 
-  calculateComplete: function(duration) {
+  calculateComplete: function(duration :number) {
     var complete = (duration / this.props.duration) * 100;
 
     if (this.props.decreasing) {
@@ -235,7 +233,6 @@ var ProgressBarAnimation = React.createClass({
     if (this.props.type === 'circle') {
       return (
         <ProgressCircle
-          fill={Variables.GREEN180}
           style={this.props.style}
           diameter={this.props.width}
           complete={this.state.complete}>
@@ -254,7 +251,7 @@ var ProgressBarAnimation = React.createClass({
 });
 
 var ScrollView = React.createClass({
-  render: function() {
+  render: function() :ReactElement {
     return (
       <React.ScrollView contentContainerStyle={this.props.style}>
         {this.props.children}
@@ -279,7 +276,6 @@ var FaceGridBackground =  React.createClass({
 var styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    color: '#ffffff',
     backgroundColor: Variables.GREEN180,
     borderRadius: 8,
     borderWidth: 0,

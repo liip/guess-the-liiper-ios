@@ -1,15 +1,18 @@
 var {
   Button,
-  Headline
+  Headline,
+  FaceGridBackground
 } = require('../../GuessUI');
 var React = require('react-native');
 var {
+  ActivityIndicatorIOS,
   View,
   ListView,
   Text,
   Image,
   StyleSheet
 } = React;
+var Variables = require('../../Variables');
 
 var HighscoreTabView = require('./HighscoreTabView');
 var HighscoreListView = require('./HighscoreListView');
@@ -17,17 +20,34 @@ var HighscoreListView = require('./HighscoreListView');
 var HighscoreView = React.createClass({
 
   propTypes: {
-    highscores: React.PropTypes.object.isRequired,
+    highscore: React.PropTypes.object.isRequired,
     onTabSwitch: React.PropTypes.func.isRequired
   },
 
-  render: function() {
+  renderLoading: function() {
     return (
-      <View style={styles.container}>
-        <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
-          <HighscoreListView highscores={this.props.highscores} />
-        </HighscoreTabView>
+      <View style={styles.loadingContainer}>
+        <ActivityIndicatorIOS />
       </View>
+    );
+  },
+
+  render: function() {
+    var component;
+    if (this.props.loaded) {
+      component = (
+          <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
+            <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore} />
+          </HighscoreTabView>
+      );
+    } else {
+      component = this.renderLoading();
+    }
+
+    return (
+      <FaceGridBackground style={styles.container}>
+        {component}
+      </FaceGridBackground>
     );
   },
 
@@ -37,8 +57,15 @@ var HighscoreView = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 64
+    marginTop: Variables.HEADERHEIGHT
   },
+  loadingContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+  }
 });
 
 module.exports = HighscoreView;

@@ -70,62 +70,12 @@ class GuessApi {
   }
 
   highscore(): HighscoreList {
-    return {
-      resultsAllover: [
-        {
-          id: 1,
-          firstName: 'Simon',
-          lastName: 'Erhardt',
-          games: 2,
-          maxPoints: 300,
-          avgPoints: 122
-        }
-      ],
-      "resultsYear": [
-        {
-          id: 1,
-          firstName: 'Simon',
-          lastName: 'Erhardt',
-          games: 2,
-          maxPoints: 300,
-          avgPoints: 122
-        }
-      ],
-      "resultsMonth": [
-        {
-          id: 1,
-          firstName: 'Simon',
-          lastName: 'Erhardt',
-          games: 2,
-          maxPoints: 300,
-          avgPoints: 122
-        },
-        {
-          id: 2,
-          firstName: 'Nithuja',
-          lastName: 'Nagendram',
-          games: 2,
-          maxPoints: 300,
-          avgPoints: 122
-        }
-      ]
-    };
+    return this.request('/api/highscore');
   }
 
   lastScoreResult() :Promise {
     return this.request('/api/result');
   }
-
-  //scrapeHighscore(html) {
-  //  var $ = cheerio.load(html);
-  //
-  //  var highscoreList = artoo.scrape('#monthly .col-md-4', {
-  //    title: {sel: 'h3'},
-  //    url: {sel: 'img', attr: 'src'},
-  //    games: {sel: 'span:nth-of-type(1)'},
-  //    score: {sel: 'span:nth-of-type(2)'}
-  //  });
-  //}
 
   request(path: string): Promise {
     return fetch(API_URL + path, {credentials: true})

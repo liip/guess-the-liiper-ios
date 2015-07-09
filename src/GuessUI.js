@@ -279,7 +279,7 @@ var FaceGridBackground =  React.createClass({
   render() {
     return (
       <Image
-        style={styles.faceGridBackground}
+        style={[styles.faceGridBackground, this.props.style]}
         source={{ uri: 'bg', isStatic: true }}>
         {this.props.children}
       </Image>

@@ -14,12 +14,13 @@ var {
 var HighscoreListView = React.createClass({
 
   propTypes: {
-    highscores: React.PropTypes.object.isRequired,
+    highscore: React.PropTypes.object.isRequired,
+    selected_tab: React.PropTypes.string.isRequired,
   },
 
   render: function() {
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.dataSource = ds.cloneWithRows(this.props.highscores);
+    this.dataSource = ds.cloneWithRows(this.props.highscore[this.props.selected_tab] || []);
 
     return (
       <ListView

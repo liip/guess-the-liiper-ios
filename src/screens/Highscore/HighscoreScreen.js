@@ -11,31 +11,34 @@ var HighscoreScreen = React.createClass({
   },
 
   componentDidMount: function() {
-    this.setState({
-      highscores: GuessApi.highscore().resultsMonth,
-      loaded: true
-    });
+    GuessApi.highscore()
+        .then((highscore) => {
+          this.setState({
+            loaded: true,
+            highscore: highscore,
+          });
+        })
+        .catch((error) => console.log(error));
   },
 
   getInitialState: function() {
     return {
       loaded: false,
-      highscores: {}
+      selected_tab: 'resultsMonth',
+      highscore: {}
     }
   },
 
   render: function() {
-    if (!this.state.loaded) {
-      return <Text>Loading</Text>
-    }
-
     return (
-      <HighscoreView highscores={this.state.highscores} />
+      <HighscoreView
+          {...this.state}
+          onTabSwitch={this.onTabSwitch} />
     );
   },
 
-  onTabSwitch: function() {
-
+  onTabSwitch: function(selected_tab) {
+    this.setState({selected_tab});
   },
 
 

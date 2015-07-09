@@ -2,7 +2,7 @@
 var React = require('react-native');
 var Variables = require('../../Variables');
 var { StyleSheet, View, Text, Image, ActivityIndicatorIOS } = React;
-var { ScrollView, Button } = require('../../GuessUI');
+var { ScrollView, Button, Link } = require('../../GuessUI');
 
 var LoginView = React.createClass({
 
@@ -24,9 +24,9 @@ var LoginView = React.createClass({
         <Button style={styles.buttonPlay} onPress={this.props.onHighscorePressed}>
           Highscore
         </Button>
-        <Button style={styles.buttonLogout} onPress={this.props.onLogoutPressed}>
+        <Link onPress={this.props.onLogoutPressed}>
           Logout
-        </Button>
+        </Link>
       </View>
     );
   },

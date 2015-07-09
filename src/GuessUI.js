@@ -32,6 +32,21 @@ var Button = React.createClass({
   },
 });
 
+var Link = React.createClass({
+  render: function() {
+    return (
+      <TouchableHighlight
+        onPress={this.props.onPress}
+        style={[styles.link, this.props.style]}
+        underlayColor="transparent">
+        <Text style={[styles.linkText, this.props.textStyle]}>
+          {this.props.children}
+        </Text>
+      </TouchableHighlight>
+    );
+  },
+});
+
 /**
  * Groups children in a grid.
  *
@@ -283,6 +298,13 @@ var styles = StyleSheet.create({
     margin: 5,
     padding: 15,
   },
+  link: {
+    padding: 10,
+    alignItems: 'center',
+  },
+  linkText: {
+    color: Variables.GREY360,
+  },
   buttonText: {
     fontFamily: 'Liip Etica',
     fontWeight: '500',
@@ -326,4 +348,5 @@ module.exports = {
   ProgressCircle: ProgressCircle,
   ScrollView: ScrollView,
   Icon: Icon,
+  Link: Link,
 };

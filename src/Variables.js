@@ -16,4 +16,5 @@ module.exports = {
     RED: '#d54361',
     REDRGBA80:'rgba(255,0,0,0.8)',
     REDRGBA80:'rgba(255,0,0,0.8)',
+    HEADERHEIGHT: 68,
 };

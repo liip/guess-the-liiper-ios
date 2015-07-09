@@ -6,6 +6,7 @@ var GuessApi = require('../../GuessApi');
 var {Button} = require('../../GuessUI');
 var LoginView = require('./LoginView');
 var PlayScreen = require('../Play/PlayScreen');
+var HighscoreScreen = require('../Highscore/HighscoreScreen');
 var React = require('react-native');
 var WebLoginView = require('./WebLoginView');
 
@@ -18,6 +19,7 @@ var LoginScreen = React.createClass({
   getInitialState: function() {
     return {
       loggedIn: false,
+      loading: true
     };
   },
 
@@ -33,7 +35,9 @@ var LoginScreen = React.createClass({
     return (
       <LoginView
         loggedIn={this.state.loggedIn}
+        loading={this.state.loading}
         onLoginPressed={this.onLoginPressed}
+        onHighscorePressed={this.onHighscorePressed}
         onLogoutPressed={this.onLogoutPressed}
         onPlayPressed={this.onPlayPressed} />
     );
@@ -47,9 +51,21 @@ var LoginScreen = React.createClass({
 
     return GuessApi.authUrl()
       .then((authUrl) => {
-        this.setState({authUrl: authUrl});
+        this.setState({
+          authUrl: authUrl,
+          loading: true
+        });
       })
       .catch(console.error);
+  },
+
+  onHighscorePressed: function() {
+    this.props.navigator.push({
+      title: 'Highscore',
+      component: HighscoreScreen,
+      backButtonTitle: 'Back',
+      passProps: {topExampleRoute: this.props.topExampleRoute || this.props.route},
+    });
   },
 
   onLogoutPressed: function() {
@@ -75,7 +91,10 @@ var LoginScreen = React.createClass({
 
   testAuth: function() {
     return GuessApi.testAuth()
-      .then(loggedIn => this.setState({loggedIn: loggedIn}));
+      .then(loggedIn => this.setState({
+        loggedIn: loggedIn,
+        loading: false
+      }));
   },
 
 });

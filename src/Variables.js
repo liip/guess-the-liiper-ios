@@ -10,6 +10,7 @@ module.exports = {
     ORANGE180: '#f68b28',
     ORANGE360: '#f26531',
     GREY0: '#dcdcdc',
+    GREY90: '#acacac',
     GREY180: '#8c8c8c',
     GREY360: '#414141',
     GREYRGBA80: 'rgba(200,200,200,0.8)',

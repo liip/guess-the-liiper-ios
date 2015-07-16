@@ -19,7 +19,7 @@ var resultMock = {
 var ResultScreenExample = React.createClass({
   render: function () {
     return (
-      <ResultView result={resultMock} />
+      <ResultView score={resultMock} />
     );
   },
 });

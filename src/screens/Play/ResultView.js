@@ -17,9 +17,9 @@ var PlayBackground = require('./PlayBackground');
 var ResultView = React.createClass({
 
   propTypes: {
-    score: React.PropTypes.object.isRequired,
-    onPlayAgain: React.PropTypes.fun.isRequired,
-    onHighscore: React.PropTypes.fun.isRequired,
+    result: React.PropTypes.object.isRequired,
+    onPlayAgain: React.PropTypes.func.isRequired,
+    onHighscore: React.PropTypes.func.isRequired,
   },
 
   render: function() {

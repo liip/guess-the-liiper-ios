@@ -4,6 +4,7 @@
 var React = require('react-native');
 var GuessApi = require('../../GuessApi');
 var PlayView = require('./PlayView');
+var ResultScreen = require('./ResultScreen');
 var PlayBackground = require('./PlayBackground');
 import type {GameResult} from '../../GuessDomain';
 
@@ -58,6 +59,14 @@ var PlayScreen = React.createClass({
   },
 
   onNext: function() {
+    if (true || this.state.gameResults[this.state.gameResults.length - 1].finish) {
+        return this.props.navigator.replace({
+          title: 'Result',
+          component: ResultScreen,
+          backButtonTitle: 'Back',
+        });
+    }
+
     this.createGame();
   },
 

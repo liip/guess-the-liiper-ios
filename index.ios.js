@@ -36,12 +36,14 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
 //  Highscore,
 //} = require('./src/screens/Highscore/HighscoreScreenExamples');
 
-var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
+//var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
+
+var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
 
 /**
  * @type {ReactElement} Component to display when the app starts, default: LoginScreen.
  */
-var StartComponent = LoginScreen;
+var StartComponent = ResultScreenExample;
 
 /**
  * Main application container defining

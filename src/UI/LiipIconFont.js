@@ -6,7 +6,7 @@
  */
 'use strict';
 
-var createIconSet = require('createIconSet');
+var { createIconSet } = require('react-native-vector-icons');
 
 // See demo on:
 // https://www.liip.ch/bundles/liipchcore/webfonts/LiipIconFont/demo.html

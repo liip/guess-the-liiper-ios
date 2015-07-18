@@ -2,13 +2,18 @@
 'use strict';
 
 var React = require('react-native');
+var {ActivityIndicatorIOS} = React;
 var GuessApi = require('../../GuessApi');
 var PlayView = require('./PlayView');
+var PlayLoadingView = require('./PlayLoadingView');
 var ResultScreen = require('./ResultScreen');
 var PlayBackground = require('./PlayBackground');
 import type {GameResult} from '../../GuessDomain';
 
 var PlayScreen = React.createClass({
+  statics: {
+    title: 'Play',
+  },
 
   componentDidMount: function() {
     GuessApi
@@ -26,7 +31,7 @@ var PlayScreen = React.createClass({
 
   render: function() {
     if (!this.state.loaded) {
-      return this.renderLoading();
+      return <PlayLoadingView />;
     }
 
     return (
@@ -37,12 +42,6 @@ var PlayScreen = React.createClass({
         onNext={this.onNext}
         showAnswer={this.state.showAnswer}
       />
-    );
-  },
-
-  renderLoading: function() {
-    return (
-      <PlayBackground />
     );
   },
 
@@ -58,10 +57,15 @@ var PlayScreen = React.createClass({
       .catch(console.error);
   },
 
+  /**
+   * When a user requests the next guess.
+   *
+   * If the game is finished, the user will be redirected to a result screen.
+   */
   onNext: function() {
-    if (true || this.state.gameResults[this.state.gameResults.length - 1].finish) {
+    if (this.state.gameResults[this.state.gameResults.length - 1].finish) {
         return this.props.navigator.replace({
-          title: 'Result',
+          title: ResultScreen.title,
           component: ResultScreen,
           backButtonTitle: 'Back',
         });
@@ -74,7 +78,11 @@ var PlayScreen = React.createClass({
     return GuessApi
       .create()
       .then((game) => {
-        this.setState({game: game, loaded: true, showAnswer: false})
+        this.setState({
+          game: game,
+          loaded: true,
+          showAnswer: false
+        })
       })
       .catch(console.error);
   },

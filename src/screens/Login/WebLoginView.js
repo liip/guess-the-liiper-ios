@@ -1,5 +1,6 @@
 'use strict';
 var React = require('react-native');
+var LoginView = require('./LoginView');
 var {
   ActivityIndicatorIOS,
   Text,
@@ -27,9 +28,7 @@ module.exports = React.createClass({
 
   renderLoading: function() {
     return (
-      <View style={styles.loadingView}>
-        <ActivityIndicatorIOS />
-      </View>
+      <LoginView loading={true}></LoginView>
     );
   },
 

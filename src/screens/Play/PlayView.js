@@ -7,6 +7,7 @@ var {
   Image,
   StyleSheet,
   View,
+  LayoutAnimation,
 } = React;
 
 var {
@@ -35,11 +36,20 @@ var PlayView = React.createClass({
     showAnswer: React.PropTypes.bool.isRequired,
   },
 
+  animation: {
+    duration: 300,
+    update: {
+      type: LayoutAnimation.Types.spring,
+      springDamping: 0.6,
+    },
+  },
+
   componentDidMount: function() {
     this.refs['progress-bar'].restart();
   },
 
   render: function() {
+    LayoutAnimation.configureNext(this.animation);
     var game: Game = this.props.game;
 
     return (
@@ -115,7 +125,8 @@ var PlayView = React.createClass({
   onButtonPressed: function(resultid :string) {
     if (this.props.showAnswer) { return; }
 
-    this.props.onGuess(resultid, PLAYER_TIMEOUT);
+    var timeInMs = this.refs['progress-bar'].getTimeInMs();
+    this.props.onGuess(resultid, Math.max(1, Math.round(timeInMs / 1000)));
   },
 
   onTimeUp: function() {
@@ -135,7 +146,6 @@ var PlayView = React.createClass({
   componentWillReceiveProps: function(newProps :Object) {
     this.pauseOrRestartProgressBar(newProps.showAnswer);
   }
-
 });
 
 
@@ -179,7 +189,6 @@ var styles = StyleSheet.create({
     borderWidth: 2,
   },
   buttonWrong: {
-    color: 'white',
     backgroundColor: Variables.REDRGBA80,
     borderColor: Variables.REDRGBA80,
     borderWidth: 2,

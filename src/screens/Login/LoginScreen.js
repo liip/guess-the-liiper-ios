@@ -12,6 +12,10 @@ var WebLoginView = require('./WebLoginView');
 
 var LoginScreen = React.createClass({
 
+  statics: {
+    title: 'Guess the Liiper'
+  },
+
   componentDidMount: function() {
     this.testAuth();
   },
@@ -19,17 +23,23 @@ var LoginScreen = React.createClass({
   getInitialState: function() {
     return {
       loggedIn: false,
+      showWebView: false,
       loading: true
     };
   },
 
   render: function() {
+    var webView;
     if (this.state && this.state.authUrl) {
-      return (
+      webView = (
         <WebLoginView
           url={this.state.authUrl}
           onUrlChange={this.onWebLoginUrlChange} />
       );
+    }
+
+    if (this.state.showWebView) {
+      return webView;
     }
 
     return (
@@ -39,16 +49,13 @@ var LoginScreen = React.createClass({
         onLoginPressed={this.onLoginPressed}
         onHighscorePressed={this.onHighscorePressed}
         onLogoutPressed={this.onLogoutPressed}
-        onPlayPressed={this.onPlayPressed} />
+        onPlayPressed={this.onPlayPressed}>
+        {webView}
+      </LoginView>
     );
   },
 
   onLoginPressed: function() {
-    this.props.navigator.replace({
-      title: 'Login',
-      component: LoginScreen,
-    });
-
     return GuessApi.authUrl()
       .then((authUrl) => {
         this.setState({
@@ -61,10 +68,9 @@ var LoginScreen = React.createClass({
 
   onHighscorePressed: function() {
     this.props.navigator.push({
-      title: 'Highscore',
+      title: HighscoreScreen.title,
       component: HighscoreScreen,
       backButtonTitle: 'Back',
-      passProps: {topExampleRoute: this.props.topExampleRoute || this.props.route},
     });
   },
 
@@ -75,16 +81,20 @@ var LoginScreen = React.createClass({
 
   onPlayPressed: function () {
     this.props.navigator.push({
-      title: 'Play',
+      title: PlayScreen.title,
       component: PlayScreen,
       backButtonTitle: 'Back',
-      passProps: {topExampleRoute: this.props.topExampleRoute || this.props.route},
     });
   },
 
   onWebLoginUrlChange: function(state: Object) {
+    if (GuessApi.isRequestForPermission(state.title)
+     || GuessApi.isSignIn(state.title)) {
+      return this.setState({showWebView: true})
+    }
+
     if (GuessApi.isStartPage(state.url)) {
-      this.setState({authUrl: null});
+      this.setState({authUrl: null, showWebView: false});
       this.testAuth();
     }
   },

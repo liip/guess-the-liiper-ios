@@ -195,7 +195,7 @@ var ProgressBarAnimation = React.createClass({
   },
 
   runAnimation: function() {
-    if (this.state.paused) {
+    if (this.state.paused || !this.isMounted()) {
       return;
     }
 
@@ -238,6 +238,10 @@ var ProgressBarAnimation = React.createClass({
 
   pause: function() {
     this.setState({paused: true});
+  },
+
+  getTimeInMs: function() {
+    return Date.now() - this.startTime;
   },
 
   componentDidMount: function() {

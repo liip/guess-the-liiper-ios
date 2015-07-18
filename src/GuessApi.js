@@ -32,6 +32,14 @@ class GuessApi {
     return url == API_URL + '/';
   }
 
+  isRequestForPermission(title: string) {
+    return title == 'Request for Permission';
+  }
+
+  isSignIn(title: string) {
+    return title == 'Sign in - Google Accounts';
+  }
+
   parseAuthUrlFromPage(response: Object) :string {
     var parseLink: RegExp = /a href="(\/auth\/google\S+)"/m;
 

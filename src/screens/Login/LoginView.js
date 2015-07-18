@@ -1,8 +1,8 @@
 /* @flow */
 var React = require('react-native');
 var Variables = require('../../Variables');
-var { StyleSheet, View, Text, Image, ActivityIndicatorIOS } = React;
-var { ScrollView, Button, Link } = require('../../GuessUI');
+var { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } = React;
+var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI');
 
 var LoginView = React.createClass({
 
@@ -13,6 +13,39 @@ var LoginView = React.createClass({
     onHighscorePressed: React.PropTypes.func.isRequired,
     onLogoutPressed: React.PropTypes.func.isRequired,
     onPlayPressed: React.PropTypes.func.isRequired,
+  },
+
+  animation: {
+    duration: 700,
+    update: {
+      type: LayoutAnimation.Types.spring,
+      springDamping: 0.4,
+    },
+  },
+
+  render: function () {
+    LayoutAnimation.configureNext(this.animation);
+
+    var component;
+    if (this.props.loading) {
+      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />;
+    } else if (this.props.loggedIn) {
+      component = this.renderLoggedInButtons();
+    } else {
+      component = this.renderLoggedOutButtons();
+    }
+
+    return (
+      <FaceGridBackground>
+        <View style={styles.container}>
+          <View style={styles.loginContainer}>
+            <Image style={styles.logo} source={{ uri: 'GuessLogo', isStatic: true }} />
+            { component }
+            { this.props.children }
+          </View>
+        </View>
+      </FaceGridBackground>
+    );
   },
 
   renderLoggedInButtons: function() {
@@ -47,26 +80,6 @@ var LoginView = React.createClass({
     );
   },
 
-  render: function () {
-    var component;
-
-    if (this.props.loading) {
-      component = <ActivityIndicatorIOS />;
-    } else if (this.props.loggedIn) {
-      component = this.renderLoggedInButtons();
-    } else {
-      component = this.renderLoggedOutButtons();
-    }
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.loginContainer}>
-          <Image style={styles.logo} source={{ uri: 'GuessLogo', isStatic: true }} />
-          { component }
-        </View>
-      </View>
-    );
-  },
 });
 
 // Styles
@@ -95,6 +108,10 @@ var styles = StyleSheet.create({
     color: '#777',
     marginBottom: 5,
     textAlign: 'center'
+  },
+  loadingIndicator: {
+    flex: 1,
+    alignSelf: 'center'
   },
   containerButtons: {
     flex: 1

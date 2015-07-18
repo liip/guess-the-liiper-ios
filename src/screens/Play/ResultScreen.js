@@ -4,9 +4,14 @@
 var React = require('react-native');
 var GuessApi = require('../../GuessApi');
 var ResultView = require('./ResultView');
+var PlayLoadingView = require('./PlayLoadingView');
+var HighscoreScreen = require('../Highscore/HighscoreScreen');
 var PlayBackground = require('./PlayBackground');
 
 var ResultScreen = React.createClass({
+  statics: {
+    title: 'Result',
+  },
 
   componentDidMount: function() {
     GuessApi
@@ -23,7 +28,7 @@ var ResultScreen = React.createClass({
 
   render: function() {
     if (!this.state.loaded) {
-      return this.renderLoading();
+      return <PlayLoadingView />
     }
 
     return (
@@ -35,18 +40,21 @@ var ResultScreen = React.createClass({
     );
   },
 
-  renderLoading: function() {
-    return (
-      <PlayBackground />
-    );
-  },
-
   onPlayAgain: function() {
-    // todo: redirect
+    var PlayScreen = require('./PlayScreen');
+    this.props.navigator.replace({
+      title: PlayScreen.title,
+      component: PlayScreen,
+      backButtonTitle: 'Back',
+    });
   },
 
   onHighscore: function() {
-    // todo: redirect
+    this.props.navigator.push({
+      title: HighscoreScreen.title,
+      component: HighscoreScreen,
+      backButtonTitle: 'Back',
+    });
   },
 
 });

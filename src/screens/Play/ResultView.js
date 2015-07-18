@@ -15,6 +15,7 @@ var {
 
 var PlayBackground = require('./PlayBackground');
 
+
 var ResultView = React.createClass({
 
   propTypes: {
@@ -28,7 +29,7 @@ var ResultView = React.createClass({
       <PlayBackground>
         <View style={styles.resultContainer}>
           <Text style={styles.resultPoints}>
-            {this.props.score.result.gotPoints}
+            {Math.round(this.props.score.result.gotPoints)}
           </Text>
           <Text style={styles.resultMaxpoints}>
             out of {this.props.score.result.maxPoints} points
@@ -36,9 +37,7 @@ var ResultView = React.createClass({
         </View>
         <View style={styles.resultInfoContainer}>
           <Text style={styles.resultInfoText}>
-            You are under the TOP {this.props.score.betterResults}
-            {'\n'}
-            Try again to get the throne!
+            {this.renderInfoText(this.props.score.betterResults)}
           </Text>
         </View>
         <View>
@@ -54,6 +53,17 @@ var ResultView = React.createClass({
       </PlayBackground>
     );
   },
+
+  renderInfoText: function(betterResults) {
+      if (betterResults == 0) {
+        return "You are the best!\n"
+            + 'Play more to keep the throne!';
+      }
+
+      return "You are under the TOP " + (this.props.score.betterResults + 1) + "\n"
+          + "Try again to get the throne!";
+    }
+
 });
 
 

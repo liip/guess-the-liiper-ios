@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "LaunchScreen-640x1136.png"
     },
     {
       "idiom" : "iphone",

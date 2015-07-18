@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 
 #import "RCTRootView.h"
+#import "RCTUtils.h"
 
 @implementation AppDelegate
 
@@ -48,6 +49,11 @@
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"guess_the_liiper"
                                                    launchOptions:launchOptions];
+
+  // Add loading view (launch image).
+  
+  UIImageView *launchView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LaunchImage"]];
+  rootView.loadingView = launchView;
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [[UIViewController alloc] init];

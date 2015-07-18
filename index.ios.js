@@ -10,9 +10,7 @@ var {
   NavigatorIOS,
   StyleSheet,
 } = React;
-var {
-  FaceGridBackground
-} = require('./src/GuessUI');
+
 var LoginScreen = require('./src/screens/Login/LoginScreen');
 
 /**
@@ -38,12 +36,13 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
 
 //var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 
-var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
+//var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
+var LaunchView = require('./src/UI/LaunchView');
 
 /**
  * @type {ReactElement} Component to display when the app starts, default: LoginScreen.
  */
-var StartComponent = ResultScreenExample;
+var StartComponent = LoginScreen;
 
 /**
  * Main application container defining
@@ -52,16 +51,14 @@ var StartComponent = ResultScreenExample;
 var App = React.createClass({
   render: function() {
     return (
-      <FaceGridBackground>
         <NavigatorIOS
           style={styles.container}
           initialRoute={{
-            title: 'Guess the Liiper',
+            title: StartComponent.title || 'Guess the Liiper',
             component: StartComponent,
           }}
           itemWrapperStyle={styles.itemWrapper}
         />
-      </FaceGridBackground>
     );
   }
 });

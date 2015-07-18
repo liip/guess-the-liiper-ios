@@ -7,7 +7,6 @@ var HighscoreView = require('./HighscoreView');
 var HighscoreScreen = React.createClass({
   statics: {
     title: 'Highscore',
-    description: 'See the best.'
   },
 
   componentDidMount: function() {

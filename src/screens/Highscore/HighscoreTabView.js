@@ -8,7 +8,7 @@ var {
 var {
   Icon
 } = require('../../GuessUI');
-
+var Variables = require('../../Variables');
 
 var HighscoreTabView = React.createClass({
 
@@ -43,8 +43,7 @@ var HighscoreTabView = React.createClass({
 
     return (
       <TabBarIOS
-        tintColor="black"
-        barTintColor="#3abeff">
+        tintColor={Variables.GREEN180}>
         {tabs.map((tab) =>
           <Icon.TabBarItem
               title={tab.title}

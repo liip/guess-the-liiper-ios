@@ -88,8 +88,14 @@ var LoginScreen = React.createClass({
   },
 
   onWebLoginUrlChange: function(state: Object) {
+    // Show the webview in case we don't get an answer within x sec.
+    this.timeout = setTimeout(() => {
+      return this.setState({showWebView: true})
+    }, 10000);
+
     if (GuessApi.isRequestForPermission(state.title)
      || GuessApi.isSignIn(state.title)) {
+      clearTimeout(this.timeout);
       return this.setState({showWebView: true})
     }
 

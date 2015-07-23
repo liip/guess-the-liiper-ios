@@ -32,7 +32,7 @@
    * on the same Wi-Fi network.
    */
 
-//  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
 //  jsCodeLocation = [NSURL URLWithString:@"http://192.168.0.11:8081/index.ios.bundle"];
 
   /**
@@ -45,7 +45,7 @@
    * see http://facebook.github.io/react-native/docs/runningondevice.html
    */
 
-   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+//   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"guess_the_liiper"

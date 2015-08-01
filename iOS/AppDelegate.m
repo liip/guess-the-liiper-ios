@@ -9,6 +9,9 @@
 
 #import "AppDelegate.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #import "RCTRootView.h"
 #import "RCTUtils.h"
 
@@ -16,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [Fabric with:@[CrashlyticsKit]];
+
   NSURL *jsCodeLocation;
 
   /**

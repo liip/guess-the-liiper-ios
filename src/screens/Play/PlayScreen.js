@@ -6,7 +6,6 @@ var {ActivityIndicatorIOS} = React;
 var GuessApi = require('../../GuessApi');
 var PlayView = require('./PlayView');
 var PlayLoadingView = require('./PlayLoadingView');
-var ResultScreen = require('./ResultScreen');
 var PlayBackground = require('./PlayBackground');
 import type {GameResult} from '../../GuessDomain';
 
@@ -64,6 +63,7 @@ var PlayScreen = React.createClass({
    */
   onNext: function() {
     if (this.state.gameResults[this.state.gameResults.length - 1].finish) {
+        var ResultScreen = require('./ResultScreen');
         return this.props.navigator.replace({
           title: ResultScreen.title,
           component: ResultScreen,

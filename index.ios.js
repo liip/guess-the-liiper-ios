@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var {
+  div,
   AppRegistry,
   NavigatorIOS,
   StyleSheet,
@@ -20,8 +21,9 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
  * Useful when styling with live reload.
  */
 //var {
-  //LoggedIn,
-  //LoggedOut
+//  LoggedIn,
+//  LoginLoading,
+//  LoggedOut
 //} = require('./src/screens/Login/LoginScreenExamples');
 
 //var {
@@ -37,7 +39,7 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
 //var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
 
 //var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
-var LaunchView = require('./src/UI/LaunchView');
+//var LaunchView = require('./src/UI/LaunchView');
 
 /**
  * @type {ReactElement} Component to display when the app starts, default: LoginScreen.

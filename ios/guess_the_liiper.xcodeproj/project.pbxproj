@@ -138,7 +138,7 @@
 		00E356F21AD99517003FC87E /* guess_the_liiperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = guess_the_liiperTests.m; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* guess_the_liiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = guess_the_liiper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Guess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = guess_the_liiper/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = guess_the_liiper/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = guess_the_liiper/Info.plist; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* guess_the_liiper.app */,
+				13B07F961A680F5B00A75B9A /* Guess.app */,
 				00E356EE1AD99517003FC87E /* guess_the_liiperTests.xctest */,
 			);
 			name = Products;
@@ -407,7 +407,7 @@
 			);
 			name = Guess;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* guess_the_liiper.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Guess.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -712,7 +712,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.liip.guesstheliiper;
-				PRODUCT_NAME = guess_the_liiper;
+				PRODUCT_NAME = Guess;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
 			name = Debug;
@@ -739,7 +739,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = ch.liip.guesstheliiper;
-				PRODUCT_NAME = guess_the_liiper;
+				PRODUCT_NAME = Guess;
 				STRIP_INSTALLED_PRODUCT = YES;
 			};
 			name = Release;

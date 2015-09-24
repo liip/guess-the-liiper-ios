@@ -25,7 +25,6 @@
 		2093ED381BB447520003C63C /* LFT_Etica_Book_Liip.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2093ED341BB4458C0003C63C /* LFT_Etica_Book_Liip.otf */; };
 		2093ED391BB447520003C63C /* LFT_Etica_Semibold_Liip.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2093ED351BB4458C0003C63C /* LFT_Etica_Semibold_Liip.otf */; };
 		2093ED3A1BB447520003C63C /* LiipIconFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2093ED361BB4458C0003C63C /* LiipIconFont.ttf */; };
-		2093ED4A1BB448590003C63C /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093ED461BB447E00003C63C /* libRNVectorIcons.a */; };
 		2093ED511BB4492E0003C63C /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093ED501BB449180003C63C /* libART.a */; };
 		2093ED551BB449D60003C63C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093ED531BB449D60003C63C /* Fabric.framework */; };
 		2093ED561BB449D70003C63C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093ED541BB449D60003C63C /* Crashlytics.framework */; };
@@ -96,13 +95,6 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		2093ED451BB447E00003C63C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2093ED411BB447E00003C63C /* RNVectorIcons.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
-			remoteInfo = RNVectorIcons;
-		};
 		2093ED4F1BB449180003C63C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2093ED4B1BB449180003C63C /* ART.xcodeproj */;
@@ -149,7 +141,7 @@
 		2093ED341BB4458C0003C63C /* LFT_Etica_Book_Liip.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LFT_Etica_Book_Liip.otf; path = ../resources/fonts/LFT_Etica_Book_Liip.otf; sourceTree = "<group>"; };
 		2093ED351BB4458C0003C63C /* LFT_Etica_Semibold_Liip.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LFT_Etica_Semibold_Liip.otf; path = ../resources/fonts/LFT_Etica_Semibold_Liip.otf; sourceTree = "<group>"; };
 		2093ED361BB4458C0003C63C /* LiipIconFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LiipIconFont.ttf; path = ../resources/fonts/LiipIconFont.ttf; sourceTree = "<group>"; };
-		2093ED411BB447E00003C63C /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "/Users/adri/workspace/guess_the_liiper/node_modules/react-native/Libraries/WebSocket/../../../react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<absolute>"; };
+		2093ED411BB447E00003C63C /* react-native-vector-icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "react-native-vector-icons"; path = "../../guess_the_liiper/node_modules/react-native-vector-icons"; sourceTree = SOURCE_ROOT; };
 		2093ED4B1BB449180003C63C /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		2093ED531BB449D60003C63C /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		2093ED541BB449D60003C63C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -171,7 +163,6 @@
 			files = (
 				2093ED511BB4492E0003C63C /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
-				2093ED4A1BB448590003C63C /* libRNVectorIcons.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -297,14 +288,6 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		2093ED421BB447E00003C63C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2093ED461BB447E00003C63C /* libRNVectorIcons.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		2093ED4C1BB449180003C63C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,7 +317,7 @@
 				139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */,
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
-				2093ED411BB447E00003C63C /* RNVectorIcons.xcodeproj */,
+				2093ED411BB447E00003C63C /* react-native-vector-icons */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 			);
 			name = Libraries;
@@ -414,7 +397,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -478,10 +461,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = 2093ED421BB447E00003C63C /* Products */;
-					ProjectRef = 2093ED411BB447E00003C63C /* RNVectorIcons.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -547,13 +526,6 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2093ED461BB447E00003C63C /* libRNVectorIcons.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNVectorIcons.a;
-			remoteRef = 2093ED451BB447E00003C63C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		2093ED501BB449180003C63C /* libART.a */ = {
@@ -662,6 +634,7 @@
 				INFOPLIST_FILE = guess_the_liiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_the_liiper.app/guess_the_liiper";
 			};
@@ -679,6 +652,7 @@
 				INFOPLIST_FILE = guess_the_liiperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/guess_the_liiper.app/guess_the_liiper";
 			};
@@ -700,6 +674,7 @@
 				INFOPLIST_FILE = guess_the_liiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = guess_the_liiper;
 			};
 			name = Debug;
@@ -720,6 +695,7 @@
 				INFOPLIST_FILE = guess_the_liiper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = guess_the_liiper;
 			};
 			name = Release;
@@ -744,6 +720,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;

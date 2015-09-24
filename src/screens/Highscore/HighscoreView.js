@@ -45,9 +45,11 @@ var HighscoreView = React.createClass({
     }
 
     return (
-      <View style={styles.container}>
-        {component}
-      </View>
+      <FaceGridBackground>
+        <View style={styles.container}>
+          {component}
+        </View>
+      </FaceGridBackground>
     );
   },
 
@@ -57,8 +59,6 @@ var HighscoreView = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Variables.HEADERHEIGHT,
-    backgroundColor: 'white',
   },
   loadingContainer: {
     flex: 1,

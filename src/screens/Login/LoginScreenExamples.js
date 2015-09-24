@@ -19,8 +19,14 @@ var LoggedOut = React.createClass({
   }
 });
 
+var LoginLoading = React.createClass({
+  render: () => {
+    return <LoginView {...defaults} loading={true} />;
+  }
+});
 module.exports = {
   LoggedIn: LoggedIn,
+  LoginLoading: LoginLoading,
   LoggedOut: LoggedOut,
 };
 

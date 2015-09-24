@@ -39,9 +39,9 @@ var LoginView = React.createClass({
       <FaceGridBackground>
         <View style={styles.container}>
           <View style={styles.loginContainer}>
-            <Image style={styles.logo} source={{ uri: 'GuessLogo', isStatic: true }} />
+            <Image style={styles.logo} resizeMode="contain" source={{ uri: 'GuessLogo', isStatic: true }} />
+            <View style={styles.hidden}>{ this.props.children }</View>
             { component }
-            { this.props.children }
           </View>
         </View>
       </FaceGridBackground>
@@ -50,7 +50,7 @@ var LoginView = React.createClass({
 
   renderLoggedInButtons: function() {
     return (
-      <View>
+      <View style={styles.containerButtons}>
         <Button style={styles.buttonPlay} onPress={this.props.onPlayPressed}>
           Play
         </Button>
@@ -66,7 +66,7 @@ var LoginView = React.createClass({
 
   renderLoggedOutButtons: function() {
     return (
-      <View>
+      <View style={styles.containerButtons}>
         <Text style={styles.loginText}>
           Improve your knowledge about all Liipers.
         </Text>
@@ -86,22 +86,22 @@ var LoginView = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: Variables.HEADERHEIGHT
-  },
-  logo: {
-    width: 250,
-    height: 282,
-    alignSelf: 'center',
-    marginBottom: 50
+    justifyContent: 'center',
+    marginTop: Variables.HEADERHEIGHT,
   },
   loginContainer: {
     flex: 1,
     backgroundColor: Variables.WHITERGBA80,
     margin: 10,
     padding: 20,
-    borderRadius: 5
+    borderRadius: 5,
+  },
+  logo: {
+    flex: 2,
+    width: 250,
+    height: 282,
+    alignSelf: 'center',
+    marginBottom: 50,
   },
   loginText: {
     fontSize: 14,
@@ -111,10 +111,10 @@ var styles = StyleSheet.create({
   },
   loadingIndicator: {
     flex: 1,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   containerButtons: {
-    flex: 1
+    alignItems: 'stretch',
   },
   buttonLogin: {
     marginTop: 20
@@ -122,6 +122,10 @@ var styles = StyleSheet.create({
   buttonLogout: {
   },
   buttonPlay: {
+  },
+  hidden: {
+    width: 0,
+    height: 0
   },
 });
 

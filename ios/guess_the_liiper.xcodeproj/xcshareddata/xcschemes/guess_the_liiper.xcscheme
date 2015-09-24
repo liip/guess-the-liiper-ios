@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "guess_the_liiper.app"
-               BlueprintName = "guess_the_liiper"
+               BlueprintName = "Guess"
                ReferencedContainer = "container:guess_the_liiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "guess_the_liiper.app"
-            BlueprintName = "guess_the_liiper"
+            BlueprintName = "Guess"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -81,7 +81,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "guess_the_liiper.app"
-            BlueprintName = "guess_the_liiper"
+            BlueprintName = "Guess"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -100,7 +100,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "guess_the_liiper.app"
-            BlueprintName = "guess_the_liiper"
+            BlueprintName = "Guess"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

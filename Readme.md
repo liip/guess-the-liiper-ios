@@ -7,6 +7,7 @@ This is a test project to explore React Native.
 ## Requirements
 
  * node and npm
+ * watchman `brew install watchman`
  * XCode
 
 ## Installation

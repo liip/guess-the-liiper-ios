@@ -17,7 +17,7 @@ git clone git@github.com:adri/guess-the-liiper-ios.git
 cd guess-the-liiper-ios
 npm install
 npm start
-open guess_the_liiper.xcodeproj
+open ios/guess_the_liiper.xcodeproj
 ```
 
 Press `%` + `D` in the simulator for debugging options.

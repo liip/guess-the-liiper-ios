@@ -1,0 +1,35 @@
+var React = require('react-native');
+var Variables = require('../Variables');
+var {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+} = React;
+
+var Link = React.createClass({
+  render: function() {
+    return (
+        <TouchableHighlight
+            onPress={this.props.onPress}
+            style={[styles.link, this.props.style]}
+            underlayColor="transparent">
+          <Text style={[styles.linkText, this.props.textStyle]}>
+            {this.props.children}
+          </Text>
+        </TouchableHighlight>
+    );
+  },
+});
+
+// Styles
+var styles = StyleSheet.create({
+  link: {
+    padding: 10,
+    alignItems: 'center',
+  },
+  linkText: {
+    color: Variables.GREY360,
+  },
+});
+
+module.exports = Link;

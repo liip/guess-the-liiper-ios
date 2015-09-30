@@ -1,0 +1,3 @@
+Guess the Liiper for iOS lets you learn the names and faces of your colleagues. Try to perfectly guess who is shown on a picture and compete with your colleagues for throne. 
+
+You will need to sign in with your Liip Google account.

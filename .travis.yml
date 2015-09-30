@@ -1,0 +1,31 @@
+language: objective-c
+osx_image: xcode7
+
+cache: 
+  directories:
+    - node_modules
+    - ./vendor/bundle
+
+branches:
+  only:
+    - master
+
+before_script:
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d
+  -a -out scripts/certs/dist.cer
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d
+  -a -out scripts/certs/dist.p12
+- "./scripts/add-key.sh"
+
+script: 
+  - npm install
+  - cd ios && bundle exec fastlane ci_build
+
+env:
+  global:
+  - secure: aJKUt5CVtoVcvG9TNBB2VCRWXgtiuQSogTWmPDu6jNS9u2zLY1Jkgx4guRwnFgxyZO5tyjsC5sPmDkFdv2d+0uhuZRKGIZQjJd0LN4LRgI2viQ5YuRykDwIGy281m6vNht7MXxNtPiAhGPjP6VJalT62K9x4L0mOnQkudGwuwXw=
+  - secure: VciiUqa0eUOkylKL3d2BNfTVeY84RlflBwxAeOOK9FyDFpLL1qN+DQv8CYZ6IwZU2io6qKNGzbSWIkZZafhA4/DSgDFJGa+WjKIj4A9kIIET36Ow6NZAcxITkFFwb3z8Lwi4QRE51Gk5uHNbzc4COHQSOEaFAyohbTG6XahaAJQ=
+  # More environment variables are here: https://travis-ci.org/liip/guess-the-liiper-ios/settings
+
+notifications:
+  email: false

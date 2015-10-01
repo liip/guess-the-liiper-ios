@@ -72,7 +72,7 @@ platform :ios do
     travis_setup_github
     bump_version
     push_to_github
-    testflight
+    testflight(skip_deploy: true)
   end
 
   lane :release do

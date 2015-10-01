@@ -24,7 +24,6 @@ GITHUB_URL = "https://#{ENV['GITHUB_TOKEN']}@github.com/liip/guess-the-liiper-io
 
 platform :ios do
   before_all do
-    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     # xctool # run the tests of your app
   end
 
@@ -106,11 +105,11 @@ platform :ios do
   # You can define as many lanes as you want
 
   after_all do |lane|
-    # slack(
-    #   message: "fastlane was successful :rocket:",
-    #   success: true,
-    #   default_payloads: [:lane, :test_result, :git_branch, :git_author]
-    # )
+    slack(
+      message: "fastlane was successful :rocket:",
+      success: true,
+      default_payloads: [:lane, :test_result, :git_branch, :git_author]
+    ) if ENV["SLACK_URL"]
 
     clean_build_artifacts(
       exclude_pattern: ".*\.mobileprovision" # don't clear provisioning profiles, as we store them in git
@@ -118,10 +117,10 @@ platform :ios do
   end
 
   error do |lane, exception|
-    # slack(
-    #   message: exception.message,
-    #   success: false
-    # )
+    slack(
+      message: exception.message,
+      success: false
+    ) if ENV["SLACK_URL"]
   end
 end
 

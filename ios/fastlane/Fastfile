@@ -55,7 +55,7 @@ platform :ios do
 
   private_lane :bump_version do 
     commit_version_bump(
-      message: 'Build Version Bump by fastlane', 
+      message: '[ci skip] Build Version Bump by fastlane',
       xcodeproj: './guess_the_liiper.xcodeproj', 
       force: true
     )

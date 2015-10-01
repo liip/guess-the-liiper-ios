@@ -1,6 +1,8 @@
 # Guess the Liiper iOS
+[![Build Status](https://travis-ci.org/liip/guess-the-liiper-ios.svg?branch=master)](https://travis-ci.org/liip/guess-the-liiper-ios)
 
 This is a test project to explore React Native.
+
 
 ![guess](https://cloud.githubusercontent.com/assets/133832/8000133/fb6074be-0b56-11e5-994d-60a61ce2147f.gif)
 

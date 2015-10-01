@@ -64,8 +64,12 @@ class GuessApi {
    */
   check(game: Game, resultid: string, time: number): Promise {
     var params: string = '?gameid=' + game.gameid
-               + '&resultid=' + resultid
                + '&time=' + time;
+
+    if (resultid) {
+      params += '&resultid=' + resultid;
+    }
+
     return this.request('/' + this.getLevelOrDefault('') + '/check' + params)
         .then(gameResult => {
             gameResult.selectedResultid = resultid;

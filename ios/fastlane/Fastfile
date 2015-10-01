@@ -1,0 +1,129 @@
+# Customise this file, documentation can be found here:
+# https://github.com/KrauseFx/fastlane/tree/master/docs
+# All available actions: https://github.com/KrauseFx/fastlane/blob/master/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# By default, fastlane will send which actions are used
+# No personal data is shared, more information on https://github.com/fastlane/enhancer
+# Uncomment the following line to opt out
+opt_out_usage
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.30.1"
+
+default_platform :ios
+
+GITHUB_URL = "https://#{ENV['GITHUB_TOKEN']}@github.com/liip/guess-the-liiper-ios.git"
+
+platform :ios do
+  before_all do
+    # xctool # run the tests of your app
+  end
+
+  desc "Responsible for building and signing the app"
+  private_lane :build_app do |options|
+    sigh({provisioning_name: 'Guess the Liiper appstore'})
+    ENV["PROFILE_UDID"] = lane_context[SharedValues::SIGH_UDID]
+
+    # Version bump
+    increment_build_number
+
+    # Build the
+    gym(scheme: "guess_the_liiper")
+  end
+
+  desc "Switch to the master branch"
+  private_lane :travis_setup_github do |options|
+    system "git config --global user.email 'buildbot@lipp.ch'"
+    system "git config --global user.name 'Travis build bot'"
+    system "git remote set-url origin #{GITHUB_URL}"
+    system "git fetch origin +master:master"
+    system "git checkout master"
+  end
+
+  private_lane :push_to_github do 
+    system "git push --force --tags #{GITHUB_URL} master:master"
+  end
+
+  private_lane :bump_version do 
+    commit_version_bump(
+      message: '[ci skip] Build Version Bump by fastlane',
+      xcodeproj: './guess_the_liiper.xcodeproj', 
+      force: true
+    )
+    add_git_tag
+  end
+
+  desc "Update screenshots"
+  lane :screenshots do
+    snapshot
+  end
+
+  desc "Build and deploy on CI"
+  lane :ci_build do
+    build_app
+    travis_setup_github
+    bump_version
+    push_to_github
+    testflight
+  end
+
+  lane :release do
+    # set_github_release({
+    #   repository_name: "liip/guess-the-liiper-ios",
+    #   api_token: ENV['GITHUB_TOKEN'],
+    #   name: "New Release",
+    #   tag_name: "v1.22.0",
+    #   description: '',
+    #   commitish: "master",
+    #   upload_assets: ["Guess.ipa"]
+    # })
+
+    set_github_release(
+      tag_name: 'test',
+      name: "Release test",
+      description: '',
+      is_prerelease: false,
+      api_token: ENV['GITHUB_TOKEN'],
+      repository_name: "liip/guess-the-liiper-ios",
+    )
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :deploy do
+    snapshot
+    deliver(skip_deploy: true, force: true)
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    slack(
+      message: "fastlane was successful :rocket:",
+      success: true,
+      default_payloads: [:lane, :test_result, :git_branch, :git_author]
+    ) if ENV["SLACK_URL"]
+
+    clean_build_artifacts(
+      exclude_pattern: ".*\.mobileprovision" # don't clear provisioning profiles, as we store them in git
+    )
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    ) if ENV["SLACK_URL"]
+  end
+end
+
+
+# More information about multiple platforms in fastlane:
+# https://github.com/KrauseFx/fastlane/blob/master/docs/Platforms.md

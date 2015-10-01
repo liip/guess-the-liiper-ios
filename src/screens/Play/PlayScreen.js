@@ -44,9 +44,9 @@ var PlayScreen = React.createClass({
     );
   },
 
-  onGuess: function(resultid :string, time :number) {
+  onGuess: function(resultid :string, timeInMs :number) {
     return GuessApi
-      .check(this.state.game, resultid, time)
+      .check(this.state.game, resultid,  Math.max(1, Math.round(timeInMs / 1000)))
       .then((gameResult) => {
         this.setState({
           gameResults: this.state.gameResults.concat(gameResult),

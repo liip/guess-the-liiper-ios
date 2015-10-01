@@ -8,23 +8,22 @@ var {
   StyleSheet,
   View,
   LayoutAnimation,
+  Dimensions
 } = React;
-
 var {
   Button,
   Grid,
-  ProgressBarAnimation,
+  ProgressAnimation,
   ProgressCircle,
   FaceGridBackground
 } = require('../../GuessUI');
-
-import type {Game, Person} from '../../GuessDomain';
-
-
+var Avatar = require('./UI/Avatar');
 var PlayBackground = require('./PlayBackground');
 
 // Timeout in ms.
 var PLAYER_TIMEOUT = 10000;
+
+import type {Game, Person} from '../../GuessDomain';
 
 var PlayView = React.createClass({
 
@@ -44,41 +43,40 @@ var PlayView = React.createClass({
     },
   },
 
-  componentDidMount: function() {
+  startProgress: function() {
     this.refs['progress-bar'].restart();
   },
 
   render: function() {
     LayoutAnimation.configureNext(this.animation);
     var game: Game = this.props.game;
+    // Dependend on screen height.
+    var avatarDiameter = Math.round(Dimensions.get('window').height / 3);
 
     return (
       <PlayBackground>
-        <View ref="this" style={styles.content}>
-          <View style={styles.imageContainer}>
-            <Image style={styles.picture} source={{uri: game.picture }} />
 
-            <ProgressCircle
-              style={styles.circleProgress}
-              fill="#e3e3e3"
-              complete={100}
-              diameter={212} />
-            <ProgressBarAnimation
-              ref="progress-bar"
-              style={styles.circleProgress}
-              type="circle"
-              width={212}
-              duration={PLAYER_TIMEOUT}
-              onFinish={this.onTimeUp} />
-          </View>
+        <View style={styles.avatarContainer}>
+            <Avatar picture={game.picture} diameter={avatarDiameter} onLoad={this.startProgress}>
+              <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
+                {(complete) => (
+                    <View style={{width: avatarDiameter, height: avatarDiameter}}>
+                      <ProgressCircle fill={Variables.GREY0} style={styles.progressCircle} complete={100} diameter={avatarDiameter} />
+                      <ProgressCircle fill={Variables.GREEN270} style={styles.progressCircle} complete={complete} diameter={avatarDiameter} />
+                    </View>
+                )}
+              </ProgressAnimation>
+            </Avatar>
+        </View>
 
-          <Grid amountInRow={2}>
+        <View style={styles.buttonsContainer}>
+          <Grid amountInRow={1}>
             {this.renderButtons(game.persons)}
           </Grid>
         </View>
 
-        <View style={styles.footer}>
-          <View style={styles.footerButtonContainer}>
+        <View style={styles.footerContainer}>
+          <View style={styles.continueContainer}>
             {this.props.showAnswer &&
               <Button
                 style={styles.buttonContinue}
@@ -126,7 +124,7 @@ var PlayView = React.createClass({
     if (this.props.showAnswer) { return; }
 
     var timeInMs = this.refs['progress-bar'].getTimeInMs();
-    this.props.onGuess(resultid, Math.max(1, Math.round(timeInMs / 1000)));
+    this.props.onGuess(resultid, timeInMs);
   },
 
   onTimeUp: function() {
@@ -139,7 +137,7 @@ var PlayView = React.createClass({
     if (showAnswer) {
       this.refs['progress-bar'].pause();
     } else {
-      this.refs['progress-bar'].restart();
+      this.refs['progress-bar'].reset();
     }
   },
 
@@ -150,48 +148,32 @@ var PlayView = React.createClass({
 
 
 var styles = StyleSheet.create({
-  circleProgress: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    position: 'absolute',
-    top: 3,
-    left: 58,
+  avatarContainer: {
+    alignItems: 'center'
   },
-  imageContainer: {
-    height: 220
+  buttonsContainer: {
+    flex: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  content: {
-    flex: 2
-  },
-  footer: {
+  footerContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end'
   },
-  footerButtonContainer: {
+  continueContainer: {
     flex: 1
   },
-  picture: {
+  progressCircle: {
     position: 'absolute',
-    width: 200,
-    height: 200,
-    margin: 10,
-    paddingTop: 50,
-    alignSelf: 'center',
-    left: 55,
   },
   buttonDefault: {
     backgroundColor: Variables.GREYRGBA80,
-    borderColor: Variables.GREYRGBA80,
-    borderWidth: 2,
   },
   buttonCorrect: {
-    borderColor: Variables.GREEN360,
-    borderWidth: 2,
   },
   buttonWrong: {
     backgroundColor: Variables.REDRGBA80,
-    borderColor: Variables.REDRGBA80,
-    borderWidth: 2,
   }
 });
 

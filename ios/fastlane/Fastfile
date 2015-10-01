@@ -72,7 +72,7 @@ platform :ios do
     travis_setup_github
     bump_version
     push_to_github
-    testflight(skip_deploy: true)
+    testflight(skip_submission: true)
   end
 
   desc "Build and deploy locally"
@@ -80,7 +80,7 @@ platform :ios do
     build_app
     bump_version
     push_to_git_remote
-    testflight(skip_deploy: true)
+    testflight(skip_submission: true)
   end
 
   desc "Takes the last build and delivers it to internal testers"

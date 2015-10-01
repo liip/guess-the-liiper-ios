@@ -27,10 +27,17 @@ Press `%` + `D` in the simulator for debugging options.
 ## Deployment
 
 Travis CI is configured to automatically deploy the app to the 
-App Store whenever there is a new commit on the `master` branch. 
+App Store Testflight whenever there is a new commit on the `master` branch. 
 
 [Fastlane](https://github.com/KrauseFx/fastlane) is used to build,
 deploy and make screenshots.
+
+```
+cd ios
+
+# make screenshots
+fastlane screenshots 
+```
 
 ### Credentials
 

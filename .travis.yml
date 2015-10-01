@@ -9,6 +9,7 @@ cache:
 branches:
   only:
     - master
+    - fastlane
 
 before_script:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d

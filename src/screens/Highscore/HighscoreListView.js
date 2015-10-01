@@ -38,7 +38,9 @@ var HighscoreListView = React.createClass({
     return (
       <View>
         <View style={styles.row}>
-          <Text style={styles.place}>{parseInt(rowID) + 1}</Text>
+          <View style={styles.placeContainer}>
+            <Text style={styles.place}>{parseInt(rowID) + 1}</Text>
+          </View>
           <Image style={styles.thumb} source={imgSource} />
           <Text style={styles.personName}>
             {rowData.firstName + '  ' + rowData.lastName + '\n'}
@@ -69,10 +71,15 @@ var styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#F6F6F6',
   },
+  placeContainer: {
+    width: 40,
+  },
   place: {
     color: 'grey',
     paddingTop: 20,
-    paddingRight: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    textAlign: 'center',
     fontSize: 20,
   },
   thumb: {

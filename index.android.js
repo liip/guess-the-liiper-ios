@@ -12,21 +12,19 @@ var {
   View,
 } = React;
 
-var guess_the_liiper = React.createClass({
+var LoginScreen = require('./src/screens/Login/LoginScreen');
+//var LaunchView = require('./src/UI/LaunchView');
+
+var {
+  LoggedIn,
+  LoginLoading,
+  LoggedOut
+} = require('./src/screens/Login/LoginScreenExamples');
+
+
+var App = React.createClass({
   render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+    return <LoginScreen />
   }
 });
 
@@ -49,4 +47,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('guess_the_liiper', () => guess_the_liiper);
+AppRegistry.registerComponent('guess_the_liiper', () => App);

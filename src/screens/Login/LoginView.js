@@ -1,8 +1,8 @@
 /* @flow */
 var React = require('react-native');
 var Variables = require('../../Variables');
-var { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } = React;
-var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI');
+var { StyleSheet, LayoutAnimation, View, Text, Image } = React;
+var { FaceGridBackground, ScrollView, Button, Link, LoadingIndicator } = require('../../GuessUI');
 
 var LoginView = React.createClass({
 
@@ -28,7 +28,7 @@ var LoginView = React.createClass({
 
     var component;
     if (this.props.loading) {
-      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />;
+      component = <LoadingIndicator />
     } else if (this.props.loggedIn) {
       component = this.renderLoggedInButtons();
     } else {
@@ -39,7 +39,7 @@ var LoginView = React.createClass({
       <FaceGridBackground>
         <View style={styles.container}>
           <View style={styles.loginContainer}>
-            <Image style={styles.logo} resizeMode="contain" source={{ uri: 'GuessLogo', isStatic: true }} />
+            <Image style={styles.logo} resizeMode="contain" source={{ uri: 'guess_logo', isStatic: true }} />
             <View style={styles.hidden}>{ this.props.children }</View>
             { component }
           </View>
@@ -109,10 +109,7 @@ var styles = StyleSheet.create({
     marginBottom: 5,
     textAlign: 'center'
   },
-  loadingIndicator: {
-    flex: 1,
-    alignSelf: 'center',
-  },
+
   containerButtons: {
     alignItems: 'stretch',
   },

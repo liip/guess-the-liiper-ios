@@ -50,4 +50,5 @@ module.exports = {
   ScrollView: ScrollView,
   Icon: require('./UI/LiipIconFont'),
   Link: require('./UI/Link'),
+  LoadingIndicator: require('./UI/LoadingIndicator')
 };

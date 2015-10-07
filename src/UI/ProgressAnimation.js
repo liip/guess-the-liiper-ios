@@ -17,6 +17,16 @@ var ProgressBarAnimation = React.createClass({
          * If true, the animation goes backwards.
          */
         decreasing: React.PropTypes.bool,
+        /**
+         * If true, the animation starts automatically.
+         */
+        autostart: React.PropTypes.bool,
+    },
+
+    getDefaultProps: function() {
+        return {
+            autostart: false,
+        }
     },
 
     getInitialState: function() {
@@ -67,6 +77,10 @@ var ProgressBarAnimation = React.createClass({
 
     restart: function() {
         this.reset();
+        this.start();
+    },
+
+    start: function() {
         this.setState({paused: false}, this.runAnimation);
     },
 
@@ -79,7 +93,9 @@ var ProgressBarAnimation = React.createClass({
     },
 
     componentDidMount: function() {
-        this.runAnimation();
+        if (this.props.autostart) {
+            this.start();
+        }
     },
 
     render: function() {

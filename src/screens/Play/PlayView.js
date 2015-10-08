@@ -43,10 +43,6 @@ var PlayView = React.createClass({
     },
   },
 
-  componentDidMount: function() {
-    this.startProgress();
-  },
-
   startProgress: function() {
     this.refs['progress-bar'].restart();
   },

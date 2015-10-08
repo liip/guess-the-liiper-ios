@@ -43,14 +43,14 @@ var ProgressCircle = React.createClass({
                 сontourColor="#f4f4f4"
                 rimColor="#f4f4f4"
                 barColor={[this.props.fill]}
-                value={this.props.complete}
-                maxValue={100}
-                сontourSize={280}
+                value={this.props.complete * 100}
+                maxValue={10000}
+                сontourSize={20}
                 rimWidth={20}
                 barWidth={20}
             >
-                {this.props.children}
-                </CircleProgressView>
+            {this.props.children}
+            </CircleProgressView>
         );
     },
 });

@@ -60,7 +60,7 @@ var App = React.createClass({
     return (
       <Navigator
         initialRoute = {{id: 'Home', component: LoginScreen }}
-        configureScene={() => Navigator.SceneConfigs.FadeAndroid}
+        configureScene={() => Navigator.SceneConfigs.FloatFromRight}
         renderScene={this.renderScene} />);
   }
 });

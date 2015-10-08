@@ -4,6 +4,29 @@ var Variables = require('../../Variables');
 var { StyleSheet, LayoutAnimation, View, Text, Image } = React;
 var { FaceGridBackground, ScrollView, Button, Link, LoadingIndicator } = require('../../GuessUI');
 
+var I18n = require('react-native-i18n-complete');
+
+I18n.fallbacks = true;
+
+I18n.translations = {
+  en: {
+    buttons: {
+      play: 'Play now',
+      highscore: 'Highscores',
+      logout: 'Logout'
+    }
+  },
+  fr: {
+    buttons: {
+      play: 'Jouer',
+      highscore: 'Meilleures scores',
+      logout: 'Se déconnecter'
+    }
+  }
+}
+
+
+
 var LoginView = React.createClass({
 
   propTypes: {
@@ -52,13 +75,13 @@ var LoginView = React.createClass({
     return (
       <View style={styles.containerButtons}>
         <Button style={styles.buttonPlay} onPress={this.props.onPlayPressed}>
-          Play
+          <Text>{I18n.t('buttons.play')}</Text>
         </Button>
         <Button style={styles.buttonPlay} onPress={this.props.onHighscorePressed}>
-          Highscore
+          <Text>{I18n.t('buttons.highscore')}</Text>
         </Button>
         <Link onPress={this.props.onLogoutPressed}>
-          Logout
+          <Text>{I18n.t('buttons.logout')}</Text>
         </Link>
       </View>
     );

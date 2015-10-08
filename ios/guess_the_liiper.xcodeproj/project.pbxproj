@@ -29,6 +29,7 @@
 		2093ED561BB449D70003C63C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2093ED541BB449D60003C63C /* Crashlytics.framework */; };
 		20E845CE1BB486B100642B09 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E845CD1BB486A300642B09 /* libRNVectorIcons.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		D212C0D21BC6AF5A0077B9A0 /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D212C0CE1BC6AF530077B9A0 /* libRNI18n.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		D212C0CD1BC6AF530077B9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D212C0BD1BC6AF530077B9A0 /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDD7BF781B2D5125006FDA75;
+			remoteInfo = RNI18n;
+		};
+		D212C0CF1BC6AF530077B9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D212C0BD1BC6AF530077B9A0 /* RNI18n.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CDD7BF831B2D5126006FDA75;
+			remoteInfo = RNI18nTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +162,7 @@
 		20E845C81BB486A300642B09 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		D212C0BD1BC6AF530077B9A0 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n-complete/iOS/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D212C0D21BC6AF5A0077B9A0 /* libRNI18n.a in Frameworks */,
 				20E845CE1BB486B100642B09 /* libRNVectorIcons.a in Frameworks */,
 				2093ED511BB4492E0003C63C /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -309,6 +326,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D212C0BD1BC6AF530077B9A0 /* RNI18n.xcodeproj */,
 				20E845C81BB486A300642B09 /* RNVectorIcons.xcodeproj */,
 				2093ED4B1BB449180003C63C /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -350,6 +368,15 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* Guess.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D212C0BE1BC6AF530077B9A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D212C0CE1BC6AF530077B9A0 /* libRNI18n.a */,
+				D212C0D01BC6AF530077B9A0 /* RNI18nTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -446,6 +473,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = D212C0BE1BC6AF530077B9A0 /* Products */;
+					ProjectRef = D212C0BD1BC6AF530077B9A0 /* RNI18n.xcodeproj */;
+				},
+				{
 					ProductGroup = 20E845C91BB486A300642B09 /* Products */;
 					ProjectRef = 20E845C81BB486A300642B09 /* RNVectorIcons.xcodeproj */;
 				},
@@ -540,6 +571,20 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D212C0CE1BC6AF530077B9A0 /* libRNI18n.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNI18n.a;
+			remoteRef = D212C0CD1BC6AF530077B9A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D212C0D01BC6AF530077B9A0 /* RNI18nTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RNI18nTests.xctest;
+			remoteRef = D212C0CF1BC6AF530077B9A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

@@ -4,3 +4,6 @@ include ':app'
 
 include ':reactcircleview', ':app'
 project(':reactcircleview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-circle-view')
+
+include ':react-native-i18n'
+project(':react-native-i18n').projectDir = new File(settingsDir, '../node_modules/react-native-i18n-complete/android/react-native-i18n')

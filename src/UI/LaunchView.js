@@ -5,6 +5,11 @@ var { StyleSheet, StatusBarIOS, View, Text, Image} = React;
 var { FaceGridBackground, ScrollView, Button, Link } = require('../GuessUI');
 
 var LaunchView = React.createClass({
+
+  statics: {
+    title: ' ',
+  },
+
   render: function() {
     return (
       <FaceGridBackground>

@@ -50,7 +50,7 @@ var PlayView = React.createClass({
   render: function() {
     LayoutAnimation.configureNext(this.animation);
     var game: Game = this.props.game;
-    // Dependend on screen height.
+    // Depending on the screen height.
     var avatarDiameter = Math.round(Dimensions.get('window').height / 3);
 
     return (
@@ -60,10 +60,11 @@ var PlayView = React.createClass({
             <Avatar picture={game.picture} diameter={avatarDiameter} onLoad={this.startProgress}>
               <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
                 {(complete) => (
-                    <View style={{width: avatarDiameter, height: avatarDiameter}}>
-                      <ProgressCircle fill={Variables.GREY0} style={styles.progressCircle} complete={100} diameter={avatarDiameter} />
-                      <ProgressCircle fill={Variables.GREEN270} style={styles.progressCircle} complete={complete} diameter={avatarDiameter} />
-                    </View>
+                    <ProgressCircle
+                        fill={Variables.GREEN270}
+                        fillBackground={Variables.GREY0}
+                        complete={complete}
+                        diameter={avatarDiameter} />
                 )}
               </ProgressAnimation>
             </Avatar>
@@ -163,9 +164,6 @@ var styles = StyleSheet.create({
   },
   continueContainer: {
     flex: 1
-  },
-  progressCircle: {
-    position: 'absolute',
   },
   buttonDefault: {
     backgroundColor: Variables.GREYRGBA80,

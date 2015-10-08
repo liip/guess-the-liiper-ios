@@ -2,6 +2,7 @@ var React = require('react-native');
 var {
     View,
     Image,
+    StyleSheet,
 } = React;
 
 /**
@@ -16,21 +17,33 @@ var Avatar = React.createClass({
     },
 
     render: function() {
-        var avatarStyles = {
-            width: this.props.diameter - 1,
-            height: this.props.diameter - 1,
+        var dimensions = {
+            width: this.props.diameter,
+            height: this.props.diameter,
+            // Use the border radius to cut the image
+            // into a perfect circle.
+            borderRadius: this.props.diameter / 2,
         };
 
         return (
-            <View style={{width:this.props.diameter, height: this.props.diameter }}>
+            <View>
                 <Image
                     source={{uri: this.props.picture }}
-                    style={avatarStyles}
+                    style={[styles.avatar, dimensions]}
                     onLoad={this.props.onLoad}>
                     {this.props.children}
                 </Image>
             </View>
         );
+    }
+});
+
+
+// Styles
+var styles = StyleSheet.create({
+    avatar: {
+        borderWidth: 1,
+        borderColor: 'transparent'
     }
 });
 

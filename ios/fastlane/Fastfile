@@ -72,32 +72,30 @@ platform :ios do
     travis_setup_github
     bump_version
     push_to_github
+    testflight(skip_submission: true)
+  end
+
+  desc "Build and deploy locally"
+  lane :local_build do
+    build_app
+    bump_version
+    push_to_git_remote
+    testflight(skip_submission: true)
+  end
+
+  desc "Takes the last build and delivers it to internal testers"
+  lane :testflight do
+    # take the last release
     testflight
   end
 
-  lane :release do
-    # set_github_release({
-    #   repository_name: "liip/guess-the-liiper-ios",
-    #   api_token: ENV['GITHUB_TOKEN'],
-    #   name: "New Release",
-    #   tag_name: "v1.22.0",
-    #   description: '',
-    #   commitish: "master",
-    #   upload_assets: ["Guess.ipa"]
-    # })
-
-    set_github_release(
-      tag_name: 'test',
-      name: "Release test",
-      description: '',
-      is_prerelease: false,
-      api_token: ENV['GITHUB_TOKEN'],
-      repository_name: "liip/guess-the-liiper-ios",
-    )
-  end
+  desc "Takes the last build and delivers it to external testers"
+  lane :beta do
+    # take the last release and  
+  end 
 
   desc "Deploy a new version to the App Store"
-  lane :deploy do
+  lane :appstore do
     snapshot
     deliver(skip_deploy: true, force: true)
   end

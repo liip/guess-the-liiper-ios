@@ -24,25 +24,26 @@ open ios/guess_the_liiper.xcodeproj
 
 Press `%` + `D` in the simulator for debugging options.
 
-## Deployment
+## Distribution
 
 Travis CI is configured to automatically deploy the app to the 
 App Store Testflight whenever there is a new commit on the `master` branch. 
 
 [Fastlane](https://github.com/KrauseFx/fastlane) is used to build,
-deploy and make screenshots.
+deploy and make screenshots. **For all commands please switch to the ios folder.**
 
-```
+```bash
 cd ios
-
-# make screenshots
-fastlane screenshots 
 ```
+
+ * Make screenshots `fastlane screenshots`
+ * Deploy to internal testers `fastlane testflight`
+ * Add new tester via CLI `pilot add email@invite.com`
 
 ### Credentials
 
 You find the username in `ios/fastlane/Appfile` and the `DELIVER_PASSWORD` 
-is set in https://travis-ci.org/liip/guess-the-liiper-ios/settings which
+is set in [https://travis-ci.org/liip/guess-the-liiper-ios/settings which]()
 you can access with a Github account and access to the Liip organisation.
 
 ## Screens

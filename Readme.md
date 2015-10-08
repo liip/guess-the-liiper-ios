@@ -53,4 +53,7 @@ you can access with a Github account and access to the Liip organisation.
  * Highscore
 
 
+# Android
+to run android simulator
+`react-native run-android`
 

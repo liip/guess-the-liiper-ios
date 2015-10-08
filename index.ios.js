@@ -75,6 +75,7 @@ var styles = StyleSheet.create({
   // Style the whole content below the title bar.
   itemWrapper: {
     backgroundColor: 'transparent',
+    paddingTop: 64,
   },
 });
 

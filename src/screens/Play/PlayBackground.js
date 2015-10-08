@@ -29,7 +29,6 @@ var styles = StyleSheet.create({
     flexDirection: 'column',
     padding: 10,
     margin: 10,
-    marginTop: 74,
     backgroundColor: 'rgba(255,255,255,0.9)',
     borderRadius: 5,
   }

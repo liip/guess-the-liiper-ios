@@ -19,7 +19,7 @@ var resultMock = {
 var defaults = {
   game: {
     "gameid": "4365c3c9315caed5fe43707e2c6ed35e",
-    "picture": "http:\/\/guess.liip.ch\/picture\/44\/200\/true\/image.png",
+    "picture": "http://guess.liip.ch/picture/44/200/true/image.png",
     "persons": [
       {
         "name": "Christian Stocker",

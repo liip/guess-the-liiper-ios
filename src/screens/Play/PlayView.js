@@ -43,6 +43,10 @@ var PlayView = React.createClass({
     },
   },
 
+  componentDidMount: function() {
+    this.startProgress();
+  },
+
   startProgress: function() {
     this.refs['progress-bar'].restart();
   },
@@ -52,7 +56,6 @@ var PlayView = React.createClass({
     var game: Game = this.props.game;
     // Dependend on screen height.
     var avatarDiameter = Math.round(Dimensions.get('window').height / 3);
-
     return (
       <PlayBackground>
 
@@ -61,8 +64,7 @@ var PlayView = React.createClass({
               <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
                 {(complete) => (
                     <View style={{width: avatarDiameter, height: avatarDiameter}}>
-                      <ProgressCircle fill={Variables.GREY0} style={styles.progressCircle} complete={100} diameter={avatarDiameter} />
-                      <ProgressCircle fill={Variables.GREEN270} style={styles.progressCircle} complete={complete} diameter={avatarDiameter} />
+                        <ProgressCircle fill={Variables.GREEN270} style={styles.progressCircle} complete={complete} diameter={avatarDiameter} />
                     </View>
                 )}
               </ProgressAnimation>

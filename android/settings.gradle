@@ -1,3 +1,6 @@
 rootProject.name = 'guess_the_liiper'
 
 include ':app'
+
+include ':reactcircleview', ':app'
+project(':reactcircleview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-circle-view')

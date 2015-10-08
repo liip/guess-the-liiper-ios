@@ -21,10 +21,30 @@ var {
   LoggedOut
 } = require('./src/screens/Login/LoginScreenExamples');
 
+var {
+  PlayingNoAnswer,
+  PlayingWrongAnswer,
+  PlayingRightAnswer,
+} = require('./src/screens/Play/PlayScreenExamples');
+
+var {
+  Highscore,
+} = require('./src/screens/Highscore/HighscoreScreenExamples');
+
+var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
+
+var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
+var LaunchView = require('./src/UI/LaunchView');
+
+
+
+
+
+var StartComponent = PlayingNoAnswer;
 
 var App = React.createClass({
   render: function() {
-    return <LoginScreen />
+    return <StartComponent />
   }
 });
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Guess.app"
-               BlueprintName = "Guess"
+               BuildableName = "guess_the_liiper.app"
+               BlueprintName = "guess_the_liiper"
                ReferencedContainer = "container:guess_the_liiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -57,8 +57,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Guess.app"
-            BlueprintName = "Guess"
+            BuildableName = "guess_the_liiper.app"
+            BlueprintName = "guess_the_liiper"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Guess.app"
-            BlueprintName = "Guess"
+            BuildableName = "guess_the_liiper.app"
+            BlueprintName = "guess_the_liiper"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -99,8 +99,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Guess.app"
-            BlueprintName = "Guess"
+            BuildableName = "guess_the_liiper.app"
+            BlueprintName = "guess_the_liiper"
             ReferencedContainer = "container:guess_the_liiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

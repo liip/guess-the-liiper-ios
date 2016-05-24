@@ -4,13 +4,13 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
   div,
   AppRegistry,
   NavigatorIOS,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 var LoginScreen = require('./src/screens/Login/LoginScreen');
 
@@ -50,8 +50,8 @@ var StartComponent = LoginScreen;
  * Main application container defining
  * navigation and routing.
  */
-var App = React.createClass({
-  render: function() {
+class App extends Component {
+  render() {
     return (
         <NavigatorIOS
           style={styles.container}
@@ -63,7 +63,7 @@ var App = React.createClass({
         />
     );
   }
-});
+};
 
 // Styles
 var styles = StyleSheet.create({

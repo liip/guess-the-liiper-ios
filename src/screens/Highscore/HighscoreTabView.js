@@ -1,10 +1,10 @@
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
   StyleSheet,
   TabBarIOS,
   Text,
   View,
-} = React;
+} from 'react-native';
 var {
   Icon
 } = require('../../GuessUI');

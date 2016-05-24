@@ -1,8 +1,8 @@
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
   View,
   StyleSheet
-} = React;
+} from 'react-native';
 
 /**
  * Groups children in a grid.

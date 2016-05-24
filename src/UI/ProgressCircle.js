@@ -1,4 +1,4 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var Wedge = require('./Wedge');
 var ReactART = require('ReactNativeART');
 var Variables = require('../Variables');

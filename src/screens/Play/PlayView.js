@@ -1,15 +1,15 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react'
 var Variables = require('../../Variables');
-var {
+import {
   Image,
   StyleSheet,
   View,
   LayoutAnimation,
   Dimensions
-} = React;
+} from 'react-native';
 var {
   Button,
   Grid,

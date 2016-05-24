@@ -1,6 +1,6 @@
 var GuessApi = require('../../GuessApi');
 var {Button} = require('../../GuessUI');
-var React = require('react-native');
+import React, { Component } from 'react'
 var HighscoreScreen = require('./HighscoreScreen');
 
 var Highscore = React.createClass({
@@ -16,5 +16,3 @@ var Highscore = React.createClass({
 module.exports = {
   Highscore: Highscore,
 };
-
-

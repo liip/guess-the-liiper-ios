@@ -1,8 +1,8 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-var {ActivityIndicatorIOS} = React;
+import React, { Component } from 'react'
+import {ActivityIndicatorIOS} from 'react-native';
 var GuessApi = require('../../GuessApi');
 var PlayView = require('./PlayView');
 var PlayLoadingView = require('./PlayLoadingView');
@@ -88,5 +88,7 @@ var PlayScreen = React.createClass({
   },
 
 });
+
+console.log('ololo')
 
 module.exports = PlayScreen;

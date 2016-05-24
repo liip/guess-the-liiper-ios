@@ -1,4 +1,4 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var {
   ProgressBarAnimation,
 } = require('./GuessUI');
@@ -22,6 +22,3 @@ var CircularProgressAnimationExample = React.createClass({
 module.exports = {
   CircularProgressAnimationExample: CircularProgressAnimationExample
 };
-
-
-

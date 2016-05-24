@@ -6,7 +6,7 @@
  */
 'use strict';
 
-var { createIconSet } = require('react-native-vector-icons');
+import { createIconSet } from 'react-native-vector-icons';
 
 // See demo on:
 // https://www.liip.ch/bundles/liipchcore/webfonts/LiipIconFont/demo.html
@@ -247,7 +247,6 @@ var glyphMap = {
   "Help": 59113,
   "Gearwheel": 59114,
   "Api": 59115,
-
   "liip": 59054,
   "check": 58949
 };
@@ -256,4 +255,3 @@ var LiipIconFont = createIconSet(glyphMap, 'LiipIconFont');
 
 module.exports = LiipIconFont;
 module.exports.glyphMap = glyphMap;
-

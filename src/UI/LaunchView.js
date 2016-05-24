@@ -1,7 +1,7 @@
 /* @flow */
-var React = require('react-native');
+import React, { Component } from 'react'
 var Variables = require('../Variables');
-var { StyleSheet, StatusBarIOS, View, Text, Image} = React;
+import { StyleSheet, StatusBarIOS, View, Text, Image} from 'react-native';
 var { FaceGridBackground, ScrollView, Button, Link } = require('../GuessUI');
 
 var LaunchView = React.createClass({
@@ -26,4 +26,5 @@ var LaunchView = React.createClass({
 var styles = StyleSheet.create({
 
 });
+
 module.exports = LaunchView;

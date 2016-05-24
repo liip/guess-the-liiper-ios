@@ -1,8 +1,8 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
-var { ActivityIndicatorIOS, StyleSheet, View } = React;
+import React, { Component } from 'react'
+import { ActivityIndicatorIOS, StyleSheet, View } from 'react-native';
 var PlayBackground = require('./PlayBackground');
 
 var PlayLoadingView = React.createClass({

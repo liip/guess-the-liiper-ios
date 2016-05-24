@@ -1,7 +1,7 @@
 /* @flow */
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react'
 var GuessApi = require('../../GuessApi');
 var ResultView = require('./ResultView');
 var PlayLoadingView = require('./PlayLoadingView');

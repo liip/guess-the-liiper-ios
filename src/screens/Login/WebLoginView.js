@@ -1,13 +1,14 @@
 'use strict';
-var React = require('react-native');
+console.log('WebLoginView');
+import React, { Component } from 'react'
 var LoginView = require('./LoginView');
-var {
+import {
   ActivityIndicatorIOS,
   Text,
   View,
   WebView,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 module.exports = React.createClass({
   propTypes: {
@@ -63,3 +64,5 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+console.log('WebLoginView');

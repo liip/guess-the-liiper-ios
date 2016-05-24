@@ -1,4 +1,4 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var TimerMixin = require('react-timer-mixin');
 
 var ProgressBarAnimation = React.createClass({

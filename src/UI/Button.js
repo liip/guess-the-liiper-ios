@@ -1,11 +1,11 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var Variables = require('../Variables');
-var {
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
   Dimensions
-} = React;
+} from 'react-native';
 
 var Button = React.createClass({
 

@@ -1,7 +1,8 @@
 /* @flow */
-var React = require('react-native');
+console.log('LoginView');
+import React, { Component } from 'react'
 var Variables = require('../../Variables');
-var { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } = React;
+import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native';
 var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI');
 
 var LoginView = React.createClass({
@@ -128,5 +129,7 @@ var styles = StyleSheet.create({
     height: 0
   },
 });
+
+console.log('LoginView');
 
 module.exports = LoginView;

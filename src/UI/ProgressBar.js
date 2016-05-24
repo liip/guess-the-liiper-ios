@@ -1,9 +1,9 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var Variables = require('../Variables');
-var {
+import {
   StyleSheet,
   View,
-} = React;
+} from 'react-native';
 
 var ProgressBar = React.createClass({
   propTypes: {

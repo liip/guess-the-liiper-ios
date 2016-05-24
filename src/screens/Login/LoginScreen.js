@@ -7,31 +7,31 @@ var {Button} = require('../../GuessUI');
 var LoginView = require('./LoginView');
 var TimerMixin = require('react-timer-mixin');
 var HighscoreScreen = require('../Highscore/HighscoreScreen');
-var React = require('react-native');
-var {View} = React;
+import React, { Component } from 'react'
+import {View} from 'react-native';
 var WebLoginView = require('./WebLoginView');
 
-class LoginScreen extends Component {
-  // mixins: [TimerMixin],
-  //
-  // statics: {
-  //   title: 'Guess the Liiper'
-  // },
+var LoginScreen = React.createClass({
+  mixins: [TimerMixin],
 
-  componentDidMount() {
+  statics: {
+    title: 'Guess the Liiper'
+  },
+
+  componentDidMount: function() {
     this.testAuth();
-  }
+  },
 
-  getInitialState() {
+  getInitialState: function() {
     return {
       loggedIn: false,
       showWebView: false,
       loading: true,
       authUrl: null,
     };
-  }
+  },
 
-  render() {
+  render: function() {
     var webView;
     if (this.state.authUrl) {
       webView = (
@@ -56,9 +56,9 @@ class LoginScreen extends Component {
         {webView}
       </LoginView>
     );
-  }
+  },
 
-  onLoginPressed() {
+  onLoginPressed: function() {
     return GuessApi.authUrl()
       .then((authUrl) => {
         this.setState({
@@ -67,31 +67,31 @@ class LoginScreen extends Component {
         });
       })
       .catch(console.error);
-  }
+  },
 
-  onHighscorePressed() {
+  onHighscorePressed: function() {
     this.props.navigator.push({
       title: HighscoreScreen.title,
       component: HighscoreScreen,
       backButtonTitle: 'Back',
     });
-  }
+  },
 
-  onLogoutPressed() {
+  onLogoutPressed: function() {
     return GuessApi.logout()
       .then(() => this.setState({authUrl: null, loggedIn: false}));
-  }
+  },
 
-  onPlayPressed () {
+  onPlayPressed: function () {
     var PlayScreen = require('../Play/PlayScreen');
     this.props.navigator.push({
       title: PlayScreen.title,
       component: PlayScreen,
       backButtonTitle: 'Back',
     });
-  }
+  },
 
-  onWebLoginUrlChange(state: Object) {
+  onWebLoginUrlChange: function(state: Object) {
     // Show the webview in case we don't get an answer within x sec.
     this.whenInactiveShowWebview();
 
@@ -105,14 +105,14 @@ class LoginScreen extends Component {
       this.setState({authUrl: null, showWebView: false});
       this.testAuth();
     }
-  }
+  },
 
-  isUserActionRequired(state) {
+  isUserActionRequired: function(state) {
     return GuessApi.isRequestForPermission(state.title)
         || GuessApi.isSignIn(state.title);
-  }
+  },
 
-  whenInactiveShowWebview() {
+  whenInactiveShowWebview: function() {
     if (this.timeout) {
       this.clearTimeout(this.timeout);
     }
@@ -120,16 +120,18 @@ class LoginScreen extends Component {
     this.timeout = this.setTimeout(() => {
       this.setState({showWebView: true});
     }, 3000);
-  }
+  },
 
-  testAuth() {
+  testAuth: function() {
     return GuessApi.testAuth()
       .then(loggedIn => this.setState({
         loggedIn: loggedIn,
         loading: false
       }));
-  }
+  },
 
-}
+});
+
+console.log('Login Screeen');
 
 module.exports = LoginScreen;

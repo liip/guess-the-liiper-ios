@@ -1,9 +1,9 @@
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
     View,
     Image,
     StyleSheet,
-} = React;
+} from 'react-native';
 
 /**
  * An avatar shows a picture of a person with rounded corners.

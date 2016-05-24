@@ -1,11 +1,11 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react';
 
-var {
+import {
   StyleSheet,
   View,
-} = React;
+} from 'react-native';
 
 var {
   FaceGridBackground

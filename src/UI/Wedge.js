@@ -1,4 +1,4 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var ReactART = require('ReactNativeART');
 var {
   Surface,
@@ -6,9 +6,9 @@ var {
   Group,
   Shape,
   } = ReactART;
-var {
+import {
   View,
-} = React;
+} from 'react-native';
 var Wedge = React.createClass({
 
   propTypes: {

@@ -2,14 +2,14 @@ var {
   Button,
   Headline
 } = require('../../GuessUI');
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
   View,
   ListView,
   Text,
   Image,
   StyleSheet
-} = React;
+} from 'react-native';
 
 var HighscoreListView = React.createClass({
 

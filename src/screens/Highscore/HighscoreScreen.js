@@ -1,6 +1,6 @@
 var GuessApi = require('../../GuessApi');
 var {Button} = require('../../GuessUI');
-var React = require('react-native');
+import React, { Component } from 'react'
 var {Text} = React;
 var HighscoreView = require('./HighscoreView');
 

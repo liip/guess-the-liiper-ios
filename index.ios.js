@@ -78,4 +78,6 @@ var styles = StyleSheet.create({
   },
 });
 
+console.log('index.ios.js')
+
 AppRegistry.registerComponent('guess_the_liiper', () => App);

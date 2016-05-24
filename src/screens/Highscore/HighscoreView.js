@@ -3,15 +3,15 @@ var {
   Headline,
   FaceGridBackground
 } = require('../../GuessUI');
-var React = require('react-native');
-var {
+import React, { Component } from 'react'
+import {
   ActivityIndicatorIOS,
   View,
   ListView,
   Text,
   Image,
   StyleSheet
-} = React;
+} from 'react-native';
 var Variables = require('../../Variables');
 
 var HighscoreTabView = require('./HighscoreTabView');

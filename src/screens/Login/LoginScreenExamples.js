@@ -1,4 +1,4 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var LoginView = require('./LoginView');
 
 var defaults = {
@@ -24,10 +24,11 @@ var LoginLoading = React.createClass({
     return <LoginView {...defaults} loading={true} />;
   }
 });
+
+console.log('LoginScreenExamples');
+
 module.exports = {
   LoggedIn: LoggedIn,
   LoginLoading: LoginLoading,
   LoggedOut: LoggedOut,
 };
-
-

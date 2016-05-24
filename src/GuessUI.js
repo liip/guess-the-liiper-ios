@@ -1,12 +1,12 @@
 /* @flow */
 'use strict';
-
-var React = require('react-native');
+console.log('GuessUI');
+import React, { Component } from 'react'
 var Variables = require('./Variables');
-var {
+import {
   Image,
   StyleSheet,
-} = React;
+} from 'react-native';
 
 
 var ScrollView = React.createClass({
@@ -51,3 +51,5 @@ module.exports = {
   Icon: require('./UI/LiipIconFont'),
   Link: require('./UI/Link'),
 };
+
+console.log('GuessUI end');

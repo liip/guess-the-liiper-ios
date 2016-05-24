@@ -1,10 +1,10 @@
-var React = require('react-native');
+import React, { Component } from 'react'
 var Variables = require('../Variables');
-var {
+import {
   StyleSheet,
   Text,
   TouchableHighlight,
-} = React;
+} from 'react-native';
 
 var Link = React.createClass({
   render: function() {

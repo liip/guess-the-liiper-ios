@@ -11,27 +11,27 @@ var React = require('react-native');
 var {View} = React;
 var WebLoginView = require('./WebLoginView');
 
-var LoginScreen = React.createClass({
-  mixins: [TimerMixin],
+class LoginScreen extends Component {
+  // mixins: [TimerMixin],
+  //
+  // statics: {
+  //   title: 'Guess the Liiper'
+  // },
 
-  statics: {
-    title: 'Guess the Liiper'
-  },
-
-  componentDidMount: function() {
+  componentDidMount() {
     this.testAuth();
-  },
+  }
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       loggedIn: false,
       showWebView: false,
       loading: true,
       authUrl: null,
     };
-  },
+  }
 
-  render: function() {
+  render() {
     var webView;
     if (this.state.authUrl) {
       webView = (
@@ -56,9 +56,9 @@ var LoginScreen = React.createClass({
         {webView}
       </LoginView>
     );
-  },
+  }
 
-  onLoginPressed: function() {
+  onLoginPressed() {
     return GuessApi.authUrl()
       .then((authUrl) => {
         this.setState({
@@ -67,31 +67,31 @@ var LoginScreen = React.createClass({
         });
       })
       .catch(console.error);
-  },
+  }
 
-  onHighscorePressed: function() {
+  onHighscorePressed() {
     this.props.navigator.push({
       title: HighscoreScreen.title,
       component: HighscoreScreen,
       backButtonTitle: 'Back',
     });
-  },
+  }
 
-  onLogoutPressed: function() {
+  onLogoutPressed() {
     return GuessApi.logout()
       .then(() => this.setState({authUrl: null, loggedIn: false}));
-  },
+  }
 
-  onPlayPressed: function () {
+  onPlayPressed () {
     var PlayScreen = require('../Play/PlayScreen');
     this.props.navigator.push({
       title: PlayScreen.title,
       component: PlayScreen,
       backButtonTitle: 'Back',
     });
-  },
+  }
 
-  onWebLoginUrlChange: function(state: Object) {
+  onWebLoginUrlChange(state: Object) {
     // Show the webview in case we don't get an answer within x sec.
     this.whenInactiveShowWebview();
 
@@ -105,14 +105,14 @@ var LoginScreen = React.createClass({
       this.setState({authUrl: null, showWebView: false});
       this.testAuth();
     }
-  },
+  }
 
-  isUserActionRequired: function(state) {
+  isUserActionRequired(state) {
     return GuessApi.isRequestForPermission(state.title)
         || GuessApi.isSignIn(state.title);
-  },
+  }
 
-  whenInactiveShowWebview: function() {
+  whenInactiveShowWebview() {
     if (this.timeout) {
       this.clearTimeout(this.timeout);
     }
@@ -120,16 +120,16 @@ var LoginScreen = React.createClass({
     this.timeout = this.setTimeout(() => {
       this.setState({showWebView: true});
     }, 3000);
-  },
+  }
 
-  testAuth: function() {
+  testAuth() {
     return GuessApi.testAuth()
       .then(loggedIn => this.setState({
         loggedIn: loggedIn,
         loading: false
       }));
-  },
+  }
 
-});
+}
 
 module.exports = LoginScreen;

@@ -13,7 +13,6 @@
     "react-timer-mixin": "^0.13.3"
   },
   "devDependencies": {
-    "react-native": "^0.26.1",
     "rnpm-plugin-upgrade": "^0.26.0"
   }
 }

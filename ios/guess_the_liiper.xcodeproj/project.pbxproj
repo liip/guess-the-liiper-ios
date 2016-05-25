@@ -29,6 +29,11 @@
 		65D1FDA496344D0FBA2B0B18 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9902C5D19E24FE18194799E /* Ionicons.ttf */; };
 		7BABDE94065F457288342716 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B56986C40454640BC994E78 /* Octicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		BE4F0A141CF4C93F009A5F9A /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1EE2881CF4C33F000FA791 /* libART.a */; };
+		BE4F0A191CF5D50A009A5F9A /* LFT_Etica_Bold_Liip.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE4F0A151CF5D50A009A5F9A /* LFT_Etica_Bold_Liip.otf */; };
+		BE4F0A1A1CF5D50A009A5F9A /* LFT_Etica_Book_Liip.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE4F0A161CF5D50A009A5F9A /* LFT_Etica_Book_Liip.otf */; };
+		BE4F0A1B1CF5D50A009A5F9A /* LFT_Etica_Semibold_Liip.otf in Resources */ = {isa = PBXBuildFile; fileRef = BE4F0A171CF5D50A009A5F9A /* LFT_Etica_Semibold_Liip.otf */; };
+		BE4F0A1C1CF5D50A009A5F9A /* LiipIconFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE4F0A181CF5D50A009A5F9A /* LiipIconFont.ttf */; };
 		C72A10DF1E7749588EC24ADA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E716354DD2204729B2499010 /* Foundation.ttf */; };
 		ED5723359F204BA5A24826AE /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3652B216E635430AB8E6E2B7 /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
@@ -118,6 +123,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		BE1EE2871CF4C33F000FA791 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE1EE2831CF4C33F000FA791 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +162,11 @@
 		90291FA7B77348BD8B192649 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		B3ACD24DAA304273A133CEBE /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		B9902C5D19E24FE18194799E /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		BE1EE2831CF4C33F000FA791 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		BE4F0A151CF5D50A009A5F9A /* LFT_Etica_Bold_Liip.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LFT_Etica_Bold_Liip.otf; sourceTree = "<group>"; };
+		BE4F0A161CF5D50A009A5F9A /* LFT_Etica_Book_Liip.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LFT_Etica_Book_Liip.otf; sourceTree = "<group>"; };
+		BE4F0A171CF5D50A009A5F9A /* LFT_Etica_Semibold_Liip.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LFT_Etica_Semibold_Liip.otf; sourceTree = "<group>"; };
+		BE4F0A181CF5D50A009A5F9A /* LiipIconFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LiipIconFont.ttf; sourceTree = "<group>"; };
 		E716354DD2204729B2499010 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		F3AEFBB1D59B4DD69295CB15 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4F0A141CF4C93F009A5F9A /* libART.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -289,6 +307,10 @@
 				4292D0470C2141BEA7E33FBE /* MaterialIcons.ttf */,
 				0B56986C40454640BC994E78 /* Octicons.ttf */,
 				90291FA7B77348BD8B192649 /* Zocial.ttf */,
+				BE4F0A151CF5D50A009A5F9A /* LFT_Etica_Bold_Liip.otf */,
+				BE4F0A161CF5D50A009A5F9A /* LFT_Etica_Book_Liip.otf */,
+				BE4F0A171CF5D50A009A5F9A /* LFT_Etica_Semibold_Liip.otf */,
+				BE4F0A181CF5D50A009A5F9A /* LiipIconFont.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,6 +326,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BE1EE2831CF4C33F000FA791 /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -353,6 +376,14 @@
 			isa = PBXGroup;
 			children = (
 				BE1EE2821CF4ABAD000FA791 /* libRNVectorIcons.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE1EE2841CF4C33F000FA791 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE1EE2881CF4C33F000FA791 /* libART.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -423,6 +454,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = BE1EE2841CF4C33F000FA791 /* Products */;
+					ProjectRef = BE1EE2831CF4C33F000FA791 /* ART.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -554,6 +589,13 @@
 			remoteRef = BE1EE2811CF4ABAD000FA791 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BE1EE2881CF4C33F000FA791 /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = BE1EE2871CF4C33F000FA791 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -568,13 +610,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4F0A1A1CF5D50A009A5F9A /* LFT_Etica_Book_Liip.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				BE4F0A1B1CF5D50A009A5F9A /* LFT_Etica_Semibold_Liip.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				48B9E771AD6A4B5BB5B7A1DC /* Entypo.ttf in Resources */,
 				0CEB99DD0AE54C76889A0985 /* EvilIcons.ttf in Resources */,
 				ED5723359F204BA5A24826AE /* FontAwesome.ttf in Resources */,
 				C72A10DF1E7749588EC24ADA /* Foundation.ttf in Resources */,
+				BE4F0A191CF5D50A009A5F9A /* LFT_Etica_Bold_Liip.otf in Resources */,
 				65D1FDA496344D0FBA2B0B18 /* Ionicons.ttf in Resources */,
+				BE4F0A1C1CF5D50A009A5F9A /* LiipIconFont.ttf in Resources */,
 				170604A98B274116964632E4 /* MaterialIcons.ttf in Resources */,
 				7BABDE94065F457288342716 /* Octicons.ttf in Resources */,
 				4A77AA5253A34BA1AF5E9540 /* Zocial.ttf in Resources */,

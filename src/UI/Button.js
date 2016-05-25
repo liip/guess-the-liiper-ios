@@ -60,7 +60,7 @@ var styles = StyleSheet.create({
     margin: 5,
   },
   buttonText: {
-    fontFamily: 'Helvetica',
+    fontFamily: 'Liip Etica',
     fontWeight: '500',
     color: 'white',
     fontSize: 16

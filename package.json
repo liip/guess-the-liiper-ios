@@ -1,6 +1,6 @@
 {
   "name": "guess_the_liiper",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
@@ -8,7 +8,7 @@
   "dependencies": {
     "art": "^0.10.1",
     "react": "^15.0.2",
-    "react-native": "^0.26.1",
+    "react-native": "^0.26.2",
     "react-native-vector-icons": "^2.0.2",
     "react-timer-mixin": "^0.13.3"
   },

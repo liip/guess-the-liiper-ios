@@ -4,13 +4,16 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import React, { Component } from 'react'
+
+import {
+    div,
+    AppRegistry,
+    Text,
+    // NavigatorIOS, TODO
+    StyleSheet,
+    View
+} from 'react-native';
 
 var guess_the_liiper = React.createClass({
   render: function() {

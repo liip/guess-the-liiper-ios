@@ -19,7 +19,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <WebView
-        url={this.props.url}
+        source={{uri: this.props.url}}
         backButtonEnabled={true}
         renderLoading={this.renderLoading}
         renderError={this.renderError}

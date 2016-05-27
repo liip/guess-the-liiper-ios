@@ -1,9 +1,9 @@
 /* @flow */
-console.log('LoginView');
+console.log('LoginView')
 import React, { Component } from 'react'
-var Variables = require('../../Variables');
-import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native';
-var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI');
+var Variables = require('../../Variables')
+import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native'
+var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI')
 
 var LoginView = React.createClass({
 
@@ -25,15 +25,15 @@ var LoginView = React.createClass({
   },
 
   render: function () {
-    LayoutAnimation.configureNext(this.animation);
+    LayoutAnimation.configureNext(this.animation)
 
-    var component;
+    var component
     if (this.props.loading) {
-      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />;
+      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />
     } else if (this.props.loggedIn) {
-      component = this.renderLoggedInButtons();
+      component = this.renderLoggedInButtons()
     } else {
-      component = this.renderLoggedOutButtons();
+      component = this.renderLoggedOutButtons()
     }
 
     return (
@@ -46,7 +46,7 @@ var LoginView = React.createClass({
           </View>
         </View>
       </FaceGridBackground>
-    );
+    )
   },
 
   renderLoggedInButtons: function() {
@@ -62,7 +62,7 @@ var LoginView = React.createClass({
           Logout
         </Link>
       </View>
-    );
+    )
   },
 
   renderLoggedOutButtons: function() {
@@ -78,10 +78,10 @@ var LoginView = React.createClass({
           Sign in with Google
         </Button>
       </View>
-    );
+    )
   },
 
-});
+})
 
 // Styles
 var styles = StyleSheet.create({
@@ -128,8 +128,8 @@ var styles = StyleSheet.create({
     width: 0,
     height: 0
   },
-});
+})
 
-console.log('LoginView');
+console.log('LoginView')
 
-module.exports = LoginView;
+module.exports = LoginView

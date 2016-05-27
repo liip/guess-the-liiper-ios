@@ -3,7 +3,6 @@
 
 import React, {Component} from 'react'
 var Variables = require('../../Variables')
-import {_} from 'lodash'
 import {
   Image,
   StyleSheet,
@@ -95,7 +94,7 @@ var PlayView = React.createClass({
   renderButtons: function (persons:Array<Person>):Array<ReactElement> {
     return persons.map(person =>
       <Button
-        key={_.random(0, 10000)}
+        key={Math.random()}
         style={this.getButtonStyle(person)}
         onPress={() => this.onButtonPressed(person.resultId) }>
         {person.name}

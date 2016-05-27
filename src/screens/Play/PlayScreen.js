@@ -2,12 +2,13 @@
 'use strict';
 
 import React, { Component } from 'react'
-import {ActivityIndicatorIOS} from 'react-native';
-var GuessApi = require('../../GuessApi');
-var PlayView = require('./PlayView');
-var PlayLoadingView = require('./PlayLoadingView');
-var PlayBackground = require('./PlayBackground');
-import type {GameResult} from '../../GuessDomain';
+import {ActivityIndicatorIOS} from 'react-native'
+import {_} from 'lodash'
+var GuessApi = require('../../GuessApi')
+var PlayView = require('./PlayView')
+var PlayLoadingView = require('./PlayLoadingView')
+var PlayBackground = require('./PlayBackground')
+import type {GameResult} from '../../GuessDomain'
 
 var PlayScreen = React.createClass({
   statics: {
@@ -35,6 +36,7 @@ var PlayScreen = React.createClass({
 
     return (
       <PlayView
+        key={_.random(0,1000)}
         game={this.state.game}
         gameResults={this.state.gameResults}
         onGuess={this.onGuess}

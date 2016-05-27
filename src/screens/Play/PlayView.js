@@ -94,6 +94,7 @@ var PlayView = React.createClass({
   renderButtons: function(persons :Array<Person>) :Array<ReactElement> {
     return persons.map(person =>
         <Button
+          key={Math.random()}
           style={this.getButtonStyle(person)}
           onPress={() => this.onButtonPressed(person.resultId) }>
           {person.name}

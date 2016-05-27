@@ -4,11 +4,11 @@ import {
   TabBarIOS,
   Text,
   View,
-} from 'react-native';
+} from 'react-native'
 var {
   Icon
 } = require('../../GuessUI');
-var Variables = require('../../Variables');
+var Variables = require('../../Variables')
 
 var HighscoreTabView = React.createClass({
 

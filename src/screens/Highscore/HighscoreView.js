@@ -11,7 +11,7 @@ import {
   Text,
   Image,
   StyleSheet
-} from 'react-native';
+} from 'react-native'
 var Variables = require('../../Variables');
 
 var HighscoreTabView = require('./HighscoreTabView');

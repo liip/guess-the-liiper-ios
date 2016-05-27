@@ -3,7 +3,6 @@
 
 import React, { Component } from 'react'
 import {ActivityIndicatorIOS} from 'react-native'
-import {_} from 'lodash'
 var GuessApi = require('../../GuessApi')
 var PlayView = require('./PlayView')
 var PlayLoadingView = require('./PlayLoadingView')
@@ -36,7 +35,6 @@ var PlayScreen = React.createClass({
 
     return (
       <PlayView
-        key={_.random(0,1000)}
         game={this.state.game}
         gameResults={this.state.gameResults}
         onGuess={this.onGuess}

@@ -9,7 +9,7 @@ import {
   View,
   LayoutAnimation,
   Dimensions
-} from 'react-native';
+} from 'react-native'
 var {
   Button,
   Grid,
@@ -164,6 +164,9 @@ var styles = StyleSheet.create({
   },
   continueContainer: {
     flex: 1
+  },
+  progressCircle: {
+    position: 'absolute',
   },
   buttonDefault: {
     backgroundColor: Variables.GREYRGBA80,

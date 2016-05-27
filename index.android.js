@@ -10,28 +10,63 @@ import {
     div,
     AppRegistry,
     Text,
-    // NavigatorIOS, TODO
+    BackAndroid,
+    Navigator,
     StyleSheet,
     View
-} from 'react-native';
+} from 'react-native'
 
-var guess_the_liiper = React.createClass({
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+var LoginScreen = require('./src/screens/Login/LoginScreen')
+//var LaunchView = require('./src/UI/LaunchView');
+
+var {
+    LoggedIn,
+    LoginLoading,
+    LoggedOut
+} = require('./src/screens/Login/LoginScreenExamples')
+
+var {
+    PlayingNoAnswer,
+    PlayingWrongAnswer,
+    PlayingRightAnswer,
+} = require('./src/screens/Play/PlayScreenExamples')
+
+var {
+    Highscore,
+} = require('./src/screens/Highscore/HighscoreScreenExamples')
+
+var {CircularProgressAnimationExample} = require('./src/GuessUIExamples')
+
+var ResultScreenExample = require('./src/screens/Play/ResultScreenExample')
+var LaunchView = require('./src/UI/LaunchView')
+
+BackAndroid.addEventListener('hardwareBackPress', () => {
+    if (_navigator.getCurrentRoutes().length === 1) {
+        return false
+    }
+
+    _navigator.pop()
+    return true
 });
+
+var StartComponent = LoginScreen;
+var _navigator;
+
+
+var App = React.createClass({
+    renderScene: function(route, navigator) {
+        _navigator = navigator;
+        return <route.component navigator={navigator} />;
+    },
+
+    render: function() {
+        return (
+            <Navigator
+                initialRoute = {{id: 'Home', component: LoginScreen }}
+                configureScene={() => Navigator.SceneConfigs.FloatFromRight}
+                renderScene={this.renderScene} />)
+    }
+})
 
 var styles = StyleSheet.create({
   container: {
@@ -50,6 +85,6 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
 
-AppRegistry.registerComponent('guess_the_liiper', () => guess_the_liiper);
+AppRegistry.registerComponent('guess_the_liiper', () => App)

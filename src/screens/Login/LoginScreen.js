@@ -2,14 +2,14 @@
  * @flow
  */
 
-var GuessApi = require('../../GuessApi');
-var {Button} = require('../../GuessUI');
-var LoginView = require('./LoginView');
-var TimerMixin = require('react-timer-mixin');
-var HighscoreScreen = require('../Highscore/HighscoreScreen');
+var GuessApi = require('../../GuessApi')
+var {Button} = require('../../GuessUI')
+var LoginView = require('./LoginView')
+var TimerMixin = require('react-timer-mixin')
+var HighscoreScreen = require('../Highscore/HighscoreScreen')
 import React, { Component } from 'react'
-import {View} from 'react-native';
-var WebLoginView = require('./WebLoginView');
+import {View} from 'react-native'
+var WebLoginView = require('./WebLoginView')
 
 var LoginScreen = React.createClass({
   mixins: [TimerMixin],
@@ -19,7 +19,7 @@ var LoginScreen = React.createClass({
   },
 
   componentDidMount: function() {
-    this.testAuth();
+    this.tryAuth()
   },
 
   getInitialState: function() {
@@ -28,20 +28,20 @@ var LoginScreen = React.createClass({
       showWebView: false,
       loading: true,
       authUrl: null,
-    };
+    }
   },
 
   render: function() {
-    var webView;
+    var webView
     if (this.state.authUrl) {
       webView = (
         <WebLoginView
           url={this.state.authUrl}
           onUrlChange={this.onWebLoginUrlChange} />
-      );
+      )
 
       if (this.state.showWebView) {
-        return webView;
+        return webView
       }
     }
 
@@ -55,7 +55,7 @@ var LoginScreen = React.createClass({
         onPlayPressed={this.onPlayPressed}>
         {webView}
       </LoginView>
-    );
+    )
   },
 
   onLoginPressed: function() {
@@ -64,9 +64,9 @@ var LoginScreen = React.createClass({
         this.setState({
           authUrl: authUrl,
           loading: true
-        });
+        })
       })
-      .catch(console.error);
+      .catch(console.error)
   },
 
   onHighscorePressed: function() {
@@ -74,64 +74,64 @@ var LoginScreen = React.createClass({
       title: HighscoreScreen.title,
       component: HighscoreScreen,
       backButtonTitle: 'Back',
-    });
+    })
   },
 
   onLogoutPressed: function() {
     return GuessApi.logout()
-      .then(() => this.setState({authUrl: null, loggedIn: false}));
+      .then(() => this.setState({authUrl: null, loggedIn: false}))
   },
 
   onPlayPressed: function () {
-    var PlayScreen = require('../Play/PlayScreen');
+    var PlayScreen = require('../Play/PlayScreen')
     this.props.navigator.push({
       title: PlayScreen.title,
       component: PlayScreen,
       backButtonTitle: 'Back',
-    });
+    })
   },
 
   onWebLoginUrlChange: function(state: Object) {
     // Show the webview in case we don't get an answer within x sec.
-    this.whenInactiveShowWebview();
+    this.whenInactiveShowWebview()
 
     if (this.isUserActionRequired(state)) {
-      this.clearTimeout(this.timeout);
-      return this.setState({showWebView: true});
+      this.clearTimeout(this.timeout)
+      return this.setState({showWebView: true})
     }
 
     if (GuessApi.isStartPage(state.url)) {
-      this.clearTimeout(this.timeout);
-      this.setState({authUrl: null, showWebView: false});
-      this.testAuth();
+      this.clearTimeout(this.timeout)
+      this.setState({authUrl: null, showWebView: false})
+      this.tryAuth()
     }
   },
 
   isUserActionRequired: function(state) {
     return GuessApi.isRequestForPermission(state.title)
-        || GuessApi.isSignIn(state.title);
+        || GuessApi.isSignIn(state.title)
   },
 
   whenInactiveShowWebview: function() {
     if (this.timeout) {
-      this.clearTimeout(this.timeout);
+      this.clearTimeout(this.timeout)
     }
 
     this.timeout = this.setTimeout(() => {
-      this.setState({showWebView: true});
-    }, 3000);
+      this.setState({showWebView: true})
+    }, 3000)
   },
 
-  testAuth: function() {
+  tryAuth: function() {
     return GuessApi.testAuth()
       .then(loggedIn => this.setState({
         loggedIn: loggedIn,
         loading: false
-      }));
+      }))
   },
 
-});
+})
 
-console.log('Login Screeen');
+console.log('Login Screeen')
 
-module.exports = LoginScreen;
+module.exports = LoginScreen

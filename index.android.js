@@ -54,10 +54,10 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
   return true
 });
 
-var StartComponent = LoginScreen;
-var _navigator;
+var StartComponent = LoginScreen
+var _navigator
 
-
+//TODO check remove navigator hack
 var App = React.createClass({
   renderScene: function (route, navigator) {
     _navigator = navigator;
@@ -76,9 +76,9 @@ var App = React.createClass({
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: '#F5FCFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
@@ -90,6 +90,10 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  // Style the whole content below the title bar.
+  // itemWrapper: {
+  //   backgroundColor: 'transparent',
+  // },
 })
 
 AppRegistry.registerComponent('guess_the_liiper', () => App)

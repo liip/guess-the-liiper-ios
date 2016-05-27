@@ -35,7 +35,7 @@ var FaceGridBackground =  React.createClass({
 var styles = StyleSheet.create({
   faceGridBackground: {
     flex: 1,
-    resizeMode: Image.resizeMode.cover,
+    // resizeMode: Image.resizeMode.cover,
   },
 });
 
@@ -50,6 +50,6 @@ module.exports = {
   ScrollView: ScrollView,
   Icon: require('./UI/LiipIconFont'),
   Link: require('./UI/Link'),
-};
+}
 
 console.log('GuessUI end');

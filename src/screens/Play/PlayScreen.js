@@ -89,6 +89,6 @@ var PlayScreen = React.createClass({
 
 });
 
-console.log('ololo')
+console.log('PlayScreenEnd')
 
 module.exports = PlayScreen;

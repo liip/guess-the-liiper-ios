@@ -26,6 +26,16 @@ react-native run-ios
 
 Press `%` + `D` in the simulator for debugging options.
 
+### Android
+
+```
+react-native run-android
+```
+
+For access to debugging menu on Android devices via shaking gesture, 
+please install [Frappe](https://github.com/niftylettuce/frappe)
+
+
 ## Distribution
 
 Travis CI is configured to automatically deploy the app to the

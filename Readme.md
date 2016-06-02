@@ -10,6 +10,7 @@ This is a test project to explore React Native.
 
  * node and npm
  * watchman `brew install watchman`
+ * flow `brew install flow`
  * XCode
 
 ## Installation

@@ -58,42 +58,38 @@ var StartComponent = LoginScreen
 var _navigator
 
 //TODO check remove navigator hack
-var App = React.createClass({
-  renderScene: function (route, navigator) {
+class App extends Component {
+  renderScene(route, navigator) {
     _navigator = navigator;
     return <route.component navigator={navigator}/>;
-  },
+  }
 
-  render: function () {
+  render() {
     return (
       <Navigator
-        initialRoute={{id: 'Home', component: LoginScreen }}
+        initialRoute={{
+          id: 'Home',
+          title: StartComponent.title || 'Guess the Liiper',
+          component: LoginScreen
+        }}
         configureScene={() => Navigator.SceneConfigs.FloatFromRight}
-        renderScene={this.renderScene}/>)
+        renderScene={this.renderScene}
+        itemWrapperStyle={styles.itemWrapper}
+      />
+    )
   }
-})
+}
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
   // Style the whole content below the title bar.
-  // itemWrapper: {
-  //   backgroundColor: 'transparent',
-  // },
+  itemWrapper: {
+    backgroundColor: 'transparent',
+  },
 })
+
+console.log('index.android.js')
 
 AppRegistry.registerComponent('guess_the_liiper', () => App)

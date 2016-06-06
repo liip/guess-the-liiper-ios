@@ -49,6 +49,7 @@ var HighscoreTabView = React.createClass({
               title={tab.title}
               iconName={tab.icon}
               selected={this.state.selectedTab === tab.id}
+              key={Math.random()}
               onPress={() => {
                 this.props.onTabSwitch(tab.id);
                 this.setState({selectedTab: tab.id });

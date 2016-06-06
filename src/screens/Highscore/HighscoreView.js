@@ -35,12 +35,14 @@ var HighscoreView = React.createClass({
   render: function() {
     var component;
     if (this.props.loaded) {
+      console.log('rendering')
       component = (
           <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
             <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore} />
           </HighscoreTabView>
       );
     } else {
+      console.log('rendering')
       component = this.renderLoading();
     }
 

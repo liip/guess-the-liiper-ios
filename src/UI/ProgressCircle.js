@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-var Wedge = require('./Wedge');
-var ReactART = require('ReactNativeART');
-var Variables = require('../Variables');
-var { Surface } = ReactART;
+var Wedge = require('./Wedge')
+var Variables = require('../Variables')
+import { Surface } from 'ReactNativeART'
 
 var ProgressCircle = React.createClass({
   propTypes: {
@@ -72,6 +71,7 @@ var ProgressCircle = React.createClass({
   /**
    * Returns the angle of the wedge depending on the
    * completion percentage of the progress circle.
+   * It ranges [14.5, 371.9]
    *
    * @returns {number} Angle depending on completion percentage.
    */

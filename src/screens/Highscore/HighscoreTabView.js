@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 var {
   Icon
-} = require('../../GuessUI');
+} = require('../../GuessUI')
 var Variables = require('../../Variables')
 
 var HighscoreTabView = React.createClass({
@@ -19,27 +19,11 @@ var HighscoreTabView = React.createClass({
   getInitialState: function() {
     return {
       selectedTab: 'resultsMonth',
-    };
+    }
   },
 
   render: function () {
-    const tabs = [
-      {
-        title: "Last month",
-        icon: 'uni26',
-        id: 'resultsMonth'
-      },
-      {
-        title: "Last year",
-        icon: 'uni27',
-        id: 'resultsYear'
-      },
-      {
-        title: "All time",
-        icon: 'uni23',
-        id: 'resultsAllover'
-      }
-    ];
+    const tabs = Variables.highScore.tabs
 
     return (
       <TabBarIOS
@@ -51,17 +35,17 @@ var HighscoreTabView = React.createClass({
               selected={this.state.selectedTab === tab.id}
               key={Math.random()}
               onPress={() => {
-                this.props.onTabSwitch(tab.id);
-                this.setState({selectedTab: tab.id });
+                this.props.onTabSwitch(tab.id)
+                this.setState({selectedTab: tab.id })
               }}>
             {this.props.children}
-            </Icon.TabBarItem>
+          </Icon.TabBarItem>
         )}
       </TabBarIOS>
-    );
+    )
   }
 
-});
+})
 
 var styles = StyleSheet.create({
   tabContent: {
@@ -72,7 +56,7 @@ var styles = StyleSheet.create({
     color: 'white',
     margin: 50,
   },
-});
+})
 
 
-module.exports = HighscoreTabView;
+module.exports = HighscoreTabView

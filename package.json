@@ -10,6 +10,7 @@
     "lodash": "^4.13.1",
     "react": "^15.0.2",
     "react-native": "^0.26.2",
+    "react-native-scrollable-tab-view": "^0.4.3",
     "react-native-vector-icons": "^2.0.2",
     "react-timer-mixin": "^0.13.3"
   },

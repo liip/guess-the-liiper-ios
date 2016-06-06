@@ -1,28 +1,23 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   StyleSheet,
   TabBarIOS,
   Text,
   View,
 } from 'react-native'
-var {
-  Icon
-} = require('../../GuessUI')
-var Variables = require('../../Variables')
+import {Icon} from '../../GuessUI'
+import * as Variables from '../../Variables'
 
-var HighscoreTabView = React.createClass({
+class HighscoreTabView extends Component {
 
-  propTypes: {
-    onTabSwitch: React.PropTypes.func.isRequired
-  },
-
-  getInitialState: function() {
-    return {
+  constructor(props) {
+    super(props)
+    this.state = {
       selectedTab: 'resultsMonth',
     }
-  },
+  }
 
-  render: function () {
+  render() {
     const tabs = Variables.highScore.tabs
 
     return (
@@ -30,11 +25,11 @@ var HighscoreTabView = React.createClass({
         tintColor={Variables.GREEN180}>
         {tabs.map((tab) =>
           <Icon.TabBarItem
-              title={tab.title}
-              iconName={tab.icon}
-              selected={this.state.selectedTab === tab.id}
-              key={Math.random()}
-              onPress={() => {
+            title={tab.title}
+            iconName={tab.icon}
+            selected={this.state.selectedTab === tab.id}
+            key={Math.random()}
+            onPress={() => {
                 this.props.onTabSwitch(tab.id)
                 this.setState({selectedTab: tab.id })
               }}>
@@ -45,7 +40,7 @@ var HighscoreTabView = React.createClass({
     )
   }
 
-})
+}
 
 var styles = StyleSheet.create({
   tabContent: {
@@ -58,5 +53,8 @@ var styles = StyleSheet.create({
   },
 })
 
+HighscoreTabView.propTypes = {
+  onTabSwitch: React.PropTypes.func.isRequired
+}
 
 module.exports = HighscoreTabView

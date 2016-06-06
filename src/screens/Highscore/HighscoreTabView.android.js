@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {
+  ScrollView,
   StyleSheet,
   TabBarIOS,
   Text,
-  View,
+  View
 } from 'react-native'
 import {Icon} from '../../GuessUI'
 import * as Variables from '../../Variables'
-import ScrollableTabView, {DefaultTabBar, ScrollableTabBar} from 'react-native-scrollable-tab-view'
+import ScrollableTabView, {DefaultTabBar, FacebookTabBar, ScrollableTabBar} from 'react-native-scrollable-tab-view'
 
 class HighscoreTabView extends Component {
 
@@ -25,14 +26,20 @@ class HighscoreTabView extends Component {
       <View style={styles.tabContainer}>
         <ScrollableTabView
           initialPage={0}
-          renderTabBar={() =>
-            <ScrollableTabBar />}
-        >
-          <Text tabLabel='Tab #1'>My</Text>
-          <Text tabLabel='Tab #2 word word'>Favorite</Text>
-          <Text tabLabel='Tab #3 word word word'>project</Text>
-          <Text tabLabel='Tab #4 word word word word'>favorite</Text>
-          <Text tabLabel='Tab #5'>project</Text>
+          renderTabBar={() => <ScrollableTabBar />}>
+          {tabs.map((tab) =>
+            <ScrollView
+              tabLabel={tab.title}
+              style={styles.tabView}
+              key={Math.random()}
+              onPress={() => {
+                // TODO onPress do not work
+                this.props.onTabSwitch(tab.id)
+                this.setState({selectedTab: tab.id })
+              }}>
+              {this.props.children}
+            </ScrollView>
+          )}
         </ScrollableTabView>
       </View>
     )
@@ -51,6 +58,23 @@ var styles = StyleSheet.create({
   tabContainer: {
     flex: 1,
     marginTop: 30,
+  },
+  tabView: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: 'rgba(0,0,0,0.01)',
+  },
+  card: {
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    borderColor: 'rgba(0,0,0,0.1)',
+    margin: 5,
+    height: 150,
+    padding: 15,
+    shadowColor: '#ccc',
+    shadowOffset: { width: 2, height: 2, },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
   },
 })
 

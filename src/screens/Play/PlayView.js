@@ -132,6 +132,7 @@ var PlayView = React.createClass({
   },
 
   onTimeUp: function () {
+    console.log('time is up', this.props.showAnswer)
     if (this.props.showAnswer) {
       return
     }

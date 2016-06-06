@@ -53,7 +53,9 @@ var PlayScreen = React.createClass({
           showAnswer: true
         })
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.warn(err)
+      });
   },
 
   /**
@@ -84,7 +86,9 @@ var PlayScreen = React.createClass({
           showAnswer: false
         })
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.warn(err)
+      });
   },
 
 });

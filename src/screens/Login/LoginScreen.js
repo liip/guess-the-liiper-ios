@@ -91,6 +91,10 @@ var LoginScreen = React.createClass({
     })
   },
 
+  /**
+   * This function probably fails on Android Device
+   * @param state
+   */
   onWebLoginUrlChange: function(state: Object) {
     // Show the webview in case we don't get an answer within x sec.
     this.whenInactiveShowWebview()

@@ -1,7 +1,7 @@
 /* @flow */
-console.log('LoginView')
 import React, { Component } from 'react'
-var Variables = require('../../Variables')
+import Variables from '../../Variables'
+import Assets from '../../Assets'
 import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native'
 var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI')
 
@@ -40,7 +40,9 @@ var LoginView = React.createClass({
       <FaceGridBackground>
         <View style={styles.container}>
           <View style={styles.loginContainer}>
-            <Image style={styles.logo} resizeMode="contain" source={{ uri: 'GuessLogo', isStatic: true }} />
+            <Image style={styles.logo}
+                   resizeMode="contain"
+                   source={Assets.guessLogo} />
             <View style={styles.hidden}>{ this.props.children }</View>
             { component }
           </View>
@@ -129,7 +131,5 @@ var styles = StyleSheet.create({
     height: 0
   },
 })
-
-console.log('LoginView')
 
 module.exports = LoginView

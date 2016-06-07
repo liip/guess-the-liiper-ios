@@ -1,7 +1,5 @@
-'use strict';
-console.log('WebLoginView')
 import React, { Component } from 'react'
-var LoginView = require('./LoginView')
+import LoginView from './LoginView'
 import {
   ActivityIndicatorIOS,
   Text,
@@ -24,13 +22,13 @@ module.exports = React.createClass({
         renderLoading={this.renderLoading}
         renderError={this.renderError}
         onNavigationStateChange={this.props.onUrlChange} />
-    );
+    )
   },
 
   renderLoading: function() {
     return (
-      <LoginView loading={true}></LoginView>
-    );
+      <LoginView loading={true}/>
+    )
   },
 
   renderError: function(errorDomain, errorCode, errorDesc) {
@@ -49,10 +47,10 @@ module.exports = React.createClass({
           {'Description: ' + errorDesc}
         </Text>
       </View>
-    );
+    )
   },
 
-});
+})
 
 // Styles
 var styles = StyleSheet.create({
@@ -63,6 +61,4 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
-
-console.log('WebLoginView end')
+})

@@ -16,6 +16,12 @@ import ScrollableTabView, {
 
 class HighscoreTabView extends Component {
 
+  static get propTypes() {
+    return {
+      onTabSwitch: React.PropTypes.func.isRequired
+    }
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -81,9 +87,5 @@ var styles = StyleSheet.create({
     shadowRadius: 3,
   },
 })
-
-HighscoreTabView.propTypes = {
-  onTabSwitch: React.PropTypes.func.isRequired
-}
 
 module.exports = HighscoreTabView

@@ -1,7 +1,4 @@
-import {
-  FaceGridBackground
-} from '../../GuessUI'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   ActivityIndicatorIOS,
   View,
@@ -10,35 +7,42 @@ import {
   Image,
   StyleSheet
 } from 'react-native'
-var HighscoreTabView = require('./HighscoreTabView')
-var HighscoreListView = require('./HighscoreListView')
+import {FaceGridBackground} from '../../GuessUI'
+import HighscoreTabView from './HighscoreTabView'
+import HighscoreListView from './HighscoreListView'
 
-var HighscoreView = React.createClass({
+class HighscoreView extends Component {
 
-  propTypes: {
-    highscore: React.PropTypes.object.isRequired,
-    onTabSwitch: React.PropTypes.func.isRequired
-  },
+  static get propTypes() {
+    return {
+      highscore: React.PropTypes.object,
+      onTabSwitch: React.PropTypes.func.isRequired
+    }
+  }
 
-  renderLoading: function() {
+  constructor(props) {
+    super(props)
+  }
+
+  renderLoading() {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicatorIOS />
       </View>
     )
-  },
+  }
 
-  render: function() {
+  render() {
     var component
     if (this.props.loaded) {
-      console.log('rendering')
+      console.log('rendering with highscore')
       component = (
-          <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
-            <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore} />
-          </HighscoreTabView>
+        <HighscoreTabView onTabSwitch={this.props.onTabSwitch}>
+          <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore}/>
+        </HighscoreTabView>
       )
     } else {
-      console.log('rendering, was not loaded')
+      console.log('rendering')
       component = this.renderLoading()
     }
 
@@ -49,10 +53,8 @@ var HighscoreView = React.createClass({
         </View>
       </FaceGridBackground>
     )
-  },
-
-})
-
+  }
+}
 
 var styles = StyleSheet.create({
   container: {

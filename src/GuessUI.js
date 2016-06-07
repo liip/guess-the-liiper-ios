@@ -1,13 +1,10 @@
 /* @flow */
-'use strict';
-console.log('GuessUI');
+'use strict'
 import React, { Component } from 'react'
-var Variables = require('./Variables');
 import {
   Image,
   StyleSheet,
-} from 'react-native';
-
+} from 'react-native'
 
 var ScrollView = React.createClass({
   render: function() :ReactElement {
@@ -15,35 +12,35 @@ var ScrollView = React.createClass({
       <React.ScrollView contentContainerStyle={this.props.style}>
         {this.props.children}
       </React.ScrollView>
-    );
+    )
   },
-});
+})
 
 var FaceGridBackground =  React.createClass({
   render() {
     return (
       <Image
         style={[styles.faceGridBackground, this.props.style]}
-        source={{ uri: 'bg', isStatic: true }}>
+        source={require('../resources/imgs/bg.png')}>
         {this.props.children}
       </Image>
-    );
+    )
   }
-});
+})
 
 // Styles
 var styles = StyleSheet.create({
   faceGridBackground: {
     flex: 1,
-    // resizeMode: Image.resizeMode.cover,
+    width: null,
+    height: null,
   },
-});
-
+})
 
 module.exports = {
   Button: require('./UI/Button'),
   Grid: require('./UI/Grid'),
-  FaceGridBackground: FaceGridBackground,
+  FaceGridBackground,
   ProgressAnimation: require('./UI/ProgressAnimation'),
   ProgressCircle: require('./UI/ProgressCircle'),
   ProgressBar: require('./UI/ProgressBar'),
@@ -51,5 +48,3 @@ module.exports = {
   Icon: require('./UI/LiipIconFont'),
   Link: require('./UI/Link'),
 }
-
-console.log('GuessUI end');

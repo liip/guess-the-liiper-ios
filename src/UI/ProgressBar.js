@@ -4,15 +4,18 @@ import {
   View,
 } from 'react-native'
 
-var ProgressBar = React.createClass({
-  propTypes: {
-    /**
-     * Percentage value from 0 to 100.
-     */
-    complete: React.PropTypes.number.isRequired,
-  },
+class ProgressBar extends Component {
 
-  render: function() {
+  static get propTypes() {
+    return {
+      /**
+       * Percentage value from 0 to 100.
+       */
+      complete: React.PropTypes.number.isRequired,
+    }
+  }
+
+  render() {
     return (
         <View style={styles.progressBar}>
           <View style={[
@@ -22,8 +25,8 @@ var ProgressBar = React.createClass({
         ]} />
         </View>
     )
-  },
-})
+  }
+}
 
 // Styles
 var styles = StyleSheet.create({

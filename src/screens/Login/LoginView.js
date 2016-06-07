@@ -1,20 +1,22 @@
 /* @flow */
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Variables from '../../Variables'
 import Assets from '../../Assets'
-import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native'
-var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI')
+import {StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS} from 'react-native'
+import {FaceGridBackground, Button, Link} from '../../GuessUI'
 
-var LoginView = React.createClass({
+class LoginView extends Component {
 
-  propTypes: {
-    loggedIn: React.PropTypes.bool.isRequired,
-    loading: React.PropTypes.bool.isRequired,
-    onLoginPressed: React.PropTypes.func.isRequired,
-    onHighscorePressed: React.PropTypes.func.isRequired,
-    onLogoutPressed: React.PropTypes.func.isRequired,
-    onPlayPressed: React.PropTypes.func.isRequired,
-  },
+  static get propTypes() {
+    return {
+      loggedIn: React.PropTypes.bool.isRequired,
+      loading: React.PropTypes.bool.isRequired,
+      onLoginPressed: React.PropTypes.func.isRequired,
+      onHighscorePressed: React.PropTypes.func.isRequired,
+      onLogoutPressed: React.PropTypes.func.isRequired,
+      onPlayPressed: React.PropTypes.func.isRequired,
+    }
+  }
 
   animation: {
     duration: 700,
@@ -22,14 +24,14 @@ var LoginView = React.createClass({
       type: LayoutAnimation.Types.spring,
       springDamping: 0.4,
     },
-  },
+  }
 
-  render: function () {
+  render() {
     LayoutAnimation.configureNext(this.animation)
 
     var component
     if (this.props.loading) {
-      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />
+      component = <ActivityIndicatorIOS style={styles.loadingIndicator}/>
     } else if (this.props.loggedIn) {
       component = this.renderLoggedInButtons()
     } else {
@@ -41,17 +43,19 @@ var LoginView = React.createClass({
         <View style={styles.container}>
           <View style={styles.loginContainer}>
             <Image style={styles.logo}
-                   resizeMode="contain"
-                   source={Assets.guessLogo} />
-            <View style={styles.hidden}>{ this.props.children }</View>
-            { component }
+               resizeMode="contain"
+               source={Assets.guessLogo}/>
+            <View style={styles.hidden}>
+              {this.props.children}
+            </View>
+            {component}
           </View>
         </View>
       </FaceGridBackground>
     )
-  },
+  }
 
-  renderLoggedInButtons: function() {
+  renderLoggedInButtons() {
     return (
       <View style={styles.containerButtons}>
         <Button style={styles.buttonPlay} onPress={this.props.onPlayPressed}>
@@ -65,9 +69,9 @@ var LoginView = React.createClass({
         </Link>
       </View>
     )
-  },
+  }
 
-  renderLoggedOutButtons: function() {
+  renderLoggedOutButtons() {
     return (
       <View style={styles.containerButtons}>
         <Text style={styles.loginText}>
@@ -81,11 +85,10 @@ var LoginView = React.createClass({
         </Button>
       </View>
     )
-  },
+  }
 
-})
+}
 
-// Styles
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -122,10 +125,8 @@ var styles = StyleSheet.create({
   buttonLogin: {
     marginTop: 20
   },
-  buttonLogout: {
-  },
-  buttonPlay: {
-  },
+  buttonLogout: {},
+  buttonPlay: {},
   hidden: {
     width: 0,
     height: 0

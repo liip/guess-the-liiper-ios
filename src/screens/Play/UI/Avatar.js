@@ -3,7 +3,7 @@ import {
     View,
     Image,
     StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
 /**
  * An avatar shows a picture of a person with rounded corners.

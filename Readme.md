@@ -10,6 +10,7 @@ This is a test project to explore React Native.
 
  * node and npm
  * watchman `brew install watchman`
+ * flow `brew install flow`
  * XCode
 
 ## Installation
@@ -24,6 +25,22 @@ react-native run-ios
 ```
 
 Press `%` + `D` in the simulator for debugging options.
+
+### Android
+
+Please install Android studio/SDK
+[react-native-getting-started](https://facebook.github.io/react-native/docs/getting-started.html)
+
+```
+#run emulator with
+~/Library/Android/sdk/tools/emulator -avd reactnative
+#start the project with
+react-native run-android
+```
+
+For access to debugging menu on Android devices via shaking gesture, 
+please install [Frappe](https://github.com/niftylettuce/frappe)
+
 
 ## Distribution
 

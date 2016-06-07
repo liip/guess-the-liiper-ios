@@ -2,7 +2,7 @@
  * Guess the Liiper React Native App
  * https://guess.liip.ch
  */
-'use strict';
+'use strict'
 
 import React, { Component } from 'react'
 import {
@@ -10,9 +10,9 @@ import {
   AppRegistry,
   NavigatorIOS,
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
-var LoginScreen = require('./src/screens/Login/LoginScreen');
+var LoginScreen = require('./src/screens/Login/LoginScreen')
 
 /**
  * Example views used for development.
@@ -24,27 +24,27 @@ var LoginScreen = require('./src/screens/Login/LoginScreen');
 //  LoggedIn,
 //  LoginLoading,
 //  LoggedOut
-//} = require('./src/screens/Login/LoginScreenExamples');
+//} = require('./src/screens/Login/LoginScreenExamples')
 
 //var {
 //  PlayingNoAnswer,
 //  PlayingWrongAnswer,
 //  PlayingRightAnswer,
-//} = require('./src/screens/Play/PlayScreenExamples');
+//} = require('./src/screens/Play/PlayScreenExamples')
 
 //var {
 //  Highscore,
-//} = require('./src/screens/Highscore/HighscoreScreenExamples');
+//} = require('./src/screens/Highscore/HighscoreScreenExamples')
 
-//var {CircularProgressAnimationExample} = require('./src/GuessUIExamples');
+//var {CircularProgressAnimationExample} = require('./src/GuessUIExamples')
 
-//var ResultScreenExample = require('./src/screens/Play/ResultScreenExample');
-//var LaunchView = require('./src/UI/LaunchView');
+//var ResultScreenExample = require('./src/screens/Play/ResultScreenExample')
+//var LaunchView = require('./src/UI/LaunchView')
 
 /**
  * @type {ReactElement} Component to display when the app starts, default: LoginScreen.
  */
-var StartComponent = LoginScreen;
+var StartComponent = LoginScreen
 
 /**
  * Main application container defining
@@ -61,9 +61,9 @@ class App extends Component {
           }}
           itemWrapperStyle={styles.itemWrapper}
         />
-    );
+    )
   }
-};
+}
 
 // Styles
 var styles = StyleSheet.create({
@@ -76,8 +76,8 @@ var styles = StyleSheet.create({
   itemWrapper: {
     backgroundColor: 'transparent',
   },
-});
+})
 
 console.log('index.ios.js')
 
-AppRegistry.registerComponent('guess_the_liiper', () => App);
+AppRegistry.registerComponent('guess_the_liiper', () => App)

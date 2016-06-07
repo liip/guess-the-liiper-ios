@@ -1,66 +1,52 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   StyleSheet,
   TabBarIOS,
   Text,
   View,
-} from 'react-native';
-var {
-  Icon
-} = require('../../GuessUI');
-var Variables = require('../../Variables');
+} from 'react-native'
+import {Icon} from '../../GuessUI'
+import * as Variables from '../../Variables'
 
-var HighscoreTabView = React.createClass({
+class HighscoreTabView extends Component {
 
-  propTypes: {
-    onTabSwitch: React.PropTypes.func.isRequired
-  },
-
-  getInitialState: function() {
+  static get propTypes() {
     return {
-      selectedTab: 'resultsMonth',
-    };
-  },
+      onTabSwitch: React.PropTypes.func.isRequired
+    }
+  }
 
-  render: function () {
-    const tabs = [
-      {
-        title: "Last month",
-        icon: 'uni26',
-        id: 'resultsMonth'
-      },
-      {
-        title: "Last year",
-        icon: 'uni27',
-        id: 'resultsYear'
-      },
-      {
-        title: "All time",
-        icon: 'uni23',
-        id: 'resultsAllover'
-      }
-    ];
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedTab: 'resultsMonth',
+    }
+  }
+
+  render() {
+    const tabs = Variables.highScore.tabs
 
     return (
       <TabBarIOS
         tintColor={Variables.GREEN180}>
         {tabs.map((tab) =>
           <Icon.TabBarItem
-              title={tab.title}
-              iconName={tab.icon}
-              selected={this.state.selectedTab === tab.id}
-              onPress={() => {
-                this.props.onTabSwitch(tab.id);
-                this.setState({selectedTab: tab.id });
+            title={tab.title}
+            iconName={tab.icon}
+            selected={this.state.selectedTab === tab.id}
+            key={Math.random()}
+            onPress={() => {
+                this.props.onTabSwitch(tab.id)
+                this.setState({selectedTab: tab.id })
               }}>
             {this.props.children}
-            </Icon.TabBarItem>
+          </Icon.TabBarItem>
         )}
       </TabBarIOS>
-    );
+    )
   }
 
-});
+}
 
 var styles = StyleSheet.create({
   tabContent: {
@@ -71,7 +57,6 @@ var styles = StyleSheet.create({
     color: 'white',
     margin: 50,
   },
-});
+})
 
-
-module.exports = HighscoreTabView;
+module.exports = HighscoreTabView

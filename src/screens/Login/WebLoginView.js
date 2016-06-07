@@ -1,14 +1,14 @@
 'use strict';
-console.log('WebLoginView');
+console.log('WebLoginView')
 import React, { Component } from 'react'
-var LoginView = require('./LoginView');
+var LoginView = require('./LoginView')
 import {
   ActivityIndicatorIOS,
   Text,
   View,
   WebView,
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
 module.exports = React.createClass({
   propTypes: {
@@ -19,7 +19,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <WebView
-        url={this.props.url}
+        source={{uri: this.props.url}}
         backButtonEnabled={true}
         renderLoading={this.renderLoading}
         renderError={this.renderError}
@@ -65,4 +65,4 @@ var styles = StyleSheet.create({
   },
 });
 
-console.log('WebLoginView');
+console.log('WebLoginView end')

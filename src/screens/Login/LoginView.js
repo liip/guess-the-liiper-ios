@@ -1,20 +1,22 @@
 /* @flow */
-console.log('LoginView');
-import React, { Component } from 'react'
-var Variables = require('../../Variables');
-import { StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS } from 'react-native';
-var { FaceGridBackground, ScrollView, Button, Link } = require('../../GuessUI');
+import React, {Component} from 'react'
+import Variables from '../../Variables'
+import Assets from '../../Assets'
+import {StyleSheet, LayoutAnimation, View, Text, Image, ActivityIndicatorIOS} from 'react-native'
+import {FaceGridBackground, Button, Link} from '../../GuessUI'
 
-var LoginView = React.createClass({
+class LoginView extends Component {
 
-  propTypes: {
-    loggedIn: React.PropTypes.bool.isRequired,
-    loading: React.PropTypes.bool.isRequired,
-    onLoginPressed: React.PropTypes.func.isRequired,
-    onHighscorePressed: React.PropTypes.func.isRequired,
-    onLogoutPressed: React.PropTypes.func.isRequired,
-    onPlayPressed: React.PropTypes.func.isRequired,
-  },
+  static get propTypes() {
+    return {
+      loggedIn: React.PropTypes.bool.isRequired,
+      loading: React.PropTypes.bool.isRequired,
+      onLoginPressed: React.PropTypes.func.isRequired,
+      onHighscorePressed: React.PropTypes.func.isRequired,
+      onLogoutPressed: React.PropTypes.func.isRequired,
+      onPlayPressed: React.PropTypes.func.isRequired,
+    }
+  }
 
   animation: {
     duration: 700,
@@ -22,34 +24,38 @@ var LoginView = React.createClass({
       type: LayoutAnimation.Types.spring,
       springDamping: 0.4,
     },
-  },
+  }
 
-  render: function () {
-    LayoutAnimation.configureNext(this.animation);
+  render() {
+    LayoutAnimation.configureNext(this.animation)
 
-    var component;
+    var component
     if (this.props.loading) {
-      component = <ActivityIndicatorIOS style={styles.loadingIndicator} />;
+      component = <ActivityIndicatorIOS style={styles.loadingIndicator}/>
     } else if (this.props.loggedIn) {
-      component = this.renderLoggedInButtons();
+      component = this.renderLoggedInButtons()
     } else {
-      component = this.renderLoggedOutButtons();
+      component = this.renderLoggedOutButtons()
     }
 
     return (
       <FaceGridBackground>
         <View style={styles.container}>
           <View style={styles.loginContainer}>
-            <Image style={styles.logo} resizeMode="contain" source={{ uri: 'GuessLogo', isStatic: true }} />
-            <View style={styles.hidden}>{ this.props.children }</View>
-            { component }
+            <Image style={styles.logo}
+               resizeMode="contain"
+               source={Assets.guessLogo}/>
+            <View style={styles.hidden}>
+              {this.props.children}
+            </View>
+            {component}
           </View>
         </View>
       </FaceGridBackground>
-    );
-  },
+    )
+  }
 
-  renderLoggedInButtons: function() {
+  renderLoggedInButtons() {
     return (
       <View style={styles.containerButtons}>
         <Button style={styles.buttonPlay} onPress={this.props.onPlayPressed}>
@@ -62,10 +68,10 @@ var LoginView = React.createClass({
           Logout
         </Link>
       </View>
-    );
-  },
+    )
+  }
 
-  renderLoggedOutButtons: function() {
+  renderLoggedOutButtons() {
     return (
       <View style={styles.containerButtons}>
         <Text style={styles.loginText}>
@@ -78,12 +84,11 @@ var LoginView = React.createClass({
           Sign in with Google
         </Button>
       </View>
-    );
-  },
+    )
+  }
 
-});
+}
 
-// Styles
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -120,16 +125,12 @@ var styles = StyleSheet.create({
   buttonLogin: {
     marginTop: 20
   },
-  buttonLogout: {
-  },
-  buttonPlay: {
-  },
+  buttonLogout: {},
+  buttonPlay: {},
   hidden: {
     width: 0,
     height: 0
   },
-});
+})
 
-console.log('LoginView');
-
-module.exports = LoginView;
+module.exports = LoginView

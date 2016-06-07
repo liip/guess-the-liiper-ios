@@ -1,29 +1,29 @@
 /* @flow */
 'use strict';
 
-import React, { Component } from 'react'
-var Variables = require('../../Variables');
+import React, {Component} from 'react'
+var Variables = require('../../Variables')
 import {
   Image,
   StyleSheet,
   View,
   LayoutAnimation,
   Dimensions
-} from 'react-native';
+} from 'react-native'
 var {
   Button,
   Grid,
   ProgressAnimation,
   ProgressCircle,
   FaceGridBackground
-} = require('../../GuessUI');
-var Avatar = require('./UI/Avatar');
-var PlayBackground = require('./PlayBackground');
+} = require('../../GuessUI')
+var Avatar = require('./UI/Avatar')
+var PlayBackground = require('./PlayBackground')
 
 // Timeout in ms.
 var PLAYER_TIMEOUT = 10000;
 
-import type {Game, Person} from '../../GuessDomain';
+import type {Game, Person} from '../../GuessDomain'
 
 var PlayView = React.createClass({
 
@@ -43,13 +43,13 @@ var PlayView = React.createClass({
     },
   },
 
-  startProgress: function() {
+  startProgress: function () {
     this.refs['progress-bar'].restart();
   },
 
-  render: function() {
+  render: function () {
     LayoutAnimation.configureNext(this.animation);
-    var game: Game = this.props.game;
+    var game:Game = this.props.game;
     // Depending on the screen height.
     var avatarDiameter = Math.round(Dimensions.get('window').height / 3);
 
@@ -57,17 +57,17 @@ var PlayView = React.createClass({
       <PlayBackground>
 
         <View style={styles.avatarContainer}>
-            <Avatar picture={game.picture} diameter={avatarDiameter} onLoad={this.startProgress}>
-              <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
-                {(complete) => (
-                    <ProgressCircle
-                        fill={Variables.GREEN270}
-                        fillBackground={Variables.GREY0}
-                        complete={complete}
-                        diameter={avatarDiameter} />
-                )}
-              </ProgressAnimation>
-            </Avatar>
+          <Avatar picture={game.picture} diameter={avatarDiameter} onLoad={this.startProgress}>
+            <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
+              {(complete) => (
+                <ProgressCircle
+                  fill={Variables.GREEN270}
+                  fillBackground={Variables.GREY0}
+                  complete={complete}
+                  diameter={avatarDiameter}/>
+              )}
+            </ProgressAnimation>
+          </Avatar>
         </View>
 
         <View style={styles.buttonsContainer}>
@@ -79,11 +79,11 @@ var PlayView = React.createClass({
         <View style={styles.footerContainer}>
           <View style={styles.continueContainer}>
             {this.props.showAnswer &&
-              <Button
-                style={styles.buttonContinue}
-                onPress={this.props.onNext}>
-                Continue
-              </Button>
+            <Button
+              style={styles.buttonContinue}
+              onPress={this.props.onNext}>
+              Continue
+            </Button>
             }
           </View>
         </View>
@@ -91,17 +91,18 @@ var PlayView = React.createClass({
     );
   },
 
-  renderButtons: function(persons :Array<Person>) :Array<ReactElement> {
+  renderButtons: function (persons:Array<Person>):Array<ReactElement> {
     return persons.map(person =>
-        <Button
-          style={this.getButtonStyle(person)}
-          onPress={() => this.onButtonPressed(person.resultId) }>
-          {person.name}
-        </Button>
+      <Button
+        key={Math.random()}
+        style={this.getButtonStyle(person)}
+        onPress={() => this.onButtonPressed(person.resultId) }>
+        {person.name}
+      </Button>
     );
   },
 
-  getButtonStyle: function(person: Person) {
+  getButtonStyle: function (person:Person) {
     if (!this.props.showAnswer) {
       return styles.buttonDefault;
     }
@@ -121,20 +122,25 @@ var PlayView = React.createClass({
     return styles.buttonDefault;
   },
 
-  onButtonPressed: function(resultid :string) {
-    if (this.props.showAnswer) { return; }
+  onButtonPressed: function (resultid:string) {
+    if (this.props.showAnswer) {
+      return
+    }
 
     var timeInMs = this.refs['progress-bar'].getTimeInMs();
     this.props.onGuess(resultid, timeInMs);
   },
 
-  onTimeUp: function() {
-    if (this.props.showAnswer) { return; }
+  onTimeUp: function () {
+    console.log('time is up', this.props.showAnswer)
+    if (this.props.showAnswer) {
+      return
+    }
 
     this.props.onGuess(null, PLAYER_TIMEOUT);
   },
 
-  pauseOrRestartProgressBar: function(showAnswer :bool) {
+  pauseOrRestartProgressBar: function (showAnswer:bool) {
     if (showAnswer) {
       this.refs['progress-bar'].pause();
     } else {
@@ -142,10 +148,10 @@ var PlayView = React.createClass({
     }
   },
 
-  componentWillReceiveProps: function(newProps :Object) {
+  componentWillReceiveProps: function (newProps:Object) {
     this.pauseOrRestartProgressBar(newProps.showAnswer);
   }
-});
+})
 
 
 var styles = StyleSheet.create({
@@ -165,14 +171,16 @@ var styles = StyleSheet.create({
   continueContainer: {
     flex: 1
   },
+  progressCircle: {
+    position: 'absolute',
+  },
   buttonDefault: {
     backgroundColor: Variables.GREYRGBA80,
   },
-  buttonCorrect: {
-  },
+  buttonCorrect: {},
   buttonWrong: {
     backgroundColor: Variables.REDRGBA80,
   }
-});
+})
 
-module.exports = PlayView;
+module.exports = PlayView

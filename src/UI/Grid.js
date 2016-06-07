@@ -25,7 +25,7 @@ var Grid = React.createClass({
     return (
         <View style={styles.grid}>
           {this.group(this.props.children, this.props.amountInRow).map((row) =>
-            <View style={styles.row}>
+            <View style={styles.row} key={Math.random()}>
               {row}
             </View>
           )}

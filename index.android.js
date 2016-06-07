@@ -4,49 +4,92 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import React, {Component} from 'react'
 
-var guess_the_liiper = React.createClass({
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+import {
+  div,
+  AppRegistry,
+  Text,
+  BackAndroid,
+  Navigator,
+  StyleSheet,
+  View
+} from 'react-native'
+
+var LoginScreen = require('./src/screens/Login/LoginScreen')
+
+/**
+ * Example views used for development.
+ *
+ * Change the StartComponent to show different states of the app.
+ * Useful when styling with live reload.
+ */
+// var {
+//     LoggedIn,
+//     LoginLoading,
+//     LoggedOut
+// } = require('./src/screens/Login/LoginScreenExamples')
+//
+// var {
+//     PlayingNoAnswer,
+//     PlayingWrongAnswer,
+//     PlayingRightAnswer,
+// } = require('./src/screens/Play/PlayScreenExamples')
+//
+// var {
+//     Highscore,
+// } = require('./src/screens/Highscore/HighscoreScreenExamples')
+
+// var {CircularProgressAnimationExample} = require('./src/GuessUIExamples')
+
+// var ResultScreenExample = require('./src/screens/Play/ResultScreenExample')
+// var LaunchView = require('./src/UI/LaunchView')
+
+BackAndroid.addEventListener('hardwareBackPress', () => {
+  if (_navigator.getCurrentRoutes().length === 1) {
+    return false
   }
+
+  _navigator.pop()
+  return true
 });
+
+var StartComponent = LoginScreen
+var _navigator
+
+//TODO check remove navigator hack
+class App extends Component {
+  renderScene(route, navigator) {
+    _navigator = navigator;
+    return <route.component navigator={navigator}/>;
+  }
+
+  render() {
+    return (
+      <Navigator
+        initialRoute={{
+          id: 'Home',
+          title: StartComponent.title || 'Guess the Liiper',
+          component: LoginScreen
+        }}
+        configureScene={() => Navigator.SceneConfigs.FloatFromRight}
+        renderScene={this.renderScene}
+        itemWrapperStyle={styles.itemWrapper}
+      />
+    )
+  }
+}
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  // Style the whole content below the title bar.
+  itemWrapper: {
+    backgroundColor: 'transparent',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+})
 
-AppRegistry.registerComponent('guess_the_liiper', () => guess_the_liiper);
+console.log('index.android.js')
+
+AppRegistry.registerComponent('guess_the_liiper', () => App)

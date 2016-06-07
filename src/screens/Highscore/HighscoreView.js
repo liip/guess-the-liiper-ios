@@ -1,9 +1,4 @@
-var {
-  Button,
-  Headline,
-  FaceGridBackground
-} = require('../../GuessUI');
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import {
   ActivityIndicatorIOS,
   View,
@@ -11,37 +6,44 @@ import {
   Text,
   Image,
   StyleSheet
-} from 'react-native';
-var Variables = require('../../Variables');
+} from 'react-native'
+import {FaceGridBackground} from '../../GuessUI'
+import HighscoreTabView from './HighscoreTabView'
+import HighscoreListView from './HighscoreListView'
 
-var HighscoreTabView = require('./HighscoreTabView');
-var HighscoreListView = require('./HighscoreListView');
+class HighscoreView extends Component {
 
-var HighscoreView = React.createClass({
+  static get propTypes() {
+    return {
+      highscore: React.PropTypes.object,
+      onTabSwitch: React.PropTypes.func.isRequired
+    }
+  }
 
-  propTypes: {
-    highscore: React.PropTypes.object.isRequired,
-    onTabSwitch: React.PropTypes.func.isRequired
-  },
+  constructor(props) {
+    super(props)
+  }
 
-  renderLoading: function() {
+  renderLoading() {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicatorIOS />
       </View>
-    );
-  },
+    )
+  }
 
-  render: function() {
-    var component;
+  render() {
+    var component
     if (this.props.loaded) {
+      console.log('rendering with highscore')
       component = (
-          <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
-            <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore} />
-          </HighscoreTabView>
-      );
+        <HighscoreTabView onTabSwitch={this.props.onTabSwitch}>
+          <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore}/>
+        </HighscoreTabView>
+      )
     } else {
-      component = this.renderLoading();
+      console.log('rendering')
+      component = this.renderLoading()
     }
 
     return (
@@ -50,11 +52,9 @@ var HighscoreView = React.createClass({
           {component}
         </View>
       </FaceGridBackground>
-    );
-  },
-
-});
-
+    )
+  }
+}
 
 var styles = StyleSheet.create({
   container: {
@@ -67,6 +67,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
   }
-});
+})
 
-module.exports = HighscoreView;
+module.exports = HighscoreView

@@ -2,12 +2,12 @@
 'use strict';
 
 import React, { Component } from 'react'
-import {ActivityIndicatorIOS} from 'react-native';
-var GuessApi = require('../../GuessApi');
-var PlayView = require('./PlayView');
-var PlayLoadingView = require('./PlayLoadingView');
-var PlayBackground = require('./PlayBackground');
-import type {GameResult} from '../../GuessDomain';
+import {ActivityIndicatorIOS} from 'react-native'
+var GuessApi = require('../../GuessApi')
+var PlayView = require('./PlayView')
+var PlayLoadingView = require('./PlayLoadingView')
+var PlayBackground = require('./PlayBackground')
+import type {GameResult} from '../../GuessDomain'
 
 var PlayScreen = React.createClass({
   statics: {
@@ -53,7 +53,9 @@ var PlayScreen = React.createClass({
           showAnswer: true
         })
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.warn(err)
+      });
   },
 
   /**
@@ -84,11 +86,13 @@ var PlayScreen = React.createClass({
           showAnswer: false
         })
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.warn(err)
+      });
   },
 
 });
 
-console.log('ololo')
+console.log('PlayScreenEnd')
 
 module.exports = PlayScreen;

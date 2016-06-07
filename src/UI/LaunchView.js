@@ -1,8 +1,7 @@
 /* @flow */
 import React, { Component } from 'react'
-var Variables = require('../Variables');
-import { StyleSheet, StatusBarIOS, View, Text, Image} from 'react-native';
-var { FaceGridBackground, ScrollView, Button, Link } = require('../GuessUI');
+import { StyleSheet, View, Text, Image} from 'react-native'
+import { FaceGridBackground, } from '../GuessUI'
 
 var LaunchView = React.createClass({
 
@@ -19,12 +18,12 @@ var LaunchView = React.createClass({
           </View>
         </View>
       </FaceGridBackground>
-    );
+    )
   }
-});
+})
 
 var styles = StyleSheet.create({
 
-});
+})
 
-module.exports = LaunchView;
+module.exports = LaunchView

@@ -1,27 +1,21 @@
-'use strict';
-
-import React, { Component } from 'react';
-
+import React, {Component} from 'react'
 import {
   StyleSheet,
   View,
-} from 'react-native';
+} from 'react-native'
+import {FaceGridBackground} from '../../GuessUI'
 
-var {
-  FaceGridBackground
-} = require('../../GuessUI');
-
-var PlayBackground = React.createClass({
-    render: function () {
-        return (
-            <FaceGridBackground>
-                <View style={styles.container}>
-                    {this.props.children}
-                </View>
-            </FaceGridBackground>
-        );
-    }
-});
+class PlayBackground extends Component {
+  render() {
+    return (
+      <FaceGridBackground>
+        <View style={styles.container}>
+          {this.props.children}
+        </View>
+      </FaceGridBackground>
+    )
+  }
+}
 
 var styles = StyleSheet.create({
   container: {
@@ -33,6 +27,6 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.9)',
     borderRadius: 5,
   }
-});
+})
 
-module.exports = PlayBackground;
+module.exports = PlayBackground

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-var Variables = require('../Variables');
 import {
   StyleSheet,
   View,
-} from 'react-native';
+} from 'react-native'
 
 var ProgressBar = React.createClass({
   propTypes: {
@@ -22,9 +21,9 @@ var ProgressBar = React.createClass({
           {width: this.props.complete}
         ]} />
         </View>
-    );
+    )
   },
-});
+})
 
 // Styles
 var styles = StyleSheet.create({
@@ -41,6 +40,6 @@ var styles = StyleSheet.create({
     alignSelf: 'auto',
     width: 60,
   }
-});
+})
 
-module.exports = ProgressBar;
+module.exports = ProgressBar

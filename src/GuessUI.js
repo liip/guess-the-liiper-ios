@@ -5,6 +5,7 @@ import {
   Image,
   StyleSheet,
 } from 'react-native'
+import Assets from './Assets'
 
 var ScrollView = React.createClass({
   render: function() :ReactElement {
@@ -21,7 +22,7 @@ var FaceGridBackground =  React.createClass({
     return (
       <Image
         style={[styles.faceGridBackground, this.props.style]}
-        source={require('../resources/imgs/bg.png')}>
+        source={Assets.backGround}>
         {this.props.children}
       </Image>
     )

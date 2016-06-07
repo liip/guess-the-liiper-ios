@@ -32,40 +32,40 @@ var ProgressCircle = React.createClass({
       diameter: 100,
       fill: Variables.GREEN180,
       strokeWidth: 8,
-    };
+    }
   },
 
-  render: function() {
-    var angle = this.computeAngle();
+  render: function () {
+    var angle = this.computeAngle()
 
-    var outerRadius = this.props.diameter / 2;
-    var innerRadius = (this.props.diameter / 2) - this.props.strokeWidth;
+    var outerRadius = this.props.diameter / 2
+    var innerRadius = (this.props.diameter / 2) - this.props.strokeWidth
 
     return (
-        <Surface
-            style={this.props.style}
-            width={this.props.diameter}
-            height={this.props.diameter}>
+      <Surface
+        style={this.props.style}
+        width={this.props.diameter}
+        height={this.props.diameter}>
 
-          <Wedge
-              outerRadius={outerRadius}
-              innerRadius={innerRadius}
-              startAngle={angle}
-              endAngle={360}
-              fill={this.props.fillBackground}>
-          </Wedge>
+        <Wedge
+          outerRadius={outerRadius}
+          innerRadius={innerRadius}
+          startAngle={angle}
+          endAngle={360}
+          fill={this.props.fillBackground}>
+        </Wedge>
 
-          <Wedge
-              outerRadius={outerRadius}
-              innerRadius={innerRadius}
-              startAngle={0}
-              endAngle={angle}
-              fill={this.props.fill}>
-            {this.props.children}
-          </Wedge>
+        <Wedge
+          outerRadius={outerRadius}
+          innerRadius={innerRadius}
+          startAngle={0}
+          endAngle={angle}
+          fill={this.props.fill}>
+          {this.props.children}
+        </Wedge>
 
-        </Surface>
-    );
+      </Surface>
+    )
   },
 
   /**
@@ -76,16 +76,16 @@ var ProgressCircle = React.createClass({
    * @returns {number} Angle depending on completion percentage.
    */
   computeAngle: function () {
-    var angle = (360 / 100) * this.props.complete;
+    var angle = (360 / 100) * this.props.complete
 
     // To avoid issues with 0 degree angles,
     // set it to a low float instead.
     if (angle === 0) {
-      return 0.000001;
+      return 0.000001
     }
 
-    return angle;
+    return angle
   },
-});
+})
 
-module.exports = ProgressCircle;
+module.exports = ProgressCircle

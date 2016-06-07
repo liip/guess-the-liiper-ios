@@ -1,8 +1,8 @@
 /* @flow */
-'use strict';
+'use strict'
 
 import React, {Component} from 'react'
-var Variables = require('../../Variables')
+import Variables from '../../Variables'
 import {
   Image,
   StyleSheet,
@@ -10,20 +10,19 @@ import {
   LayoutAnimation,
   Dimensions
 } from 'react-native'
-var {
+import {
   Button,
   Grid,
   ProgressAnimation,
   ProgressCircle,
   FaceGridBackground
-} = require('../../GuessUI')
-var Avatar = require('./UI/Avatar')
-var PlayBackground = require('./PlayBackground')
+} from '../../GuessUI'
+import Avatar from './UI/Avatar'
+import PlayBackground from './PlayBackground'
+import type {Game, Person} from '../../GuessDomain'
 
 // Timeout in ms.
-var PLAYER_TIMEOUT = 10000;
-
-import type {Game, Person} from '../../GuessDomain'
+const PLAYER_TIMEOUT = 10000
 
 var PlayView = React.createClass({
 
@@ -44,14 +43,14 @@ var PlayView = React.createClass({
   },
 
   startProgress: function () {
-    this.refs['progress-bar'].restart();
+    this.refs['progress-bar'].restart()
   },
 
   render: function () {
-    LayoutAnimation.configureNext(this.animation);
-    var game:Game = this.props.game;
+    LayoutAnimation.configureNext(this.animation)
+    var game:Game = this.props.game
     // Depending on the screen height.
-    var avatarDiameter = Math.round(Dimensions.get('window').height / 3);
+    var avatarDiameter = Math.round(Dimensions.get('window').height / 3)
 
     return (
       <PlayBackground>
@@ -88,7 +87,7 @@ var PlayView = React.createClass({
           </View>
         </View>
       </PlayBackground>
-    );
+    )
   },
 
   renderButtons: function (persons:Array<Person>):Array<ReactElement> {
@@ -99,27 +98,27 @@ var PlayView = React.createClass({
         onPress={() => this.onButtonPressed(person.resultId) }>
         {person.name}
       </Button>
-    );
+    )
   },
 
   getButtonStyle: function (person:Person) {
     if (!this.props.showAnswer) {
-      return styles.buttonDefault;
+      return styles.buttonDefault
     }
 
-    var result = this.props.gameResults[this.props.gameResults.length - 1];
+    var result = this.props.gameResults[this.props.gameResults.length - 1]
 
     // Todo: result.isPerson(person)
     if (result.resultid == person.resultId) {
-      return styles.buttonCorrect;
+      return styles.buttonCorrect
     }
 
     // Todo: result.wronglySelected(person)
     if (!result.correct && result.selectedResultid == person.resultId) {
-      return styles.buttonWrong;
+      return styles.buttonWrong
     }
 
-    return styles.buttonDefault;
+    return styles.buttonDefault
   },
 
   onButtonPressed: function (resultid:string) {
@@ -127,8 +126,8 @@ var PlayView = React.createClass({
       return
     }
 
-    var timeInMs = this.refs['progress-bar'].getTimeInMs();
-    this.props.onGuess(resultid, timeInMs);
+    var timeInMs = this.refs['progress-bar'].getTimeInMs()
+    this.props.onGuess(resultid, timeInMs)
   },
 
   onTimeUp: function () {
@@ -137,19 +136,19 @@ var PlayView = React.createClass({
       return
     }
 
-    this.props.onGuess(null, PLAYER_TIMEOUT);
+    this.props.onGuess(null, PLAYER_TIMEOUT)
   },
 
   pauseOrRestartProgressBar: function (showAnswer:bool) {
     if (showAnswer) {
-      this.refs['progress-bar'].pause();
+      this.refs['progress-bar'].pause()
     } else {
-      this.refs['progress-bar'].reset();
+      this.refs['progress-bar'].reset()
     }
   },
 
   componentWillReceiveProps: function (newProps:Object) {
-    this.pauseOrRestartProgressBar(newProps.showAnswer);
+    this.pauseOrRestartProgressBar(newProps.showAnswer)
   }
 })
 

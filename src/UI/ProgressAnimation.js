@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-var TimerMixin = require('react-timer-mixin');
+import TimerMixin from 'react-timer-mixin'
 
 var ProgressBarAnimation = React.createClass({
     mixins: [TimerMixin],
@@ -37,75 +37,75 @@ var ProgressBarAnimation = React.createClass({
 
     runAnimation: function() {
         if (this.state.paused || !this.isMounted()) {
-            return;
+            return
         }
 
-        this.timer = () => this.requestAnimationFrame(this.runAnimation);
+        this.timer = () => this.requestAnimationFrame(this.runAnimation)
 
         if (!this.startTime) {
-            this.startTime = Date.now();
+            this.startTime = Date.now()
         }
 
         // Reset when finished.
-        var duration = Date.now() - this.startTime;
+        var duration = Date.now() - this.startTime
         if (duration >= this.props.duration) {
-            this.reset();
-            this.props.onFinish();
+            this.reset()
+            this.props.onFinish()
         }
 
-        this.calculateComplete(duration);
+        this.calculateComplete(duration)
 
-        this.timer && this.timer();
+        this.timer && this.timer()
     },
 
     calculateComplete: function(duration :number) {
-        var complete = (duration / this.props.duration) * 100;
+        var complete = (duration / this.props.duration) * 100
 
         if (this.props.decreasing) {
-            complete = 100 - complete;
+            complete = 100 - complete
         }
 
         if (complete !== this.state.complete) {
-            this.setState({complete: complete});
+            this.setState({complete: complete})
         }
     },
 
     reset: function() {
-        this.startTime = null;
-        this.timer = null;
+        this.startTime = null
+        this.timer = null
     },
 
     restart: function() {
-        this.reset();
-        this.start();
+        this.reset()
+        this.start()
     },
 
     start: function() {
-        this.setState({paused: false}, this.runAnimation);
+        this.setState({paused: false}, this.runAnimation)
     },
 
     pause: function() {
-        this.setState({paused: true});
+        this.setState({paused: true})
     },
 
     getTimeInMs: function() {
-        return Date.now() - this.startTime;
+        return Date.now() - this.startTime
     },
 
     componentDidMount: function() {
         if (this.props.autostart) {
-            this.start();
+            this.start()
         }
     },
 
     render: function() {
         if (!this.props.children) {
-            return null;
+            return null
         }
 
-        return this.props.children(this.state.complete);
+        return this.props.children(this.state.complete)
     },
-});
+})
 
 
-module.exports = ProgressBarAnimation;
+module.exports = ProgressBarAnimation

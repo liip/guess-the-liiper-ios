@@ -21,9 +21,6 @@ import Avatar from './UI/Avatar'
 import PlayBackground from './PlayBackground'
 import type {Game, Person} from '../../GuessDomain'
 
-// Timeout in ms.
-const PLAYER_TIMEOUT = 10000
-
 var PlayView = React.createClass({
 
   propTypes: {
@@ -57,7 +54,7 @@ var PlayView = React.createClass({
 
         <View style={styles.avatarContainer}>
           <Avatar picture={game.picture} diameter={avatarDiameter} onLoad={this.startProgress}>
-            <ProgressAnimation ref="progress-bar" duration={PLAYER_TIMEOUT} onFinish={this.onTimeUp}>
+            <ProgressAnimation ref="progress-bar" duration={Variables.playerTimeout} onFinish={this.onTimeUp}>
               {(complete) => (
                 <ProgressCircle
                   fill={Variables.GREEN270}
@@ -136,7 +133,7 @@ var PlayView = React.createClass({
       return
     }
 
-    this.props.onGuess(null, PLAYER_TIMEOUT)
+    this.props.onGuess(null, Variables.playerTimeout)
   },
 
   pauseOrRestartProgressBar: function (showAnswer:bool) {

@@ -1,8 +1,6 @@
-var {
-  Button,
-  Headline,
+import {
   FaceGridBackground
-} = require('../../GuessUI');
+} from '../../GuessUI'
 import React, { Component } from 'react'
 import {
   ActivityIndicatorIOS,
@@ -12,10 +10,8 @@ import {
   Image,
   StyleSheet
 } from 'react-native'
-var Variables = require('../../Variables');
-
-var HighscoreTabView = require('./HighscoreTabView');
-var HighscoreListView = require('./HighscoreListView');
+var HighscoreTabView = require('./HighscoreTabView')
+var HighscoreListView = require('./HighscoreListView')
 
 var HighscoreView = React.createClass({
 
@@ -29,21 +25,21 @@ var HighscoreView = React.createClass({
       <View style={styles.loadingContainer}>
         <ActivityIndicatorIOS />
       </View>
-    );
+    )
   },
 
   render: function() {
-    var component;
+    var component
     if (this.props.loaded) {
       console.log('rendering')
       component = (
           <HighscoreTabView onTabSwitch={this.props.onTabSwitch} >
             <HighscoreListView selected_tab={this.props.selected_tab} highscore={this.props.highscore} />
           </HighscoreTabView>
-      );
+      )
     } else {
-      console.log('rendering')
-      component = this.renderLoading();
+      console.log('rendering, was not loaded')
+      component = this.renderLoading()
     }
 
     return (
@@ -52,10 +48,10 @@ var HighscoreView = React.createClass({
           {component}
         </View>
       </FaceGridBackground>
-    );
+    )
   },
 
-});
+})
 
 
 var styles = StyleSheet.create({
@@ -69,6 +65,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
   }
-});
+})
 
-module.exports = HighscoreView;
+module.exports = HighscoreView

@@ -8,7 +8,11 @@ import {
 } from 'react-native'
 import {Icon} from '../../GuessUI'
 import * as Variables from '../../Variables'
-import ScrollableTabView, {DefaultTabBar, FacebookTabBar, ScrollableTabBar} from 'react-native-scrollable-tab-view'
+import ScrollableTabView, {
+  DefaultTabBar,
+  FacebookTabBar,
+  ScrollableTabBar
+} from 'react-native-scrollable-tab-view'
 
 class HighscoreTabView extends Component {
 
